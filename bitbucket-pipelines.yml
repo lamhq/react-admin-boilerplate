@@ -1,0 +1,34 @@
+image: node:10.16-alpine
+
+pipelines:
+  custom:
+    # Deploy to staging
+    deploy-to-staging:
+      - step:
+          name: Deploy to staging
+          deployment: Staging
+          caches:
+            - node
+          script:
+            - yarn install --production=false
+            - yarn build
+            - pipe: atlassian/firebase-deploy:0.3.3
+              variables:
+                FIREBASE_TOKEN: $FIREBASE_TOKEN
+                PROJECT_ID: $FIREBASE_PROJECT_ID
+
+    # Deploy to production
+    deploy-to-prod:
+      - step:
+          name: Deploy to production
+          deployment: Production
+          caches:
+            - node
+          script:
+            - yarn install --production=false
+            - yarn build
+            - pipe: atlassian/firebase-deploy:0.3.3
+              variables:
+                FIREBASE_TOKEN: $FIREBASE_TOKEN
+                PROJECT_ID: $FIREBASE_PROJECT_ID
+
