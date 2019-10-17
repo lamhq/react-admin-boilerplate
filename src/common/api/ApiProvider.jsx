@@ -85,9 +85,14 @@ export default function ApiProvider({ children }) {
     }
   }
 
-  async function getPosts() {
+  async function getPosts(page = 0, limit = 10) {
     try {
-      const resp = await http.get('admin/posts');
+      const resp = await http.get('admin/posts', {
+        params: {
+          offset: page * limit,
+          limit,
+        },
+      });
       return resp.data;
     } catch (error) {
       throw transformError(error);

@@ -8,7 +8,7 @@ import LastPage from '@material-ui/icons/LastPage';
 import MPagination from '../../mdpr/components/Pagination/Pagination';
 
 /**
- * Display pagination component with bootstrap 3 style
+ * Display pagination component with material ui
  */
 export default function Pagination({ onChange, page, totalPage }) {
   if (totalPage < 2) {
@@ -63,6 +63,7 @@ export default function Pagination({ onChange, page, totalPage }) {
 }
 
 Pagination.propTypes = {
+  // current page, start from 0
   page: PropTypes.number.isRequired,
   totalPage: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,

@@ -16,6 +16,7 @@ import DeleteButton from './DeleteButton';
 import useLoad from '../../../common/hooks/useLoad';
 import { useApi } from '../../../common/api';
 import { cardTitle } from '../../../mdpr/assets/jss/material-dashboard-pro-react';
+import Pagination from '../../../common/components/Pagination';
 
 const styles = {
   customCardContentClass: {
@@ -42,13 +43,19 @@ const useStyles = makeStyles(styles);
  */
 export default function PostListPage() {
   const classes = useStyles();
+  const [page, setPage] = React.useState(0);
   const { getPosts } = useApi();
-  const { data: posts, load: loadPosts, loading } = useLoad(getPosts);
+  const { data: resp, load: loadPosts, loading } = useLoad(getPosts);
+  const posts = resp ? resp.data : [];
+  const totalPage = resp ? resp.meta.totalPages : 1;
+  function handlePageChange(value) {
+    setPage(value);
+  }
 
   // load report on load
   React.useEffect(() => {
-    loadPosts(true);
-  }, []);
+    loadPosts(page);
+  }, [page]);
 
   return (
     <AdminLayout title="Manage Posts">
@@ -80,7 +87,7 @@ export default function PostListPage() {
                     &nbsp;
                     <DeleteButton
                       post={post}
-                      afterDelete={() => loadPosts(true)}
+                      afterDelete={() => loadPosts(0)}
                       className={classes.actionButton}
                     />
                   </>
@@ -92,6 +99,7 @@ export default function PostListPage() {
           )}
         </CardBody>
       </Card>
+      <Pagination page={page} totalPage={totalPage} onChange={handlePageChange} />
     </AdminLayout>
   );
 }
