@@ -2,11 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Delete from '@material-ui/icons/Delete';
 
-import { useApi } from '../../../common/api';
-import { useUtils } from '../../../common/state';
+import { useApi, useUtils, useLoad } from '../../../common/hooks';
 import Button from '../../../mdpr/components/CustomButtons/Button';
 import Spinner from '../../../common/components/Spinner';
-import useLoad from '../../../common/hooks/useLoad';
 
 export default function DeleteButton({ post, afterDelete, className }) {
   const { deletePost } = useApi();

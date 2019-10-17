@@ -5,9 +5,7 @@ import { Formik } from 'formik';
 import ForgotPwdForm from './ResetPwdForm';
 import Loadable from '../../../common/components/Loadable';
 import { validateSetPwdForm } from '../utils';
-import { useApi } from '../../../common/api';
-import { useUtils } from '../../../common/state';
-import useLoad from '../../../common/hooks/useLoad';
+import { useUtils, useApi } from '../../../common/hooks';
 import GuestLayout from '../../layout/guest';
 
 const initialValues = {

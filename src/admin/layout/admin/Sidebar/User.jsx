@@ -10,7 +10,7 @@ import Collapse from '@material-ui/core/Collapse';
 
 import sidebarStyle from './sidebarStyle';
 import LogoutBtn from './LogoutBtn';
-import { useIdentity } from '../../../../common/state';
+import { useIdentity } from '../../../../common/hooks';
 
 const useStyles = makeStyles(sidebarStyle);
 

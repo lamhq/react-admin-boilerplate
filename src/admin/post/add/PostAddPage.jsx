@@ -4,8 +4,7 @@ import { Formik } from 'formik';
 
 import AdminLayout from '../../layout/admin/AdminLayout';
 import PostForm from '../components/PostForm';
-import { useUtils } from '../../../common/state';
-import { useApi } from '../../../common/api';
+import { useUtils, useApi } from '../../../common/hooks';
 import { validatePostForm } from '../utils';
 import Loadable from '../../../common/components/Loadable';
 

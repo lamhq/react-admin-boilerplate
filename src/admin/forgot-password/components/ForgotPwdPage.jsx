@@ -3,9 +3,8 @@ import { Formik } from 'formik';
 
 import ForgotPwdForm from './ForgotPwdForm';
 import Loadable from '../../../common/components/Loadable';
+import { useUtils, useApi } from '../../../common/hooks';
 import { validateForgotPwdForm } from '../utils';
-import { useApi } from '../../../common/api';
-import { useUtils } from '../../../common/state';
 import GuestLayout from '../../layout/guest';
 
 const initialValues = {

@@ -4,11 +4,9 @@ import { Formik } from 'formik';
 
 import AdminLayout from '../../layout/admin/AdminLayout';
 import PostForm from '../components/PostForm';
-import { useUtils } from '../../../common/state';
-import { useApi } from '../../../common/api';
+import { useUtils, useApi, useLoad } from '../../../common/hooks';
 import { validatePostForm } from '../utils';
 import Loadable from '../../../common/components/Loadable';
-import useLoad from '../../../common/hooks/useLoad';
 
 export default function PostAddPage({ history, match }) {
   const { id: postId } = match.params;

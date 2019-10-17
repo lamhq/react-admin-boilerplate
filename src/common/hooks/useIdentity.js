@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { IdentityContext } from './contexts';
+import { IdentityContext } from '../state/contexts';
 
 /**
  * React hook provide access to current logged user

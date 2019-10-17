@@ -6,8 +6,7 @@ import { withRouter } from 'react-router-dom';
 import GuestLayout from '../../layout/guest/GuestLayout';
 import Loadable from '../../../common/components/Loadable';
 import LoginForm from './LoginForm';
-import { useApi } from '../../../common/api';
-import { useUtils } from '../../../common/state';
+import { useApi, useUtils } from '../../../common/hooks';
 import { validateLoginForm } from '../utils';
 
 const initialValues = {

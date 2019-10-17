@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { makeStyles } from '@material-ui/core/styles';
 
 import sidebarStyle from './sidebarStyle';
-import { useApi } from '../../../../common/api';
+import { useApi } from '../../../../common/hooks';
 
 const useStyles = makeStyles(sidebarStyle);
 

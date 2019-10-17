@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, withRouter } from 'react-router-dom';
 
-import { useIdentity } from '../state';
+import { useIdentity } from '../hooks';
 import { isValidIdentity } from '../utils';
 
 /**

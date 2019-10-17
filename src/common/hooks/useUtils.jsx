@@ -1,7 +1,7 @@
 import React from 'react';
-import { DispatchContext } from './contexts';
+import { DispatchContext } from '../state/contexts';
 import { saveIdentity } from '../utils';
-import { SET_ALERT, SET_IDENTITY } from './constants';
+import { SET_ALERT, SET_IDENTITY } from '../state/constants';
 import AlertDialog from '../components/AlertDialog/AlertDialog';
 
 /**

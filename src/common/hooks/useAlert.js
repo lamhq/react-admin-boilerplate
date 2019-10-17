@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AlertContext } from './contexts';
+import { AlertContext } from '../state/contexts';
 
 /**
  * React hook provide access to system alert

@@ -4,8 +4,7 @@ import { Formik } from 'formik';
 
 import ProfileForm from './ProfileForm';
 import Loadable from '../../../common/components/Loadable';
-import { useApi } from '../../../common/api';
-import { useUtils, useIdentity } from '../../../common/state';
+import { useApi, useUtils, useIdentity } from '../../../common/hooks';
 import { validateProfileForm } from '../utils';
 import { withAuth } from '../../../common/hocs';
 import AdminLayout from '../../layout/admin/AdminLayout';

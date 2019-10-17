@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import ApiContext from './context';
-import { useUtils, useIdentity } from '../state';
+import { useUtils, useIdentity } from '../hooks';
 
 const http = axios.create({
   baseURL: '/api/v1',

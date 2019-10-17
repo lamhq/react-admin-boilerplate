@@ -1,6 +1,6 @@
 import React from 'react';
-import { StateContext } from './contexts';
-import { SET_STATE } from './constants';
+import { StateContext } from '../state/contexts';
+import { SET_STATE } from '../state/constants';
 
 /**
  * React hook provide helper functions to update global states

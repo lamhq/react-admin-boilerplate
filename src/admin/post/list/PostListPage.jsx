@@ -13,8 +13,7 @@ import CardBody from '../../../mdpr/components/Card/CardBody';
 import AdminLayout from '../../layout/admin/AdminLayout';
 import Loadable from '../../../common/components/Loadable';
 import DeleteButton from './DeleteButton';
-import useLoad from '../../../common/hooks/useLoad';
-import { useApi } from '../../../common/api';
+import { useApi, useLoad } from '../../../common/hooks';
 import { cardTitle } from '../../../mdpr/assets/jss/material-dashboard-pro-react';
 import Pagination from '../../../common/components/Pagination';
 
