@@ -1,9 +1,9 @@
 import validate from 'validate.js';
-import { transformErrors } from '../../../../common/utils';
+import { transformErrors } from '../../common/utils';
 
-export function validateTagForm(data) {
+export function validatePostForm(data) {
   const constraints = {
-    name: {
+    title: {
       presence: { allowEmpty: false, message: '^This field is required' },
     },
   };
@@ -11,4 +11,4 @@ export function validateTagForm(data) {
   return transformErrors(validate(data, constraints));
 }
 
-export default validateTagForm;
+export default validatePostForm;

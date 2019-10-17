@@ -108,6 +108,33 @@ export default function ApiProvider({ children }) {
     }
   }
 
+  async function addPost(values) {
+    try {
+      const resp = await http.post('admin/posts', values);
+      return resp.data;
+    } catch (error) {
+      throw transformError(error);
+    }
+  }
+
+  async function findPostById(id) {
+    try {
+      const resp = await http.get(`admin/posts/${id}`);
+      return resp.data;
+    } catch (error) {
+      throw transformError(error);
+    }
+  }
+
+  async function updatePost(id, values) {
+    try {
+      const resp = await http.put(`admin/posts/${id}`, values);
+      return resp.data;
+    } catch (error) {
+      throw transformError(error);
+    }
+  }
+
   const contextValue = {
     login,
     logout,
@@ -116,6 +143,9 @@ export default function ApiProvider({ children }) {
     updateProfile,
     getPosts,
     deletePost,
+    addPost,
+    findPostById,
+    updatePost,
   };
 
   return (

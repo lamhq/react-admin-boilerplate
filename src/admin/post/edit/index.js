@@ -1,3 +1,3 @@
-import TagEditPage from './TagEditPage';
+import PostEditPage from './PostEditPage';
 
-export default TagEditPage;
+export default PostEditPage;
