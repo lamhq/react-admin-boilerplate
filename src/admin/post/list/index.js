@@ -1,3 +1,3 @@
-import TagListPage from './TagListPage';
+import PostListPage from './PostListPage';
 
-export default TagListPage;
+export default PostListPage;

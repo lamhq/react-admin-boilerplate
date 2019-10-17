@@ -1,5 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Assignment from '@material-ui/icons/Assignment';
 import { Link } from 'react-router-dom';
@@ -14,7 +13,7 @@ import CardBody from '../../../mdpr/components/Card/CardBody';
 import AdminLayout from '../../layout/admin/AdminLayout';
 import Loadable from '../../../common/components/Loadable';
 import DeleteButton from './DeleteButton';
-import { useLoad } from '../../../../common/hooks';
+import useLoad from '../../../common/hooks/useLoad';
 import { useApi } from '../../../common/api';
 import { cardTitle } from '../../../mdpr/assets/jss/material-dashboard-pro-react';
 
@@ -41,49 +40,52 @@ const useStyles = makeStyles(styles);
 /**
  * Active report list page
  */
-export default function TagListPage() {
+export default function PostListPage() {
   const classes = useStyles();
-  const { getTags } = useApi();
-  const { data: tags, load: loadTags, loading } = useLoad(getTags);
+  const { getPosts } = useApi();
+  const { data: posts, load: loadPosts, loading } = useLoad(getPosts);
 
   // load report on load
   React.useEffect(() => {
-    loadTags(true);
+    loadPosts(true);
   }, []);
 
   return (
-    <AdminLayout title="Manage Tags">
+    <AdminLayout title="Manage Posts">
       <Card>
         <CardHeader color="rose" icon>
           <CardIcon color="rose">
             <Assignment />
           </CardIcon>
-          <h4 className={classes.cardIconTitle}>Tags</h4>
+          <h4 className={classes.cardIconTitle}>Posts</h4>
         </CardHeader>
         <CardBody>
           <Loadable visible={loading} />
-          {tags && tags.length === 0 && (
+          {posts && posts.length === 0 && (
             <p><em>No Result Found!</em></p>
           )}
-          {tags && tags.length > 0 && (
+          {posts && posts.length > 0 && (
             <Table
               tableHeaderColor="primary"
-              tableHead={['Name', 'Count', 'Actions']}
-              tableData={tags.map(tag => [tag.name, tag.actCount, (
-                <>
-                  <Link to={`/diary/tags/edit/${tag.id}`}>
-                    <Button color="success" className={classes.actionButton}>
-                      <Edit />
-                    </Button>
-                  </Link>
-                  &nbsp;
-                  <DeleteButton
-                    tag={tag}
-                    afterDelete={() => loadTags(true)}
-                    className={classes.actionButton}
-                  />
-                </>
-              )])}
+              tableHead={['Title', 'Actions']}
+              tableData={posts.map(post => [
+                post.title,
+                (
+                  <>
+                    <Link to={`/admin/posts/edit/${post.id}`}>
+                      <Button color="success" className={classes.actionButton}>
+                        <Edit />
+                      </Button>
+                    </Link>
+                    &nbsp;
+                    <DeleteButton
+                      post={post}
+                      afterDelete={() => loadPosts(true)}
+                      className={classes.actionButton}
+                    />
+                  </>
+                ),
+              ])}
               coloredColls={[3]}
               colorsColls={['primary']}
             />
@@ -94,5 +96,5 @@ export default function TagListPage() {
   );
 }
 
-TagListPage.propTypes = {
+PostListPage.propTypes = {
 };

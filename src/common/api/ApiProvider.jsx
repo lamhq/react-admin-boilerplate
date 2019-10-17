@@ -85,12 +85,32 @@ export default function ApiProvider({ children }) {
     }
   }
 
+  async function getPosts() {
+    try {
+      const resp = await http.get('admin/posts');
+      return resp.data;
+    } catch (error) {
+      throw transformError(error);
+    }
+  }
+
+  async function deletePost(post) {
+    try {
+      const resp = await http.delete(`admin/posts/${post.id}`);
+      return resp.data;
+    } catch (error) {
+      throw transformError(error);
+    }
+  }
+
   const contextValue = {
     login,
     logout,
     requestPassword,
     confirmPasswordReset,
     updateProfile,
+    getPosts,
+    deletePost,
   };
 
   return (

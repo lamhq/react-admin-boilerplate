@@ -14,12 +14,12 @@ const items = [
     collapse: true,
     subItems: [
       {
-        path: '/posts/add',
+        path: '/admin/posts/add',
         name: 'Add New',
         mini: 'AN',
       },
       {
-        path: '/posts',
+        path: '/admin/posts',
         name: 'All Posts',
         mini: 'AP',
       },
