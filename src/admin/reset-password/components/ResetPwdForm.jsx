@@ -35,12 +35,14 @@ export default function ResetPwdForm() {
                   label="Password"
                   type="password"
                   component={TextField}
+                  required
                 />
                 <Field
                   name="confirmPassword"
                   label="Re-enter Password"
                   type="password"
                   component={TextField}
+                  required
                 />
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>

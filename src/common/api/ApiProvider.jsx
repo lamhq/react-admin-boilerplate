@@ -76,11 +76,21 @@ export default function ApiProvider({ children }) {
     }
   }
 
+  async function updateProfile(values) {
+    try {
+      const resp = await http.put('admin/account/profile', values);
+      return resp.data;
+    } catch (error) {
+      throw transformError(error);
+    }
+  }
+
   const contextValue = {
     login,
     logout,
     requestPassword,
     confirmPasswordReset,
+    updateProfile,
   };
 
   return (

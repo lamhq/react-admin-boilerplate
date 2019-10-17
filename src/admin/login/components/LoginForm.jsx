@@ -34,12 +34,14 @@ export default function SigninForm() {
                   name="email"
                   label="Email"
                   component={TextField}
+                  required
                 />
                 <Field
                   name="password"
                   label="Password"
                   component={TextField}
                   type="password"
+                  required
                 />
                 <div className={classes.textRight}>
                   <Link to="/admin/forgot-password">Forgot your password?</Link>

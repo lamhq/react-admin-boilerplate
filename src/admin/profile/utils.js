@@ -4,21 +4,8 @@ import { transformErrors } from '../../common/utils';
 
 export function validateProfileForm(data) {
   const constraints = {
-    firstName: {
+    displayName: {
       presence: { allowEmpty: false },
-      format: {
-        pattern: '[a-z]+',
-        flags: 'i',
-        message: 'can only contain alphabet characters',
-      },
-    },
-    lastName: {
-      presence: { allowEmpty: false },
-      format: {
-        pattern: '[a-z]+',
-        flags: 'i',
-        message: 'can only contain alphabet characters',
-      },
     },
     // eslint-disable-next-line no-unused-vars
     newPassword: (value, attributes, attributeName, options) => {
@@ -28,14 +15,10 @@ export function validateProfileForm(data) {
       } : false;
     },
     // eslint-disable-next-line no-unused-vars
-    confirmPassword: (value, attributes, attributeName, options) => {
+    currentPassword: (value, attributes, attributeName, options) => {
       // only validate when password is not empty
       return attributes.newPassword ? {
         presence: { allowEmpty: false },
-        equality: {
-          attribute: 'newPassword',
-          message: '^Password do not match. Please try again.',
-        },
       } : false;
     },
   };

@@ -34,6 +34,7 @@ export default function ForgotPwdForm() {
                   name="email"
                   label="Email"
                   component={TextField}
+                  required
                 />
               </CardBody>
               <CardFooter className={classes.justifyContentCenter}>
