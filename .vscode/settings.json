@@ -2,7 +2,9 @@
   "editor.tabSize": 2,
   "editor.formatOnSave": false,
   "editor.formatOnPaste": false,
-  "eslint.autoFixOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
   "files.trimTrailingWhitespace": true,
   "javascript.validate.enable": false
 }

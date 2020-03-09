@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { setConfig } from 'react-hot-loader';
 
-import './mdpr/assets/scss/material-dashboard-pro-react.scss';
+import '@elastic/eui/dist/eui_theme_light.css';
 import './config';
 import App from './App';
 
