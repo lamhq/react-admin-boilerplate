@@ -11,6 +11,7 @@ import {
   EuiIcon,
   EuiShowFor,
 } from '@elastic/eui';
+import UserMenu from './UserMenu';
 
 export default function Header({ toggleDrawer, breadcrumbs }) {
   return (
@@ -35,7 +36,16 @@ export default function Header({ toggleDrawer, breadcrumbs }) {
         </EuiHeaderSectionItem>
       </EuiHeaderSection>
 
-      { breadcrumbs ? <EuiHeaderBreadcrumbs breadcrumbs={breadcrumbs} /> : null}
+      { breadcrumbs
+        ? <EuiHeaderBreadcrumbs breadcrumbs={breadcrumbs} />
+        : <nav className="euiBreadcrumbs euiHeaderBreadcrumbs euiBreadcrumbs--truncate euiBreadcrumbs--responsive" />
+      }
+
+      <EuiHeaderSection side="right">
+        <EuiHeaderSectionItem>
+          <UserMenu />
+        </EuiHeaderSectionItem>
+      </EuiHeaderSection>
     </EuiHeader>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../admin/layout/admin';
+import styles from './a.module.scss';
 
 const breadcrumbs = [
   {
@@ -20,8 +21,8 @@ const breadcrumbs = [
 
 export default function PageA() {
   return (
-    <Layout title="Test" breadcrumbs={breadcrumbs}>
-      <p>test page</p>
+    <Layout title="Page A" breadcrumbs={breadcrumbs}>
+      <p className={styles.text}>test page</p>
     </Layout>
   );
 }

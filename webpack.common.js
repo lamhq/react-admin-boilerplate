@@ -35,14 +35,9 @@ module.exports = {
   },
   module: {
     rules: [
-      // load image
+      // load image, font
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/,
-        use: ['file-loader'],
-      },
-      // load font
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(png|svg|jpg|jpeg|gif|woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader'],
       },
       // load css file
@@ -57,9 +52,26 @@ module.exports = {
       // load scss file
       {
         test: /\.(scss|sass)$/,
+        exclude: /\.module\.(scss|sass)$/,
         loader: [
           nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
+          'sass-loader',
+        ],
+      },
+      // load scss module file
+      {
+        test: /\.(scss|sass)$/,
+        include: /\.module\.(scss|sass)$/,
+        use: [
+          nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+            },
+          },
           'sass-loader',
         ],
       },

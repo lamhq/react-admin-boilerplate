@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import routes from './routes';
-import Loadable from './common/components/Loadable';
+import LoadingPage from './common/components/LoadingPage';
 // import StateProvider from './common/state/StateProvider';
 // import { ApiProvider } from './common/api';
 import '../public/styles.css';
@@ -16,7 +16,7 @@ const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history} key={Math.random()}>
-      <Suspense fallback={<Loadable visible full />}>
+      <Suspense fallback={<LoadingPage />}>
         <Switch>
           {routes.map(r => (
             // Added property`key` to Router to fix warning when hot reloading Route component

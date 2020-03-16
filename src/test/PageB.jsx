@@ -3,7 +3,7 @@ import Layout from '../admin/layout/admin';
 
 export default function PageB() {
   return (
-    <Layout title="Test">
+    <Layout title="Page B">
       <p>test page b</p>
     </Layout>
   );

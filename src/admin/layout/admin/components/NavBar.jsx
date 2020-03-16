@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import {
   EuiNavDrawerGroup,
@@ -23,21 +23,38 @@ NavBar.propTypes = {
 
 const navLinks = [
   {
-    label: 'Activities',
-    iconType: 'logoBusinessAnalytics',
+    label: 'Dashboard',
+    iconType: 'dashboardApp',
     href: '/admin/page-a',
   },
   {
-    label: 'Tags',
-    iconType: 'logoBusinessAnalytics',
+    label: 'Reports',
+    iconType: 'visualizeApp',
     href: '/admin/page-b',
+  },
+  {
+    label: 'Monitoring',
+    iconType: 'monitoringApp',
+    href: '/admin/page-c',
+  },
+  {
+    label: 'Tools',
+    iconType: 'devToolsApp',
+    href: '/admin/page-d',
+  },
+  {
+    label: 'Configure',
+    iconType: 'managementApp',
+    href: '/admin/page-e',
   },
 ];
 
 const NavBarContainer = React.forwardRef((props, ref) => {
   const history = useHistory();
+  const location = useLocation();
   const decorateLink = item => ({
     ...item,
+    isActive: item.href === location.pathname,
     onClick: (e) => {
       e.preventDefault();
       history.push(item.href);
