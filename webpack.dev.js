@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 require('dotenv').config();
 const merge = require('webpack-merge');
 const webpack = require('webpack');
@@ -18,7 +17,7 @@ module.exports = merge(common, {
     },
   },
   plugins: [
-    // Enables Hot Module Replacement, otherwise known as HMR
+    // Enables Hot Module Replacement
     new webpack.HotModuleReplacementPlugin(),
   ],
 });

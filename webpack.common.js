@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,6 +6,7 @@ const path = require('path');
 
 const outputDir = path.resolve(__dirname, 'dist');
 const nodeEnv = process.env.NODE_ENV;
+
 module.exports = {
   entry: {
     app: ['./src/index.jsx'],
@@ -17,13 +17,17 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
+    // Remove your build folder(s) before building
     new CleanWebpackPlugin([outputDir]),
+
     // Automatically generate an HTML5 file for you that includes all your webpack bundles
     new HtmlWebpackPlugin({
       title: 'Rest Boilerplate',
       favicon: './public/favicon.ico',
       template: './public/index.html',
     }),
+
+    // Create global constants which can be configured at compile time
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(nodeEnv),
     }),
