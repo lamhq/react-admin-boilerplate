@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: '/admin/login',
-    component: lazy(() => import('./test/LoginPage')),
+    component: lazy(() => import('./admin/auth/login/components/LoginPage')),
   },
 ];
 

@@ -29,7 +29,7 @@ function App() {
           ))}
           {/* Set default homepage */}
           <Route path="/" exact>
-            <Redirect to="/admin/page-a" />
+            <Redirect to="/admin/login" />
           </Route>
           <Route render={() => <p>The content was not found.</p>} />
         </Switch>
