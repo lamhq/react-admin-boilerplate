@@ -13,7 +13,7 @@ import {
 import { appName } from '../../../../config';
 import styles from './styles.module.scss';
 
-export default function Layout({ title, children }) {
+export default function Layout({ title, instruction, children }) {
   React.useEffect(() => {
     if (title) {
       document.title = `${title} - ${appName}`;
@@ -29,10 +29,11 @@ export default function Layout({ title, children }) {
             <EuiIcon type="logoKibana" size="xxl" />
           </span>
           <EuiTitle size="l">
-            <h1>Welcome to Kibana</h1>
+            <h1>{title}</h1>
           </EuiTitle>
+          <EuiSpacer size="s" />
           <EuiText size="s" color="subdued">
-            <p>Your window into the Elastic Stack</p>
+            <p>{instruction}</p>
           </EuiText>
           <EuiSpacer size="xl" />
         </div>
@@ -58,8 +59,10 @@ export default function Layout({ title, children }) {
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
+  instruction: PropTypes.string,
 };
 
 Layout.defaultProps = {
   title: '',
+  instruction: '',
 };

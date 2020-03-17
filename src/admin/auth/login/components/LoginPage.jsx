@@ -9,7 +9,7 @@ import Layout from '../../../layout/guest';
 
 export default function LoginPage() {
   return (
-    <Layout title="Login">
+    <Layout title="Login" instruction="Please fill in your account to continue.">
       <EuiPanel>
         <form>
           <EuiFormRow
