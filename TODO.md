@@ -1,7 +1,6 @@
 # Todo
-
-- ~~enable css module~~
 - integrate elastic ui
+- consider to use css module vs css-in-js => css module with sass, no theming support
 - use swr for data fetching
 - use graphql with library graphql-request
 - use sass css module for styling
@@ -9,6 +8,7 @@
 - configure ci/cd with bitbucket pipeline
 - separate component to logic and displaying
 - host assets in CDN
+
 
 ## integrate elastic ui
 ```yml
@@ -18,13 +18,68 @@ implement layout
     # left navigation
     # header
     # page loading animation
-  guest layout
+  # guest layout
     # display login page in kibana
-    implement layout component based on kibana layout
-login page
+    # implement layout component based on kibana layout
+    # alert: success, error, warning
+# login page
 forgot password
 reset password
 
 profile page
 log out
 ```
+
+
+Actors:
+  Customer
+  Administrator
+
+Customer
+  Customer mobile app (???)
+  Api for mobile app
+    Sign up with email, social media (16)
+    View articles (in Highlight section) (8)
+    View event list (8)
+    View event detail (8)
+    View organizer/speaker list (4)
+    View organizer/speaker detail (4)
+    Book tickets for events (24)
+      Select seats
+      Make payment
+      Receive e-ticket & receipt
+    View purchased tickets (8)
+    Ecommerce module
+      View product list (filter, sort) (8)
+      Create cart / update cart (16)
+      Making order (+ do payment) (12)
+    Communication module (40)
+
+Administrator
+  Admin mobile app (???)
+    Scan e-ticket to validate
+  Admin web app (+api)
+    Manage articles: crud, upload images, videos (32)
+    Manage organization's detail: crud (24)
+    Manage events: shedule (assign seats, prepare tickets), update, view (40)
+    Manage customer: manual customer submit (create), update, view, export (40)
+    Manage bookings: manual booking submit (create), update status, view (40)
+    Ecommerce module
+      Manage products (32)
+      Manage categories (16)
+      Manage orders: manual booking submit (create), update status, view (40)
+    Communication module (40)
+
+Additional Tasks
+  Design database (12)
+  Set up source code repositories (8)
+  Set up CI/CD for every repositories (16)
+  Set up deployment environments: test, staging, production (24)
+  Set up domain name and ssl for each environments (12)
+
+Tech stack:
+  Customer mobile app: React Native
+  Admin mobile app: React Native
+  Admin web app: ReactJs
+  Backend api: Nodejs, GraphQL, MongoDB, Docker
+  Infastructure: AWS EC2, ECS, CloudFront, S3

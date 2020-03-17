@@ -16,7 +16,7 @@ import NavBar from './NavBar';
 import Header from './Header';
 import { appName } from '../../../../config';
 
-export default function Page({ title, children, breadcrumbs }) {
+export default function Layout({ title, children, breadcrumbs }) {
   const navDrawerRef = React.useRef(null);
 
   function toggleDrawer() {
@@ -30,7 +30,7 @@ export default function Page({ title, children, breadcrumbs }) {
   }, [title]);
 
   return (
-    <React.Fragment>
+    <>
       <Header toggleDrawer={toggleDrawer} breadcrumbs={breadcrumbs} />
       <NavBar ref={navDrawerRef} />
       <EuiPage className="euiNavDrawerPage">
@@ -56,11 +56,11 @@ export default function Page({ title, children, breadcrumbs }) {
           </EuiPageContent>
         </EuiPageBody>
       </EuiPage>
-    </React.Fragment>
+    </>
   );
 }
 
-Page.propTypes = {
+Layout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   breadcrumbs: PropTypes.arrayOf(PropTypes.shape({
@@ -69,7 +69,7 @@ Page.propTypes = {
   })),
 };
 
-Page.defaultProps = {
+Layout.defaultProps = {
   title: '',
   breadcrumbs: null,
 };

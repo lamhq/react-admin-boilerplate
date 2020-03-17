@@ -9,6 +9,10 @@ const routes = [
     path: '/admin/page-b',
     component: lazy(() => import('./test/PageB')),
   },
+  {
+    path: '/admin/login',
+    component: lazy(() => import('./test/LoginPage')),
+  },
 ];
 
 export default routes;

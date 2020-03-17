@@ -1,0 +1,43 @@
+.layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #F5F7FA;
+  overflow: auto;
+}
+
+.header {
+  position: relative;
+  padding: 32px;
+  z-index: 10;
+}
+
+.logo {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 100%;
+  padding: 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 6px 12px -1px rgba(152, 162, 179, 0.2),
+    0 4px 4px -1px rgba(152, 162, 179, 0.2),
+    0 2px 2px 0 rgba(152, 162, 179, 0.2);
+
+  :global(.euiIcon) {
+    vertical-align: baseline;
+  }
+}
+
+.content {
+  position: relative;
+  margin: auto;
+  max-width: 460px;
+  padding-left: 32px;
+  padding-right: 32px;
+  z-index: 10;
+}
