@@ -12,7 +12,7 @@
 
 ## integrate elastic ui
 ```yml
-implement layout
+# implement layout
   # admin layout
     # devine layout to components
     # left navigation
@@ -25,9 +25,8 @@ implement layout
 # login page
 # forgot password
 # reset password
-register page
-
-profile page
+# register page
+# profile page
 user management
   list
   add

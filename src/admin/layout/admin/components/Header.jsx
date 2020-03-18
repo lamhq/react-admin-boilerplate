@@ -12,41 +12,44 @@ import {
   EuiShowFor,
 } from '@elastic/eui';
 import UserMenu from './UserMenu';
+import styles from '../styles.module.scss';
 
 export default function Header({ toggleDrawer, breadcrumbs }) {
   return (
-    <EuiHeader>
-      <EuiHeaderSection grow={false}>
-        <EuiShowFor sizes={['xs', 's']}>
+    <div className={styles.headerWrapper}>
+      <EuiHeader>
+        <EuiHeaderSection grow={false}>
+          <EuiShowFor sizes={['xs', 's']}>
+            <EuiHeaderSectionItem border="right">
+              <EuiHeaderSectionItemButton
+                aria-label="Open nav"
+                onClick={toggleDrawer}
+              >
+                <EuiIcon type="apps" href="#" size="m" />
+              </EuiHeaderSectionItemButton>
+            </EuiHeaderSectionItem>
+          </EuiShowFor>
           <EuiHeaderSectionItem border="right">
-            <EuiHeaderSectionItemButton
-              aria-label="Open nav"
-              onClick={toggleDrawer}
-            >
-              <EuiIcon type="apps" href="#" size="m" />
-            </EuiHeaderSectionItemButton>
+            <EuiHeaderLogo
+              iconType="logoKibana"
+              href="/"
+              aria-label="Goes to home"
+            />
           </EuiHeaderSectionItem>
-        </EuiShowFor>
-        <EuiHeaderSectionItem border="right">
-          <EuiHeaderLogo
-            iconType="logoKibana"
-            href="/"
-            aria-label="Goes to home"
-          />
-        </EuiHeaderSectionItem>
-      </EuiHeaderSection>
+        </EuiHeaderSection>
 
-      { breadcrumbs
-        ? <EuiHeaderBreadcrumbs breadcrumbs={breadcrumbs} />
-        : <nav className="euiBreadcrumbs euiHeaderBreadcrumbs euiBreadcrumbs--truncate euiBreadcrumbs--responsive" />
-      }
+        { breadcrumbs
+          ? <EuiHeaderBreadcrumbs breadcrumbs={breadcrumbs} />
+          : <nav className="euiBreadcrumbs euiHeaderBreadcrumbs euiBreadcrumbs--truncate euiBreadcrumbs--responsive" />
+        }
 
-      <EuiHeaderSection side="right">
-        <EuiHeaderSectionItem>
-          <UserMenu />
-        </EuiHeaderSectionItem>
-      </EuiHeaderSection>
-    </EuiHeader>
+        <EuiHeaderSection side="right">
+          <EuiHeaderSectionItem>
+            <UserMenu />
+          </EuiHeaderSectionItem>
+        </EuiHeaderSection>
+      </EuiHeader>
+    </div>
   );
 }
 
