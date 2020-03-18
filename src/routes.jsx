@@ -13,6 +13,10 @@ const routes = [
     path: '/admin/reset-password',
     component: lazy(() => import('./admin/auth/reset-password/components/ResetPwdPage')),
   },
+  {
+    path: '/admin/register',
+    component: lazy(() => import('./admin/auth/register/components/RegisterPage')),
+  },
 ];
 
 export default routes;

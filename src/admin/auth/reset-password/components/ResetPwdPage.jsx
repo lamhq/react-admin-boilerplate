@@ -4,9 +4,6 @@ import {
   EuiFieldText,
   EuiFormRow,
   EuiPanel,
-  EuiFlexGroup,
-  EuiFlexItem,
-  EuiButtonEmpty,
 } from '@elastic/eui';
 import Layout from '../../../layout/guest';
 
