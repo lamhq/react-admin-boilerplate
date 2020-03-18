@@ -10,7 +10,7 @@ import {
 } from '@elastic/eui';
 import Layout from '../../../layout/guest';
 
-export default function LoginPage() {
+export default function ForgotPwdPage() {
   return (
     <Layout title="Forgot Password" instruction="Enter you email to request a new password.">
       <EuiPanel>

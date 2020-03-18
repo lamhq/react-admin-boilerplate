@@ -23,10 +23,17 @@ implement layout
     # implement layout component based on kibana layout
     # alert: success, error, warning
 # login page
-forgot password
-reset password
+# forgot password
+# reset password
+register page
 
 profile page
+user management
+  list
+  add
+  update
+  view
+  delete popup
 log out
 ```
 
