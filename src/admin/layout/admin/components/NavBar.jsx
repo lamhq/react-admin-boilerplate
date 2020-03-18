@@ -52,14 +52,16 @@ const navLinks = [
 const NavBarContainer = React.forwardRef((props, ref) => {
   const history = useHistory();
   const location = useLocation();
-  const decorateLink = item => ({
-    ...item,
-    isActive: item.href === location.pathname,
-    onClick: (e) => {
-      e.preventDefault();
-      history.push(item.href);
-    },
-  });
+  function decorateLink(item) {
+    return ({
+      ...item,
+      isActive: item.href === location.pathname,
+      onClick: (e) => {
+        e.preventDefault();
+        history.push(item.href);
+      },
+    });
+  }
   const links = navLinks.map(item => decorateLink(item));
 
   return <NavBar links={links} ref={ref} />;
