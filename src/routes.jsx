@@ -21,6 +21,10 @@ const routes = [
     path: '/admin/profile',
     component: lazy(() => import('./admin/account/profile/components/ProfilePage')),
   },
+  {
+    path: '/admin/users',
+    component: lazy(() => import('./admin/user/list/components/UserListPage')),
+  },
 ];
 
 export default routes;

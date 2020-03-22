@@ -3,7 +3,7 @@ import React from 'react';
 function init(options) {
   const initialState = {
     data: null,
-    error: null,
+    error: undefined,
     loading: !options.defer,
   };
   return initialState;
@@ -12,10 +12,10 @@ function init(options) {
 function reducer(state, action) {
   switch (action.type) {
     case 'start':
-      return { loading: true, error: null };
+      return { loading: true, data: null, error: undefined };
 
     case 'load-finish':
-      return { loading: false, data: action.data, error: null };
+      return { loading: false, data: action.data, error: undefined };
 
     case 'load-error':
       return { loading: false, data: null, error: action.error };

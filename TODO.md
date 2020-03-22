@@ -1,5 +1,6 @@
 # Todo
 - integrate elastic ui
+- remove react-hot-loader
 - consider to use css module vs css-in-js => css module with sass, no theming support
 - use swr for data fetching
 - use graphql with library graphql-request
@@ -29,6 +30,11 @@
 # profile page
 user management
   list
+    # display data in grid
+    pagination
+    header sort
+    search box
+    bulk actions
   add
   update
   view
