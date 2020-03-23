@@ -1,14 +1,17 @@
 # Todo
-- integrate elastic ui
-- remove react-hot-loader
-- consider to use css module vs css-in-js => css module with sass, no theming support
-- use swr for data fetching
-- use graphql with library graphql-request
-- use sass css module for styling
-- check if package @babel/polyfill can be removed
-- configure ci/cd with bitbucket pipeline
-- separate component to logic and displaying
-- host assets in CDN
+```yml
+integrate elastic ui
+remove react-hot-loader, fix hmr
+separate components to logic and displaying
+i18n
+typescript
+use graphql with library graphql-request
+check if package @babel/polyfill can be removed
+configure ci/cd with bitbucket pipeline
+host assets in CDN
+# use swr for data fetching
+# use sass css module for styling
+```
 
 
 ## integrate elastic ui
@@ -31,10 +34,11 @@
 user management
   list
     # display data in grid
-    pagination
-    header sort
-    search box
-    bulk actions
+    # pagination
+    # header sort
+    # bulk actions
+    # search box
+    action column
   add
   update
   view

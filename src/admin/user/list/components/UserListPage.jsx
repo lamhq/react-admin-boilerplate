@@ -23,8 +23,8 @@ const breadcrumbs = [
   },
 ];
 
-const users = Array.from(Array(20), () => ({
-  id: faker.random.number(),
+const users = Array.from(Array(40), () => ({
+  id: faker.random.number().toString(),
   username: faker.internet.userName(),
   fullname: `${faker.name.firstName()} ${faker.name.lastName()}`,
   email: faker.internet.email(),
@@ -55,7 +55,7 @@ function filterUsers(query = '', sort = 'username', dir = 'asc', limit = 10, off
 export default function UserListPage() {
   const [query, setQuery] = React.useState('');
   const [pageIndex, setPageIndex] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(3);
+  const [pageSize, setPageSize] = React.useState(10);
   const [sortField, setSortField] = React.useState('username');
   const [sortDirection, setSortDirection] = React.useState('asc');
   const [selectedItems, updateSelectedItems] = React.useState([]);
@@ -96,6 +96,36 @@ export default function UserListPage() {
       sortable: true,
       truncateText: true,
     },
+    {
+      name: 'Actions',
+      actions: [
+        {
+          name: 'Delete',
+          isPrimary: true,
+          description: 'Delete this user',
+          icon: 'trash',
+          color: 'danger',
+          type: 'icon',
+          onClick: () => {},
+        },
+        {
+          name: 'Edit',
+          isPrimary: true,
+          description: 'Edit this user',
+          icon: 'pencil',
+          type: 'icon',
+          onClick: () => {},
+        },
+        {
+          name: 'View',
+          isPrimary: true,
+          description: 'View this user',
+          icon: 'eye',
+          type: 'icon',
+          onClick: () => {},
+        },
+      ],
+    },
   ];
 
   const selectionConfig = {
@@ -109,7 +139,7 @@ export default function UserListPage() {
     pageIndex,
     pageSize,
     totalItemCount,
-    pageSizeOptions: [3, 5, 8],
+    pageSizeOptions: [10, 20, 50, 100],
   };
 
   const sorting = {
