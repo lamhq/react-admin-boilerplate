@@ -1,12 +1,13 @@
 # Todo
 ```yml
-integrate elastic ui
-remove react-hot-loader, fix hmr
+# integrate elastic ui
+# remove react-hot-loader, fix hmr
+# remove package @babel/polyfill
+# remove materialui packages
 separate components to logic and displaying
 i18n
 typescript
 use graphql with library graphql-request
-check if package @babel/polyfill can be removed
 configure ci/cd with bitbucket pipeline
 host assets in CDN
 # use swr for data fetching
