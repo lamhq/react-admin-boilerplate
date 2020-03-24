@@ -22,8 +22,16 @@ const routes = [
     component: lazy(() => import('./admin/account/profile/components/ProfilePage')),
   },
   {
+    path: '/admin/users/add',
+    component: lazy(() => import('./admin/user/add/components/AddUserPage')),
+  },
+  {
+    path: '/admin/users/edit/:id',
+    component: lazy(() => import('./admin/user/edit/components/EditUserPage')),
+  },
+  {
     path: '/admin/users',
-    component: lazy(() => import('./admin/user/list/components/UserListPage')),
+    component: lazy(() => import('./admin/user/list/components/ListUserPage')),
   },
 ];
 

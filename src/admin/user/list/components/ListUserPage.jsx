@@ -52,7 +52,7 @@ function filterUsers(query = '', sort = 'username', dir = 'asc', limit = 10, off
   };
 }
 
-export default function UserListPage() {
+export default function ListUserPage() {
   const [query, setQuery] = React.useState('');
   const [pageIndex, setPageIndex] = React.useState(0);
   const [pageSize, setPageSize] = React.useState(10);
@@ -178,7 +178,7 @@ export default function UserListPage() {
             </EuiTitle>
           </EuiPageContentHeaderSection>
           <EuiPageContentHeaderSection>
-            <EuiButton data-test-subj="createUserButton" href="#/management/security/users/edit">
+            <EuiButton data-test-subj="createUserButton" href="/admin/users/add">
               Create user
             </EuiButton>
           </EuiPageContentHeaderSection>

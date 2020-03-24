@@ -12,25 +12,28 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiButtonEmpty,
-  EuiSwitch,
 } from '@elastic/eui';
 import styles from '../../../common.module.scss';
 import Layout from '../../../layout/admin';
 
 const breadcrumbs = [
   {
-    text: 'Account Management',
+    text: 'Users',
+    href: '/admin/users',
+  },
+  {
+    text: 'Add',
   },
 ];
 
-export default function ProfilePage() {
+export default function AddUserPage() {
   return (
-    <Layout title="Edit your profile" breadcrumbs={breadcrumbs}>
+    <Layout title="Add User" breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>Profile Information</h2>
+              <h2>New User</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -38,14 +41,12 @@ export default function ProfilePage() {
           <form>
             <EuiFormRow
               label="Username"
-              helpText="Username can't be changed after creation."
             >
               <EuiFieldText
                 autoComplete="off"
                 name="username"
                 value=""
                 onChange={() => null}
-                disabled
                 isInvalid={false}
               />
             </EuiFormRow>
@@ -62,11 +63,14 @@ export default function ProfilePage() {
               />
             </EuiFormRow>
 
-            <EuiFormRow label="">
-              <EuiSwitch
-                label="Change password"
-                checked={false}
+            <EuiFormRow label="Full name">
+              <EuiFieldText
+                autoComplete="off"
+                name="fullName"
+                value=""
                 onChange={() => null}
+                disabled={false}
+                isInvalid={false}
               />
             </EuiFormRow>
 

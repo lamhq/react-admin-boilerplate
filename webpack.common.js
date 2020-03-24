@@ -86,12 +86,6 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
-      // let RHL patch React-DOM to enable hot loading
-      {
-        test: /\.(js|jsx)$/,
-        include: /node_modules/,
-        use: ['react-hot-loader/webpack'],
-      },
     ],
   },
 };

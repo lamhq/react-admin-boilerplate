@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import { createBrowserHistory } from 'history';
-import { hot } from 'react-hot-loader/root';
 import {
   Router, Route, Switch, Redirect,
 } from 'react-router-dom';
@@ -38,4 +37,4 @@ function App() {
   );
 }
 
-export default hot(App);
+export default App;
