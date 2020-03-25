@@ -8,7 +8,6 @@ import routes from './routes';
 import LoadingScreen from './common/components/LoadingScreen';
 // import StateProvider from './common/state/StateProvider';
 // import { ApiProvider } from './common/api';
-import '../public/styles.css';
 
 const history = createBrowserHistory();
 

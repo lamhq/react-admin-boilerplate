@@ -1,12 +1,15 @@
+yarn add i18next-xhr-backend i18next-browser-languagedetector
 # Todo
 ```yml
 # integrate elastic ui
 # remove react-hot-loader, fix hmr
 # remove package @babel/polyfill
 # remove materialui packages
+# integrate i18n library
+integrate with backend api
 separate components to logic and displaying
-i18n
-typescript
+enable runtime language switching
+integrate typescript
 use graphql with library graphql-request
 configure ci/cd with bitbucket pipeline
 host assets in CDN
@@ -33,16 +36,15 @@ host assets in CDN
 # register page
 # profile page
 user management
-  list
+  # list
     # display data in grid
     # pagination
     # header sort
     # bulk actions
     # search box
-    action column
-  add
-  update
-  view
+    # action column
+  # add
+  # update
   delete popup
 log out
 ```
