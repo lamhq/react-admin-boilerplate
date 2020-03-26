@@ -1,4 +1,23 @@
-yarn add i18next-xhr-backend i18next-browser-languagedetector
+useIdentity
+  *identity
+  setIdentity
+  clearIdentity
+useAlert
+  *alert
+  alertSuccess
+  alertError
+  alertWarning
+useBackendApi
+  login
+  logout
+  forgotPassword
+  resetPassword
+  updateProfile
+  getUsers
+  updateUser
+  createUser
+  deleteUser
+
 # Todo
 ```yml
 # integrate elastic ui
@@ -7,7 +26,16 @@ yarn add i18next-xhr-backend i18next-browser-languagedetector
 # remove materialui packages
 # integrate i18n library
 integrate with backend api
-separate components to logic and displaying
+  login page
+  register page
+  forgot password page
+  reset password page
+  logout button
+  user
+    list
+    create
+    update
+    delete
 enable runtime language switching
 integrate typescript
 use graphql with library graphql-request

@@ -23,8 +23,8 @@ module.exports = {
     // Automatically generate an HTML5 file for you that includes all your webpack bundles
     new HtmlWebpackPlugin({
       title: 'Rest Boilerplate',
-      favicon: './public/favicon.ico',
-      template: './public/index.html',
+      favicon: './src/favicon.ico',
+      template: './src/index.html',
     }),
 
     // Create global constants which can be configured at compile time
