@@ -1,23 +1,3 @@
-useIdentity
-  *identity
-  setIdentity
-  clearIdentity
-useAlert
-  *alert
-  alertSuccess
-  alertError
-  alertWarning
-useBackendApi
-  login
-  logout
-  forgotPassword
-  resetPassword
-  updateProfile
-  getUsers
-  updateUser
-  createUser
-  deleteUser
-
 # Todo
 ```yml
 # integrate elastic ui
@@ -25,6 +5,11 @@ useBackendApi
 # remove package @babel/polyfill
 # remove materialui packages
 # integrate i18n library
+# implement core system
+  # useLoadingState
+  # useIdentity
+  # useAlert
+  # useApi
 integrate with backend api
   login page
   register page

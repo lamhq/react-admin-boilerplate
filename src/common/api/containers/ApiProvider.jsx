@@ -2,19 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import ApiContext from './context';
-import { useUtils, useIdentity } from '../hooks';
-
-const http = axios.create({
-  baseURL: '/api/v1',
-});
+import ApiContext from '../contexts/api';
+import useIdentity from '../../identity/hooks/useIdentity';
 
 /**
  * Provide helper functions to access backend api
  */
-export default function ApiProvider({ children }) {
-  const identity = useIdentity();
-  const { setIdentity } = useUtils();
+export default function ApiProvider({ children, endpoint }) {
+  const { identity, clearIdentity } = useIdentity();
+  const http = axios.create({
+    baseURL: endpoint,
+  });
 
   React.useEffect(() => {
     const authHeader = identity ? `Bearer ${identity.token.value}` : '';
@@ -38,7 +36,7 @@ export default function ApiProvider({ children }) {
   }
 
   function logout() {
-    setIdentity(null);
+    clearIdentity();
   }
 
   async function login(email, password) {
@@ -53,7 +51,7 @@ export default function ApiProvider({ children }) {
     }
   }
 
-  async function requestPassword(email) {
+  async function requestPasswordReset(email) {
     try {
       const resp = await http.post('admin/account/forgot-password', {
         email,
@@ -64,7 +62,7 @@ export default function ApiProvider({ children }) {
     }
   }
 
-  async function confirmPasswordReset(code, password) {
+  async function resetPassword(code, password) {
     try {
       const resp = await http.put('admin/account/password', {
         token: code,
@@ -85,7 +83,7 @@ export default function ApiProvider({ children }) {
     }
   }
 
-  async function getPosts(page = 0, limit = 10) {
+  async function getUsers(page = 0, limit = 10) {
     try {
       const resp = await http.get('admin/posts', {
         params: {
@@ -99,7 +97,7 @@ export default function ApiProvider({ children }) {
     }
   }
 
-  async function deletePost(post) {
+  async function deleteUser(post) {
     try {
       const resp = await http.delete(`admin/posts/${post.id}`);
       return resp.data;
@@ -108,7 +106,7 @@ export default function ApiProvider({ children }) {
     }
   }
 
-  async function addPost(values) {
+  async function createUser(values) {
     try {
       const resp = await http.post('admin/posts', values);
       return resp.data;
@@ -117,16 +115,7 @@ export default function ApiProvider({ children }) {
     }
   }
 
-  async function findPostById(id) {
-    try {
-      const resp = await http.get(`admin/posts/${id}`);
-      return resp.data;
-    } catch (error) {
-      throw transformError(error);
-    }
-  }
-
-  async function updatePost(id, values) {
+  async function updateUser(id, values) {
     try {
       const resp = await http.put(`admin/posts/${id}`, values);
       return resp.data;
@@ -138,14 +127,13 @@ export default function ApiProvider({ children }) {
   const contextValue = {
     login,
     logout,
-    requestPassword,
-    confirmPasswordReset,
+    requestPasswordReset,
+    resetPassword,
     updateProfile,
-    getPosts,
-    deletePost,
-    addPost,
-    findPostById,
-    updatePost,
+    getUsers,
+    updateUser,
+    createUser,
+    deleteUser,
   };
 
   return (
@@ -157,4 +145,5 @@ export default function ApiProvider({ children }) {
 
 ApiProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  endpoint: PropTypes.string.isRequired,
 };

@@ -30,7 +30,7 @@ function reducer(state, action) {
  *
  * @param {Function} fn
  */
-function useLoad(fn, options = {}) {
+export default function useLoadingState(fn, options = {}) {
   const opt = {
     // don't run async action on load
     defer: false,
@@ -63,5 +63,3 @@ function useLoad(fn, options = {}) {
     load,
   };
 }
-
-export default useLoad;

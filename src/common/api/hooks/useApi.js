@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ApiContext from '../api/context';
+import ApiContext from '../contexts/api';
 
 /**
  * Hook that provide helper functions to communicate with server

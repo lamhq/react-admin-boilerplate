@@ -33,48 +33,6 @@ export function compose(...fns) {
 }
 
 /**
- * Check identity data is valid or not (expired)
- *
- * @param {Object} identity
- */
-export function isValidIdentity(identity) {
-  if (!identity) return false;
-
-  const { token: { value, expireAt } } = identity;
-  if (!value) return false;
-
-  const now = new Date();
-  const expired = expireAt ? new Date(expireAt) : null;
-
-  if (!expired || expired < now) return false;
-
-  return true;
-}
-
-/**
- * Save identity to local storage
- *
- * @param {Object} value
- */
-export function saveIdentity(value) {
-  if (value) {
-    window.localStorage.setItem('identity', JSON.stringify(value));
-  } else {
-    window.localStorage.removeItem('identity');
-  }
-}
-
-/**
- * Load identity from local storage
- *
- * @returns {Object}
- */
-export function loadIdentity() {
-  const str = window.localStorage.getItem('identity');
-  return str ? JSON.parse(str) : null;
-}
-
-/**
  * Format datetime, 04 Mar, 2018 05:56 pm
  * @param {String} value
  */
