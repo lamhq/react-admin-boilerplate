@@ -13,7 +13,7 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
-import styles from '../../../common.module.scss';
+import styles from '../../../common.m.scss';
 import Layout from '../../../layout/admin';
 
 const breadcrumbs = [

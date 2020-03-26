@@ -8,7 +8,7 @@ import {
 import NavBar from './NavBar';
 import Header from './Header';
 import { appName } from '../../../../config';
-import styles from '../styles.module.scss';
+import styles from '../styles.m.scss';
 
 export default function Layout({ title, children, breadcrumbs }) {
   const navDrawerRef = React.useRef(null);
