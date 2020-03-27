@@ -1,6 +1,11 @@
 import React from 'react';
+import validate from 'validate.js';
 import { useHistory, useLocation } from 'react-router-dom';
 import LoginPage from '../components/LoginPage';
+import { toFormikErrors } from '../../../../common/utils';
+import { useApi } from '../../../../common/api';
+import { useIdentity } from '../../../../common/identity';
+import { useAlert } from '../../../../common/alert';
 
 function validateLoginForm(data) {
   const constraints = {
@@ -12,13 +17,15 @@ function validateLoginForm(data) {
     },
   };
 
-  return transformErrors(validate(data, constraints));
+  return toFormikErrors(validate(data, constraints));
 }
 
 export default function LoginPageContainer() {
-  const { login } = useApi();
   const history = useHistory();
   const location = useLocation();
+  const { login } = useApi();
+  const { setIdentity } = useIdentity();
+  const { alertError } = useAlert();
 
   function goBackPrevPage() {
     const { from } = location.state || { from: { pathname: '/' } };

@@ -13,7 +13,7 @@ export function getComponentName(Component) {
 /**
  * Convert validate.js errors to Formik errors
  */
-export function transformErrors(errors) {
+export function toFormikErrors(errors) {
   if (!errors) return {};
 
   const formatedErrors = Object.entries(errors).reduce((accumulator, currentValue) => {

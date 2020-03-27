@@ -15,7 +15,7 @@ import {
   EuiFieldSearch,
 } from '@elastic/eui';
 import Layout from '../../../layout/admin';
-import { useLoad } from '../../../../common/hooks';
+import useLoadingState from '../../../../common/hooks/useLoadingState';
 
 const breadcrumbs = [
   {
@@ -64,7 +64,7 @@ export default function ListUserPage() {
     load: loadUsers,
     loading,
     error,
-  } = useLoad(filterUsers);
+  } = useLoadingState(filterUsers);
 
   let totalItemCount = 0;
   let items = [];

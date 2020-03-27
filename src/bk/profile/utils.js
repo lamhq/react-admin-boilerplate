@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 import validate from 'validate.js';
-import { transformErrors } from '../../common/utils';
+import { toFormikErrors } from '../../common/utils';
 
 export function validateProfileForm(data) {
   const constraints = {
@@ -23,7 +23,7 @@ export function validateProfileForm(data) {
     },
   };
 
-  return transformErrors(validate(data, constraints));
+  return toFormikErrors(validate(data, constraints));
 }
 
 export default validateProfileForm;

@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 import validate from 'validate.js';
-import { transformErrors } from '../../common/utils';
+import { toFormikErrors } from '../../common/utils';
 
 export function validateSetPwdForm(data) {
   const constraints = {
@@ -17,7 +17,7 @@ export function validateSetPwdForm(data) {
     },
   };
 
-  return transformErrors(validate(data, constraints));
+  return toFormikErrors(validate(data, constraints));
 }
 
 export default validateSetPwdForm;

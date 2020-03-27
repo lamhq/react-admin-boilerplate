@@ -1,5 +1,5 @@
 import validate from 'validate.js';
-import { transformErrors } from '../../common/utils';
+import { toFormikErrors } from '../../common/utils';
 
 export function validatePostForm(data) {
   const constraints = {
@@ -8,7 +8,7 @@ export function validatePostForm(data) {
     },
   };
 
-  return transformErrors(validate(data, constraints));
+  return toFormikErrors(validate(data, constraints));
 }
 
 export default validatePostForm;
