@@ -2,6 +2,88 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 /**
+ * Get error message from error code
+ * Return translation key instead of raw string
+ *
+ * @param {string} code
+ */
+function getErrorMessage(code) {
+  const [namespace, error] = code.split('/');
+  return `${namespace}/error.${error}`;
+}
+
+/**
+ * Convert http error to application error
+ * @param {object} error
+ */
+function toAppError(error) {
+  let code = 'common/error.runtime';
+  let inputErrors = null;
+  let exception = null;
+
+  // error caused by runtime exception
+  if (!error.request) {
+    exception = error;
+  } else if (error.response) {
+    // http error
+    const { status, data } = error.response;
+    switch (status) {
+      case 504:
+        code = 'common/error.request-timeout';
+        break;
+
+      case 400:
+        if (data.errors) {
+          code = 'common/error.invalid-user-input';
+          inputErrors = data.errors;
+        } else {
+          ({ code } = data);
+        }
+        break;
+
+      case 401:
+        code = 'common/error.unauthenticated';
+        break;
+
+      case 403:
+        code = 'common/error.unauthorized';
+        break;
+
+      default:
+        ({ code } = data);
+        break;
+    }
+  } else if (error.message === 'Network Error') {
+    // device is offline
+    code = 'common/error.network-unavailable';
+  }
+
+  const message = getErrorMessage(code);
+  return {
+    code,
+    message,
+    inputErrors,
+    exception,
+  };
+}
+
+/**
+ * Enhance a function with http error handling logic
+ * @param {function} fn
+ */
+export function attachHttpErrorHandler(fn) {
+  const fnext = async (...args) => {
+    try {
+      const res = await fn(...args);
+      return res;
+    } catch (error) {
+      throw toAppError(error);
+    }
+  };
+  return fnext;
+}
+
+/**
  * Get component's display name
  *
  * @param {Component} Component

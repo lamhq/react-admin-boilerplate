@@ -39,7 +39,7 @@ export default function LoginPageContainer() {
       setIdentity(identity);
       goBackPrevPage();
     } catch (error) {
-      alertError(error.code);
+      alertError(error.message);
 
       if (error.inputErrors) {
         setErrors(error.inputErrors);
