@@ -5,9 +5,9 @@ import {
   EuiButton,
   EuiPanel,
 } from '@elastic/eui';
-import Layout from '../../../layout/guest';
-import TextField from '../../../../eui/components/TextField';
-import PasswordField from '../../../../eui/components/PasswordField';
+import Layout from '../../layout/guest';
+import TextField from '../../../eui/components/TextField';
+import PasswordField from '../../../eui/components/PasswordField';
 
 export default function LoginPage({ initialFormValues, validateForm, onSubmit }) {
   return (

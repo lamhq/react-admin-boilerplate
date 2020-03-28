@@ -1,10 +1,10 @@
 import React from 'react';
 import validate from 'validate.js';
 import { useHistory, useLocation } from 'react-router-dom';
-import { toFormikErrors } from '../../../../common/utils';
-import { useApi } from '../../../../common/api';
-import { useIdentity } from '../../../../common/identity';
-import { useAlert } from '../../../../common/alert';
+import { toFormikErrors } from '../../../common/utils';
+import { useApi } from '../../../common/api';
+import { useIdentity } from '../../../common/identity';
+import { useAlert } from '../../../common/alert';
 import LoginPage from '../components/LoginPage';
 
 function validateLoginForm(data) {

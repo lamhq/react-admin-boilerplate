@@ -5,7 +5,7 @@ import {
   EuiFormRow,
   EuiPanel,
 } from '@elastic/eui';
-import Layout from '../../../layout/guest';
+import Layout from '../../layout/guest';
 
 export default function ResetPwdPage() {
   return (

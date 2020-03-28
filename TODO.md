@@ -6,6 +6,17 @@
 # remove materialui packages
 # integrate i18n library
 # implement core system
+integrate with backend api
+  # login page
+  forgot password page
+  reset password page
+  register page
+  logout button
+  user
+    list
+    create
+    update
+    delete
 handling error
   # runtime error (exception)
   http error
@@ -16,17 +27,6 @@ handling error
     forbidden error 403
     unauthorized error 401
     server error >=500
-integrate with backend api
-  # login page
-  register page
-  forgot password page
-  reset password page
-  logout button
-  user
-    list
-    create
-    update
-    delete
 enable runtime language switching
 integrate typescript
 use graphql with library graphql-request

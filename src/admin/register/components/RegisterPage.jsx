@@ -9,7 +9,7 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
-import Layout from '../../../layout/guest';
+import Layout from '../../layout/guest';
 
 export default function RegisterPage() {
   return (
