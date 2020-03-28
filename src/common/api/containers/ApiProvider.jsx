@@ -4,35 +4,78 @@ import axios from 'axios';
 
 import ApiContext from '../contexts/api';
 import useIdentity from '../../identity/hooks/useIdentity';
+/**
+ * Convert http error to application error
+ * @param {object} error
+ */
+function toApplicationError(error) {
+  const result = {
+    code: 'common/error.runtime',
+    inputErrors: null,
+  };
+
+  // error caused by exception
+  if (!error.request) {
+    result.exception = error;
+    return result;
+  }
+
+  // http error
+  if (error.response) {
+    const { status, data } = error.response;
+    switch (status) {
+      case 504:
+        result.code = 'common/error.request-timeout';
+        break;
+
+      case 400:
+        if (data.errors) {
+          result.inputErrors = data.errors;
+        }
+        result.code = data.code;
+        break;
+
+      case 403:
+      case 404:
+        result.code = data.code;
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  // device is offline
+  if (error.message === 'Network Error') {
+    result.code = 'common/error.network-unavailable';
+  }
+
+  return result;
+}
 
 /**
  * Provide helper functions to access backend api
  */
 export default function ApiProvider({ children, endpoint }) {
   const { identity, clearIdentity } = useIdentity();
-  const http = axios.create({
-    baseURL: endpoint,
-  });
+  const http = axios.create({ baseURL: endpoint });
 
+  // attach authentication header to request
   React.useEffect(() => {
     const authHeader = identity ? `Bearer ${identity.token.value}` : '';
     http.defaults.headers.common.Authorization = authHeader;
   }, [identity]);
 
-  function transformError(error) {
-    if (error.response) {
-      return error.response.data[0];
-    }
-
-    if (error.message === 'Network Error') {
-      return {
-        title: 'Error connecting to server. Network is down.',
-      };
-    }
-
-    return {
-      title: 'Unknown error occured.',
+  function attachErrorHandler(fn) {
+    const fnext = async (...args) => {
+      try {
+        const res = await fn(...args);
+        return res;
+      } catch (error) {
+        throw toApplicationError(error);
+      }
     };
+    return fnext;
   }
 
   function logout() {
@@ -40,15 +83,11 @@ export default function ApiProvider({ children, endpoint }) {
   }
 
   async function login(email, password) {
-    try {
-      const resp = await http.post('/admin/account/login', {
-        email,
-        password,
-      });
-      return resp.data;
-    } catch (error) {
-      throw transformError(error);
-    }
+    const resp = await http.post('/admin/account/login', {
+      email,
+      password,
+    });
+    return resp.data;
   }
 
   async function requestPasswordReset(email) {
@@ -58,7 +97,7 @@ export default function ApiProvider({ children, endpoint }) {
       });
       return resp.data;
     } catch (error) {
-      throw transformError(error);
+      throw toApplicationError(error);
     }
   }
 
@@ -70,7 +109,7 @@ export default function ApiProvider({ children, endpoint }) {
       });
       return resp.data;
     } catch (error) {
-      throw transformError(error);
+      throw toApplicationError(error);
     }
   }
 
@@ -79,7 +118,7 @@ export default function ApiProvider({ children, endpoint }) {
       const resp = await http.put('admin/account/profile', values);
       return resp.data;
     } catch (error) {
-      throw transformError(error);
+      throw toApplicationError(error);
     }
   }
 
@@ -93,7 +132,7 @@ export default function ApiProvider({ children, endpoint }) {
       });
       return resp.data;
     } catch (error) {
-      throw transformError(error);
+      throw toApplicationError(error);
     }
   }
 
@@ -102,7 +141,7 @@ export default function ApiProvider({ children, endpoint }) {
       const resp = await http.delete(`admin/posts/${post.id}`);
       return resp.data;
     } catch (error) {
-      throw transformError(error);
+      throw toApplicationError(error);
     }
   }
 
@@ -111,7 +150,7 @@ export default function ApiProvider({ children, endpoint }) {
       const resp = await http.post('admin/posts', values);
       return resp.data;
     } catch (error) {
-      throw transformError(error);
+      throw toApplicationError(error);
     }
   }
 
@@ -120,7 +159,7 @@ export default function ApiProvider({ children, endpoint }) {
       const resp = await http.put(`admin/posts/${id}`, values);
       return resp.data;
     } catch (error) {
-      throw transformError(error);
+      throw toApplicationError(error);
     }
   }
 
@@ -135,6 +174,10 @@ export default function ApiProvider({ children, endpoint }) {
     createUser,
     deleteUser,
   };
+  // extend all exported functions
+  Object.keys(contextValue).forEach((key) => {
+    contextValue[key] = attachErrorHandler(contextValue[key]);
+  });
 
   return (
     <ApiContext.Provider value={contextValue}>

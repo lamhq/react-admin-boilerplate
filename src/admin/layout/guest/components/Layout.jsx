@@ -7,11 +7,11 @@ import {
   EuiSpacer,
   EuiText,
   EuiTitle,
-  EuiCallOut,
 } from '@elastic/eui';
 
 import { appName } from '../../../../config';
 import styles from './styles.m.scss';
+import Alert from '../../../../common/alert/containers/Alert';
 
 export default function Layout({ title, instruction, children }) {
   React.useEffect(() => {
@@ -41,12 +41,7 @@ export default function Layout({ title, instruction, children }) {
       <div className={styles.content}>
         <EuiFlexGroup gutterSize="l">
           <EuiFlexItem>
-            <EuiCallOut
-              size="s"
-              color="danger"
-              title="Invalid username or password. Please try again."
-              role="alert"
-            />
+            <Alert />
             <EuiSpacer size="l" />
             {children}
           </EuiFlexItem>

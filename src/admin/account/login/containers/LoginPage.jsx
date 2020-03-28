@@ -1,15 +1,15 @@
 import React from 'react';
 import validate from 'validate.js';
 import { useHistory, useLocation } from 'react-router-dom';
-import LoginPage from '../components/LoginPage';
 import { toFormikErrors } from '../../../../common/utils';
 import { useApi } from '../../../../common/api';
 import { useIdentity } from '../../../../common/identity';
 import { useAlert } from '../../../../common/alert';
+import LoginPage from '../components/LoginPage';
 
 function validateLoginForm(data) {
   const constraints = {
-    email: {
+    username: {
       presence: { allowEmpty: false },
     },
     password: {
@@ -34,18 +34,23 @@ export default function LoginPageContainer() {
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
-      const { email, password } = values;
-      const identity = await login(email, password);
+      const { username, password } = values;
+      const identity = await login(username, password);
       setIdentity(identity);
       goBackPrevPage();
     } catch (error) {
-      if (error.code === 'invalid-user-input') {
-        setErrors(error.detail);
-      } else {
-        alertError('Login error', error.title);
+      alertError(error.code);
+
+      if (error.inputErrors) {
+        setErrors(error.inputErrors);
       }
+
+      if (error.exception) {
+        throw error.exception;
+      }
+    } finally {
+      setSubmitting(false);
     }
-    setSubmitting(false);
   }
 
   return (

@@ -9,6 +9,7 @@ import LoadingScreen from './common/components/LoadingScreen';
 import { IdentityProvider } from './common/identity';
 import { ApiProvider } from './common/api';
 import { AlertProvider } from './common/alert';
+import { apiUrl } from './config';
 
 const history = createBrowserHistory();
 
@@ -16,7 +17,7 @@ function App() {
   return (
     <IdentityProvider>
       <AlertProvider>
-        <ApiProvider>
+        <ApiProvider endpoint={apiUrl}>
           <Router history={history} key={Math.random()}>
             <Suspense fallback={<LoadingScreen />}>
               <Switch>
@@ -31,7 +32,7 @@ function App() {
                 ))}
                 {/* Set default homepage */}
                 <Route path="/" exact>
-                  <Redirect to="/admin/login" />
+                  <Redirect to="/admin/dashboard" />
                 </Route>
                 <Route render={() => <p>The content was not found.</p>} />
               </Switch>

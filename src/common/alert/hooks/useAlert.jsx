@@ -26,10 +26,15 @@ export default function useAlert() {
     });
   }
 
+  function closeAlert() {
+    setState(null);
+  }
+
   return {
     alert: state,
     alertSuccess,
     alertError,
     alertWarning,
+    closeAlert,
   };
 }

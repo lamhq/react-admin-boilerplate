@@ -6,10 +6,16 @@
 # remove materialui packages
 # integrate i18n library
 # implement core system
-  # useLoadingState
-  # useIdentity
-  # useAlert
-  # useApi
+handling error
+  # runtime error (exception)
+  http error
+    # no internet
+    # timeout 504
+    invalid request 400
+    input error 400
+    forbidden error 403
+    unauthorized error 401
+    server error >=500
 integrate with backend api
   login page
   register page

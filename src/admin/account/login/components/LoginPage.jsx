@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import {
   EuiButton,
-  EuiFieldText,
-  EuiFormRow,
   EuiPanel,
 } from '@elastic/eui';
 import Layout from '../../../layout/guest';
+import TextField from '../../../../eui/components/TextField';
+import PasswordField from '../../../../eui/components/PasswordField';
 
 export default function LoginPage({ initialFormValues, validateForm, onSubmit }) {
   return (
@@ -19,42 +19,28 @@ export default function LoginPage({ initialFormValues, validateForm, onSubmit })
       >
         {({ isSubmitting }) => (
           <EuiPanel>
-            <EuiFormRow
-              label="Username"
-              isInvalid
-              error={["Username can't be blank."]}
-            >
-              <EuiFieldText
-                id="username1"
-                name="abcd"
-                value="aasas"
-                onChange={() => null}
-                disabled={false}
-                isInvalid
+            <Form>
+              <Field
+                name="username"
+                label="Username"
+                component={TextField}
+                icon="user"
               />
-            </EuiFormRow>
-
-            <EuiFormRow label="Password">
-              <EuiFieldText
-                autoComplete="off"
-                id="password1"
-                name="defg"
-                type="password"
-                value=""
-                onChange={() => null}
-                disabled={false}
-                isInvalid={false}
+              <Field
+                name="password"
+                label="Password"
+                component={PasswordField}
               />
-            </EuiFormRow>
 
-            <EuiButton
-              fill
-              type="submit"
-              color="primary"
-              isLoading={isSubmitting}
-            >
-              Log in
-            </EuiButton>
+              <EuiButton
+                type="submit"
+                color="primary"
+                isLoading={isSubmitting}
+                fill
+              >
+                Log in
+              </EuiButton>
+            </Form>
           </EuiPanel>
         )}
       </Formik>
