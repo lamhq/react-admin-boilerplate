@@ -36,7 +36,7 @@ export default function ForgotPwdPage({ validateForm, onSubmit }) {
               <EuiSpacer />
               <EuiFlexGroup justifyContent="flexEnd">
                 <EuiFlexItem grow={false}>
-                  <EuiButtonEmpty iconType="arrowLeft" href="http://www.elastic.co">
+                  <EuiButtonEmpty iconType="arrowLeft" href="/admin/login">
                     Cancel
                   </EuiButtonEmpty>
                 </EuiFlexItem>

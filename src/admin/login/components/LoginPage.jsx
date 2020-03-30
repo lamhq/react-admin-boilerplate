@@ -4,6 +4,10 @@ import { Formik, Field, Form } from 'formik';
 import {
   EuiButton,
   EuiPanel,
+  EuiSpacer,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiLink,
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
@@ -31,15 +35,30 @@ export default function LoginPage({ initialFormValues, validateForm, onSubmit })
                 label="Password"
                 component={PasswordField}
               />
+              <EuiSpacer />
+              <EuiFlexGroup justifyContent="spaceBetween">
+                <EuiFlexItem grow={false}>
+                  <EuiButton
+                    type="submit"
+                    color="primary"
+                    isLoading={isSubmitting}
+                    fill
+                  >
+                    Log in
+                  </EuiButton>
+                </EuiFlexItem>
+                <EuiFlexItem grow={false}>
+                  <small>
+                    <EuiLink
+                      color="subdued"
+                      href="/admin/forgot-password"
+                    >
+                      Forgot Password?
+                    </EuiLink>
+                  </small>
+                </EuiFlexItem>
+              </EuiFlexGroup>
 
-              <EuiButton
-                type="submit"
-                color="primary"
-                isLoading={isSubmitting}
-                fill
-              >
-                Log in
-              </EuiButton>
             </Form>
           </EuiPanel>
         )}
