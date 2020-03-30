@@ -12,8 +12,10 @@ import {
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
+import useLink from '../../../common/hooks/useLink';
 
 export default function LoginPage({ initialFormValues, validateForm, onSubmit }) {
+  const getLinkProps = useLink();
   return (
     <Layout title="Login" instruction="Please fill in your account to continue.">
       <Formik
@@ -51,7 +53,7 @@ export default function LoginPage({ initialFormValues, validateForm, onSubmit })
                   <small>
                     <EuiLink
                       color="subdued"
-                      href="/admin/forgot-password"
+                      {...getLinkProps('/forgot-password')}
                     >
                       Forgot Password?
                     </EuiLink>

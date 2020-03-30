@@ -59,7 +59,7 @@ export default function ResetPwdPageContainer() {
       const code = getResetPasswordToken();
       await resetPassword(code, password);
       await alertSuccess('reset-password/success');
-      history.push('/admin/login');
+      history.push('/login');
     } catch (error) {
       if (!error.code) {
         alertError('common/runtime');

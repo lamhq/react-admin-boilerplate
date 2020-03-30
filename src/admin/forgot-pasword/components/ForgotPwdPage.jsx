@@ -11,12 +11,14 @@ import {
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
+import useLink from '../../../common/hooks/useLink';
 
 const initialFormValues = {
   email: '',
 };
 
 export default function ForgotPwdPage({ validateForm, onSubmit }) {
+  const getLinkProps = useLink();
   return (
     <Layout title="Forgot Password" instruction="Enter you email to request a new password.">
       <Formik
@@ -36,7 +38,10 @@ export default function ForgotPwdPage({ validateForm, onSubmit }) {
               <EuiSpacer />
               <EuiFlexGroup justifyContent="flexEnd">
                 <EuiFlexItem grow={false}>
-                  <EuiButtonEmpty iconType="arrowLeft" href="/admin/login">
+                  <EuiButtonEmpty
+                    iconType="arrowLeft"
+                    {...getLinkProps('/login')}
+                  >
                     Cancel
                   </EuiButtonEmpty>
                 </EuiFlexItem>

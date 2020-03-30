@@ -178,7 +178,7 @@ export default function ListUserPage() {
             </EuiTitle>
           </EuiPageContentHeaderSection>
           <EuiPageContentHeaderSection>
-            <EuiButton data-test-subj="createUserButton" href="/admin/users/add">
+            <EuiButton data-test-subj="createUserButton" href="/users/add">
               Create user
             </EuiButton>
           </EuiPageContentHeaderSection>

@@ -9,13 +9,12 @@
 integrate with backend api
   # register page
   # reset password page
-  login page
+  # login page
     # translate form input errors (client)
     # translate form input errors (api)
-    put link to forgot password page
-    put link to register page
-  forgot password page
-    put link on cancel button
+    # put link to forgot password page
+  # forgot password page
+    # put link on cancel button
     # reset form values after submiting
   logout
   update profile

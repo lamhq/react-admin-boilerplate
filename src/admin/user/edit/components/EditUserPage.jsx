@@ -19,7 +19,7 @@ import Layout from '../../../layout/admin';
 const breadcrumbs = [
   {
     text: 'Users',
-    href: '/admin/users',
+    href: '/users',
   },
   {
     text: 'Edit',

@@ -2,39 +2,39 @@ import { lazy } from 'react';
 
 const routes = [
   {
-    path: '/admin/dashboard',
+    path: '/dashboard',
     component: lazy(() => import('./admin/dashboard')),
   },
   {
-    path: '/admin/login',
+    path: '/login',
     component: lazy(() => import('./admin/login')),
   },
   {
-    path: '/admin/forgot-password',
+    path: '/forgot-password',
     component: lazy(() => import('./admin/forgot-pasword')),
   },
   {
-    path: '/admin/reset-password',
+    path: '/reset-password',
     component: lazy(() => import('./admin/reset-password')),
   },
   {
-    path: '/admin/register',
+    path: '/register',
     component: lazy(() => import('./admin/register')),
   },
   {
-    path: '/admin/profile',
+    path: '/profile',
     component: lazy(() => import('./admin/profile/components/ProfilePage')),
   },
   {
-    path: '/admin/users/add',
+    path: '/users/add',
     component: lazy(() => import('./admin/user/add/components/AddUserPage')),
   },
   {
-    path: '/admin/users/edit/:id',
+    path: '/users/edit/:id',
     component: lazy(() => import('./admin/user/edit/components/EditUserPage')),
   },
   {
-    path: '/admin/users',
+    path: '/users',
     component: lazy(() => import('./admin/user/list/components/ListUserPage')),
   },
 ];
