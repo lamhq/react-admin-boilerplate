@@ -7,17 +7,18 @@
 # integrate i18n library
 # implement core system
 integrate with backend api
-  reset password page
-  forgot password page
-    put link on cancel button
-    # reset form values after submiting
-  register page
+  # register page
+  # reset password page
   login page
     # translate form input errors (client)
     # translate form input errors (api)
     put link to forgot password page
     put link to register page
-  logout button
+  forgot password page
+    put link on cancel button
+    # reset form values after submiting
+  logout
+  update profile
   user
     list
     create

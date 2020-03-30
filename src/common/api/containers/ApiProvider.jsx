@@ -46,6 +46,11 @@ export default function ApiProvider({ children, endpoint }) {
     return resp.data;
   }
 
+  async function register(values) {
+    const resp = await http.post('admin/account', values);
+    return resp.data;
+  }
+
   async function updateProfile(values) {
     const resp = await http.put('admin/account/profile', values);
     return resp.data;
@@ -81,6 +86,7 @@ export default function ApiProvider({ children, endpoint }) {
     logout,
     requestPasswordReset,
     resetPassword,
+    register,
     updateProfile,
     getUsers,
     updateUser,

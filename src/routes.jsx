@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: '/admin/register',
-    component: lazy(() => import('./admin/register/components/RegisterPage')),
+    component: lazy(() => import('./admin/register')),
   },
   {
     path: '/admin/profile',
