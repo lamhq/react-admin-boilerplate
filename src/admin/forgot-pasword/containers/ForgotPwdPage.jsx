@@ -32,15 +32,16 @@ export default function ForgotPwdPageContainer() {
       alertSuccess('forgot-password/success');
       resetForm();
     } catch (error) {
-      alertError(error.code);
+      if (!error.code) {
+        alertError('common/runtime');
+        throw error;
+      }
 
       if (error.inputErrors) {
         setErrors(toFormikErrors(error.inputErrors));
       }
 
-      if (error.exception) {
-        throw error.exception;
-      }
+      alertError(error.code);
     } finally {
       setSubmitting(false);
     }

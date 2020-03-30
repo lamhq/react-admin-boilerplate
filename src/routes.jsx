@@ -15,7 +15,7 @@ const routes = [
   },
   {
     path: '/admin/reset-password',
-    component: lazy(() => import('./admin/reset-password/components/ResetPwdPage')),
+    component: lazy(() => import('./admin/reset-password')),
   },
   {
     path: '/admin/register',

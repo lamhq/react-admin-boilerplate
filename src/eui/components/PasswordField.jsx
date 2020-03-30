@@ -18,11 +18,12 @@ export default function PasswordField(props) {
   const touchVal = getIn(touched, field.name);
   const errText = getIn(errors, field.name);
   const hasError = touchVal && (errText !== undefined);
+  const localizedErrText = Array.isArray(errText) ? t(...errText) : t(errText);
   return (
     <EuiFormRow
       label={label}
       isInvalid={hasError}
-      error={t(errText)}
+      error={localizedErrText}
     >
       <EuiFieldPassword
         isInvalid={hasError}

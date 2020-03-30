@@ -6,15 +6,9 @@ import numeral from 'numeral';
  * @param {object} error
  */
 function toAppError(error) {
-  let code = 'common/runtime';
-  let inputErrors = null;
-  let exception = null;
-
-  // error caused by runtime exception
-  if (!error.request) {
-    exception = error;
-  } else if (error.response) {
-    // http error
+  const result = {};
+  if (error.response) {
+    let code = 'common/runtime';
     const { status, data } = error.response;
     switch (status) {
       case 504:
@@ -24,7 +18,7 @@ function toAppError(error) {
       case 400:
         if (data.errors) {
           code = 'common/invalid-user-input';
-          inputErrors = data.errors;
+          result.inputErrors = data.errors;
         } else {
           ({ code } = data);
         }
@@ -42,16 +36,13 @@ function toAppError(error) {
         ({ code } = data);
         break;
     }
+    result.code = code;
   } else if (error.message === 'Network Error') {
     // device is offline
-    code = 'common/network-unavailable';
+    result.code = 'common/network-unavailable';
   }
 
-  return {
-    code,
-    inputErrors,
-    exception,
-  };
+  return result;
 }
 
 /**

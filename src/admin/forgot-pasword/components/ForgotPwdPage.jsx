@@ -47,7 +47,7 @@ export default function ForgotPwdPage({ validateForm, onSubmit }) {
                     isLoading={isSubmitting}
                     fill
                   >
-                    Submit
+                    Reset Password
                   </EuiButton>
                 </EuiFlexItem>
               </EuiFlexGroup>

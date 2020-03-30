@@ -12,6 +12,8 @@ const translation = {
       unauthorized: 'You are not allowed to perform this action.',
       'required-input': 'This field can not be blank.',
       'invalid-email': 'Invalid email.',
+      'password-too-long': 'Password is too long, maximum: {{max}} characters',
+      'password-too-short': 'Password is too short, minimum: {{min}} characters',
     },
     login: {
       'user-not-found': 'This user is not available.',
@@ -21,6 +23,9 @@ const translation = {
     'forgot-password': {
       success: 'Please check your inbox and reset the password within 1 hour',
       'user-not-found': 'This user is not available.',
+    },
+    'reset-password': {
+      success: 'Your password has been updated. You can login with the new password.',
     },
   },
 };

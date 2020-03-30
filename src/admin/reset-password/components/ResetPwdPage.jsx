@@ -1,52 +1,56 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Formik, Field, Form } from 'formik';
 import {
   EuiButton,
-  EuiFieldText,
-  EuiFormRow,
   EuiPanel,
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
+import PasswordField from '../../../eui/components/PasswordField';
 
-export default function ResetPwdPage() {
+const initialFormValues = {
+  password: '',
+  confirmPassword: '',
+};
+
+export default function ResetPwdPage({ validateForm, onSubmit }) {
   return (
     <Layout title="Reset Your Password" instruction="Enter your new password here.">
-      <EuiPanel>
-        <form>
-          <EuiFormRow label="New Password">
-            <EuiFieldText
-              autoComplete="off"
-              id="password1"
-              name="defg"
-              type="password"
-              value=""
-              onChange={() => null}
-              disabled={false}
-              isInvalid={false}
-            />
-          </EuiFormRow>
-
-          <EuiFormRow label="Re-type Password">
-            <EuiFieldText
-              autoComplete="off"
-              id="password2"
-              name="defg"
-              type="password"
-              value=""
-              onChange={() => null}
-              disabled={false}
-              isInvalid={false}
-            />
-          </EuiFormRow>
-
-          <EuiButton
-            fill
-            type="submit"
-            color="primary"
-          >
-            Submit
-          </EuiButton>
-        </form>
-      </EuiPanel>
+      <Formik
+        initialValues={initialFormValues}
+        validate={validateForm}
+        onSubmit={onSubmit}
+      >
+        {({ isSubmitting }) => (
+          <EuiPanel>
+            <Form>
+              <Field
+                name="password"
+                label="Password"
+                component={PasswordField}
+              />
+              <Field
+                name="confirmPassword"
+                label="Re-enter Password"
+                component={PasswordField}
+              />
+              <EuiButton
+                type="submit"
+                color="primary"
+                isLoading={isSubmitting}
+                fill
+              >
+                Update
+              </EuiButton>
+            </Form>
+          </EuiPanel>
+        )}
+      </Formik>
     </Layout>
   );
 }
+
+ResetPwdPage.propTypes = {
+  validateForm: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
