@@ -10,10 +10,16 @@ import LoginPage from '../components/LoginPage';
 function validateLoginForm(data) {
   const constraints = {
     username: {
-      presence: { allowEmpty: false },
+      presence: {
+        allowEmpty: false,
+        message: '^common/required-input',
+      },
     },
     password: {
-      presence: { allowEmpty: false },
+      presence: {
+        allowEmpty: false,
+        message: '^common/required-input',
+      },
     },
   };
 
@@ -39,10 +45,10 @@ export default function LoginPageContainer() {
       setIdentity(identity);
       goBackPrevPage();
     } catch (error) {
-      alertError(error.message);
+      alertError(error.code);
 
       if (error.inputErrors) {
-        setErrors(error.inputErrors);
+        setErrors(toFormikErrors(error.inputErrors));
       }
 
       if (error.exception) {

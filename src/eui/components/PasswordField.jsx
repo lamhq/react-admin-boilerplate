@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { getIn } from 'formik';
 import {
   EuiFieldPassword,
@@ -7,6 +8,7 @@ import {
 } from '@elastic/eui';
 
 export default function PasswordField(props) {
+  const { t } = useTranslation();
   const {
     field,
     form: { touched, errors },
@@ -20,7 +22,7 @@ export default function PasswordField(props) {
     <EuiFormRow
       label={label}
       isInvalid={hasError}
-      error={[errText]}
+      error={t(errText)}
     >
       <EuiFieldPassword
         isInvalid={hasError}

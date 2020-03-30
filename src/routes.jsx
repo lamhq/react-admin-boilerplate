@@ -7,23 +7,23 @@ const routes = [
   },
   {
     path: '/admin/login',
-    component: lazy(() => import('./admin/account/login')),
+    component: lazy(() => import('./admin/login')),
   },
   {
     path: '/admin/forgot-password',
-    component: lazy(() => import('./admin/account/forgot-pasword/components/ForgotPwdPage')),
+    component: lazy(() => import('./admin/forgot-pasword')),
   },
   {
     path: '/admin/reset-password',
-    component: lazy(() => import('./admin/account/reset-password/components/ResetPwdPage')),
+    component: lazy(() => import('./admin/reset-password/components/ResetPwdPage')),
   },
   {
     path: '/admin/register',
-    component: lazy(() => import('./admin/account/register/components/RegisterPage')),
+    component: lazy(() => import('./admin/register/components/RegisterPage')),
   },
   {
     path: '/admin/profile',
-    component: lazy(() => import('./admin/account/profile/components/ProfilePage')),
+    component: lazy(() => import('./admin/profile/components/ProfilePage')),
   },
   {
     path: '/admin/users/add',

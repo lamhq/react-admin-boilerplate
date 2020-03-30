@@ -34,7 +34,7 @@ export default function DeleteButton({ post, afterDelete, className }) {
         afterDelete();
       }
     } catch (error) {
-      showError(error.title, error.message);
+      showError(error.title, error.code);
     }
   }
 

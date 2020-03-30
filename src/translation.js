@@ -1,22 +1,26 @@
 const translation = {
   // languages
   en: {
-    // namespace "common"
+    // namespaces
     common: {
-      'error.runtime': 'Something went wrong. Please try again later.',
-      'error.request-timeout': 'Request timeout. Please try again later.',
-      'error.network-unavailable': 'Network unavailable. Please check your connection.',
-      'error.invalid-user-input': 'There\'re some errors with your input.',
-      'error.resource-not-found': 'Resource not found.',
-      'error.unauthenticated': 'You need to login to perform this action.',
-      'error.unauthorized': 'You are not allowed to perform this action.',
+      runtime: 'Something went wrong. Please try again later.',
+      'request-timeout': 'Request timeout. Please try again later.',
+      'network-unavailable': 'Network unavailable. Please check your connection.',
+      'invalid-user-input': 'There\'re some errors with your input.',
+      'resource-not-found': 'Resource not found.',
+      unauthenticated: 'You need to login to perform this action.',
+      unauthorized: 'You are not allowed to perform this action.',
+      'required-input': 'This field can not be blank.',
+      'invalid-email': 'Invalid email.',
     },
-
-    // namespace "login"
     login: {
-      'error.user-not-found': 'This user is not available.',
-      'error.invalid-password': 'Invalid password.',
-      'error.user-is-disabled': 'This user is disabled.',
+      'user-not-found': 'This user is not available.',
+      'invalid-password': 'Invalid password.',
+      'user-is-disabled': 'This user is disabled.',
+    },
+    'forgot-password': {
+      success: 'Please check your inbox and reset the password within 1 hour',
+      'user-not-found': 'This user is not available.',
     },
   },
 };

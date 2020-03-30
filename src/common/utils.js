@@ -2,22 +2,11 @@ import moment from 'moment';
 import numeral from 'numeral';
 
 /**
- * Get error message from error code
- * Return translation key instead of raw string
- *
- * @param {string} code
- */
-function getErrorMessage(code) {
-  const [namespace, error] = code.split('/');
-  return `${namespace}/error.${error}`;
-}
-
-/**
  * Convert http error to application error
  * @param {object} error
  */
 function toAppError(error) {
-  let code = 'common/error.runtime';
+  let code = 'common/runtime';
   let inputErrors = null;
   let exception = null;
 
@@ -29,12 +18,12 @@ function toAppError(error) {
     const { status, data } = error.response;
     switch (status) {
       case 504:
-        code = 'common/error.request-timeout';
+        code = 'common/request-timeout';
         break;
 
       case 400:
         if (data.errors) {
-          code = 'common/error.invalid-user-input';
+          code = 'common/invalid-user-input';
           inputErrors = data.errors;
         } else {
           ({ code } = data);
@@ -42,11 +31,11 @@ function toAppError(error) {
         break;
 
       case 401:
-        code = 'common/error.unauthenticated';
+        code = 'common/unauthenticated';
         break;
 
       case 403:
-        code = 'common/error.unauthorized';
+        code = 'common/unauthorized';
         break;
 
       default:
@@ -55,13 +44,11 @@ function toAppError(error) {
     }
   } else if (error.message === 'Network Error') {
     // device is offline
-    code = 'common/error.network-unavailable';
+    code = 'common/network-unavailable';
   }
 
-  const message = getErrorMessage(code);
   return {
     code,
-    message,
     inputErrors,
     exception,
   };
