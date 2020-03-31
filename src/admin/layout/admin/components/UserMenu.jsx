@@ -7,6 +7,7 @@ import {
   EuiHeaderSectionItemButton,
   EuiPopover,
 } from '@elastic/eui';
+import LogoutButton from '../containers/LogoutButton';
 
 export default function UserMenu() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -33,7 +34,7 @@ export default function UserMenu() {
 
   const items = [
     <EuiContextMenuItem icon="user" href="/">Profile</EuiContextMenuItem>,
-    <EuiContextMenuItem icon="exit" href="/">Logout</EuiContextMenuItem>,
+    <LogoutButton />,
   ];
 
   return (

@@ -32,7 +32,7 @@ function App() {
                 ))}
                 {/* Set default homepage */}
                 <Route path="/" exact>
-                  <Redirect to="/admin/dashboard" />
+                  <Redirect to="/dashboard" />
                 </Route>
                 <Route render={() => <p>The content was not found.</p>} />
               </Switch>

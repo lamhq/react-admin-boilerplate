@@ -16,7 +16,7 @@ integrate with backend api
   # forgot password page
     # put link on cancel button
     # reset form values after submiting
-  logout
+  # logout button
   update profile
   user
     list
@@ -34,6 +34,7 @@ handling error
     unauthorized error 401
     server error >=500
 enable runtime language switching
+i18n for all components
 integrate typescript
 use graphql with library graphql-request
 configure ci/cd with bitbucket pipeline
