@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import {
   EuiHeader,
   EuiHeaderSection,
@@ -11,7 +10,7 @@ import {
   EuiIcon,
   EuiShowFor,
 } from '@elastic/eui';
-import UserMenu from './UserMenu';
+import UserMenu from '../containers/UserMenu';
 import styles from '../styles.m.scss';
 
 export default function Header({ toggleDrawer, breadcrumbs }) {

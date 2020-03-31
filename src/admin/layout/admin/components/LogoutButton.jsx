@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import {
-  EuiContextMenuItem,
-} from '@elastic/eui';
+import { EuiContextMenuItem } from '@elastic/eui';
 
 export default function LogoutButton({ onClick }) {
   return (

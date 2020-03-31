@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   EuiAvatar,
   EuiContextMenuPanel,
@@ -8,31 +9,23 @@ import {
 } from '@elastic/eui';
 import LogoutButton from '../containers/LogoutButton';
 
-export default function UserMenu() {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  function onMenuButtonClick() {
-    setIsOpen(!isOpen);
-  }
-
-  function closeMenu() {
-    setIsOpen(false);
-  }
-
+export default function UserMenu({
+  isMenuOpen, onMenuToggle, closeMenu, user,
+}) {
   const button = (
     <EuiHeaderSectionItemButton
       aria-controls="headerUserMenu"
-      aria-expanded={isOpen}
+      aria-expanded={isMenuOpen}
       aria-haspopup="true"
       aria-label="Account menu"
-      onClick={onMenuButtonClick}
+      onClick={onMenuToggle}
     >
-      <EuiAvatar name="John Wick" size="s" />
+      <EuiAvatar name={user.displayName} size="s" />
     </EuiHeaderSectionItemButton>
   );
 
   const items = [
-    <EuiContextMenuItem icon="user" href="/" key="profile">Profile</EuiContextMenuItem>,
+    <EuiContextMenuItem key="profile" icon="user" href="/profile">Profile</EuiContextMenuItem>,
     <LogoutButton key="logout" />,
   ];
 
@@ -41,7 +34,7 @@ export default function UserMenu() {
       id="headerUserMenu"
       ownFocus
       button={button}
-      isOpen={isOpen}
+      isOpen={isMenuOpen}
       anchorPosition="downRight"
       closePopover={closeMenu}
       panelPaddingSize="none"
@@ -50,3 +43,12 @@ export default function UserMenu() {
     </EuiPopover>
   );
 }
+
+UserMenu.propTypes = {
+  isMenuOpen: PropTypes.bool.isRequired,
+  onMenuToggle: PropTypes.func.isRequired,
+  closeMenu: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    displayName: PropTypes.string.isRequired,
+  }).isRequired,
+};

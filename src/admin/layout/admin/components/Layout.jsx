@@ -4,42 +4,27 @@ import {
   EuiPage,
   EuiPageBody,
 } from '@elastic/eui';
-import NavBar from './NavBar';
+import NavBar from '../containers/NavBar';
 import Header from './Header';
-import { appName } from '../../../../config';
 import styles from '../styles.m.scss';
 
-export default function Layout({ title, children, breadcrumbs }) {
-  const navDrawerRef = React.useRef(null);
-
-  function toggleDrawer() {
-    navDrawerRef.current.toggleOpen();
-  }
-
-  React.useEffect(() => {
-    if (title) {
-      document.title = `${title} - ${appName}`;
-    }
-  }, [title]);
-
-  return (
-    <>
-      <Header toggleDrawer={toggleDrawer} breadcrumbs={breadcrumbs} />
-      <NavBar ref={navDrawerRef} />
-      <div className={styles.contentWrapper}>
-        <EuiPage>
-          <EuiPageBody>
-            {children}
-          </EuiPageBody>
-        </EuiPage>
-      </div>
-    </>
-  );
-}
+const Layout = React.forwardRef(({ children, breadcrumbs, toggleDrawer }, navDrawerRef) => (
+  <>
+    <Header toggleDrawer={toggleDrawer} breadcrumbs={breadcrumbs} />
+    <NavBar ref={navDrawerRef} />
+    <div className={styles.contentWrapper}>
+      <EuiPage>
+        <EuiPageBody>
+          {children}
+        </EuiPageBody>
+      </EuiPage>
+    </div>
+  </>
+));
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  toggleDrawer: PropTypes.func.isRequired,
   breadcrumbs: PropTypes.arrayOf(PropTypes.shape({
     text: PropTypes.string.isRequired,
     href: PropTypes.string,
@@ -47,6 +32,7 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
-  title: '',
   breadcrumbs: null,
 };
+
+export default Layout;
