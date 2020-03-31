@@ -3,7 +3,7 @@ import validate from 'validate.js';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
-import ForgotPwdPageView from '../components/ForgotPwdPage';
+import ForgotPwd from '../components/ForgotPwd';
 
 function validateForm(data) {
   const constraints = {
@@ -21,7 +21,7 @@ function validateForm(data) {
   return toFormikErrors(validate(data, constraints));
 }
 
-export default function ForgotPwdPage() {
+export default function ForgotPwdContainer() {
   const { requestPasswordReset } = useApi();
   const { alertSuccess, alertError } = useAlert();
 
@@ -48,7 +48,7 @@ export default function ForgotPwdPage() {
   }
 
   return (
-    <ForgotPwdPageView
+    <ForgotPwd
       validateForm={validateForm}
       onSubmit={handleSubmit}
     />

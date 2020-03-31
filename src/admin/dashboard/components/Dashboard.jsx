@@ -7,7 +7,7 @@ const breadcrumbs = [
   },
 ];
 
-export default function DashboardPage() {
+export default function Dashboard() {
   return (
     <Layout title="Dashboard" breadcrumbs={breadcrumbs}>
       Dashboard page

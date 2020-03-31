@@ -4,20 +4,25 @@ import { Formik, Field, Form } from 'formik';
 import {
   EuiButton,
   EuiPanel,
-  EuiSpacer,
+  EuiHorizontalRule,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiLink,
+  EuiButtonEmpty,
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
-import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
-import useLink from '../../../common/hooks/useLink';
+import TextField from '../../../eui/components/TextField';
 
-export default function LoginPage({ initialFormValues, validateForm, onSubmit }) {
-  const getLinkProps = useLink();
+const initialFormValues = {
+  username: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
+
+export default function Register({ validateForm, onSubmit }) {
   return (
-    <Layout title="Login" instruction="Please fill in your account to continue.">
+    <Layout title="Register A New Account" instruction="Enter your info to create an account.">
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -27,40 +32,46 @@ export default function LoginPage({ initialFormValues, validateForm, onSubmit })
           <EuiPanel>
             <Form>
               <Field
-                name="username"
-                label="Username"
+                name="fullName"
+                label="Full Name"
                 component={TextField}
                 icon="user"
+              />
+              <Field
+                name="email"
+                label="email"
+                component={TextField}
+                icon="email"
               />
               <Field
                 name="password"
                 label="Password"
                 component={PasswordField}
               />
-              <EuiSpacer />
-              <EuiFlexGroup justifyContent="spaceBetween">
+              <Field
+                name="confirmPassword"
+                label="Re-enter Password"
+                component={PasswordField}
+              />
+              <EuiHorizontalRule />
+
+              <EuiFlexGroup responsive={false}>
                 <EuiFlexItem grow={false}>
                   <EuiButton
+                    fill
                     type="submit"
                     color="primary"
                     isLoading={isSubmitting}
-                    fill
                   >
-                    Log in
+                    Submit
                   </EuiButton>
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
-                  <small>
-                    <EuiLink
-                      color="subdued"
-                      {...getLinkProps('/forgot-password')}
-                    >
-                      Forgot Password?
-                    </EuiLink>
-                  </small>
+                  <EuiButtonEmpty>
+                    Cancel
+                  </EuiButtonEmpty>
                 </EuiFlexItem>
               </EuiFlexGroup>
-
             </Form>
           </EuiPanel>
         )}
@@ -69,15 +80,7 @@ export default function LoginPage({ initialFormValues, validateForm, onSubmit })
   );
 }
 
-LoginPage.propTypes = {
-  initialFormValues: PropTypes.object,
+Register.propTypes = {
   validateForm: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-};
-
-LoginPage.defaultProps = {
-  initialFormValues: {
-    username: '',
-    password: '',
-  },
 };

@@ -1,3 +1,3 @@
-import ResetPwdPage from './containers/ResetPwdPage';
+import ResetPwdContainer from './containers/ResetPwdContainer';
 
-export default ResetPwdPage;
+export default ResetPwdContainer;

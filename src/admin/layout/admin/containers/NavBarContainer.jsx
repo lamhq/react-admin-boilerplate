@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import useLink from '../../../../common/hooks/useLink';
-import NavBarView from '../components/NavBar';
+import NavBar from '../components/NavBar';
 
 const navLinks = [
   {
@@ -42,7 +42,7 @@ function NavBarContainer(props, ref) {
     });
   }
   const links = navLinks.map(item => decorateLink(item));
-  return <NavBarView links={links} ref={ref} />;
+  return <NavBar links={links} ref={ref} />;
 }
 
 export default React.forwardRef(NavBarContainer);

@@ -4,7 +4,7 @@ import {
   EuiPage,
   EuiPageBody,
 } from '@elastic/eui';
-import NavBar from '../containers/NavBar';
+import NavBar from '../containers/NavBarContainer';
 import Header from './Header';
 import styles from '../styles.m.scss';
 

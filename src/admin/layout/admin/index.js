@@ -1,3 +1,3 @@
-import Layout from './containers/Layout';
+import LayoutContainer from './containers/LayoutContainer';
 
-export default Layout;
+export default LayoutContainer;

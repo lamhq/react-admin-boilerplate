@@ -5,7 +5,7 @@ import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
 import { useAlert } from '../../../common/alert';
-import LoginPageView from '../components/LoginPage';
+import Login from '../components/Login';
 
 function validateLoginForm(data) {
   const constraints = {
@@ -26,7 +26,7 @@ function validateLoginForm(data) {
   return toFormikErrors(validate(data, constraints));
 }
 
-export default function LoginPage() {
+export default function LoginContainer() {
   const history = useHistory();
   const location = useLocation();
   const { login } = useApi();
@@ -61,7 +61,7 @@ export default function LoginPage() {
   }
 
   return (
-    <LoginPageView
+    <Login
       validateForm={validateLoginForm}
       onSubmit={handleSubmit}
     />

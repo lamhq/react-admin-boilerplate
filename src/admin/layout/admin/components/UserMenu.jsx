@@ -7,7 +7,7 @@ import {
   EuiHeaderSectionItemButton,
   EuiPopover,
 } from '@elastic/eui';
-import LogoutButton from '../containers/LogoutButton';
+import LogoutButton from '../containers/LogoutButtonContainer';
 
 export default function UserMenu({
   isMenuOpen, onMenuToggle, closeMenu, user,

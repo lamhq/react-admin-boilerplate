@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LayoutView from '../components/Layout';
+import Layout from '../components/Layout';
 import { appName } from '../../../../config';
 
-export default function Layout({ title, children, breadcrumbs }) {
+export default function LayoutContainer({ title, children, breadcrumbs }) {
   const navDrawerRef = React.useRef(null);
 
   function toggleDrawer() {
@@ -17,17 +17,17 @@ export default function Layout({ title, children, breadcrumbs }) {
   }, [title]);
 
   return (
-    <LayoutView
+    <Layout
       breadcrumbs={breadcrumbs}
       toggleDrawer={toggleDrawer}
       ref={navDrawerRef}
     >
       {children}
-    </LayoutView>
+    </Layout>
   );
 }
 
-Layout.propTypes = {
+LayoutContainer.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   breadcrumbs: PropTypes.arrayOf(PropTypes.shape({
@@ -36,7 +36,7 @@ Layout.propTypes = {
   })),
 };
 
-Layout.defaultProps = {
+LayoutContainer.defaultProps = {
   title: '',
   breadcrumbs: null,
 };

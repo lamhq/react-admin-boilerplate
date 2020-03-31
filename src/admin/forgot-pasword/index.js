@@ -1,3 +1,3 @@
-import ForgotPwdPage from './containers/ForgotPwdPage';
+import ForgotPwdContainer from './containers/ForgotPwdContainer';
 
-export default ForgotPwdPage;
+export default ForgotPwdContainer;

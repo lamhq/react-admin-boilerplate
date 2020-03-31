@@ -10,14 +10,11 @@ integrate with backend api
   # register page
   # reset password page
   # login page
-    # translate form input errors (client)
-    # translate form input errors (api)
-    # put link to forgot password page
   # forgot password page
-    # put link on cancel button
-    # reset form values after submiting
   # logout button
-  authorization check
+  # authorization check
+  # admin layout
+  # rename component to containers
   update profile
   user
     list
@@ -36,8 +33,8 @@ handling error
     server error >=500
 enable runtime language switching
 i18n for all components
+404 page
 integrate typescript
-use graphql with library graphql-request
 configure ci/cd with bitbucket pipeline
 host assets in CDN
 # use swr for data fetching

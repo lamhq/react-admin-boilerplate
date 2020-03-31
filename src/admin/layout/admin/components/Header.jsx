@@ -10,7 +10,7 @@ import {
   EuiIcon,
   EuiShowFor,
 } from '@elastic/eui';
-import UserMenu from '../containers/UserMenu';
+import UserMenu from '../containers/UserMenuContainer';
 import styles from '../styles.m.scss';
 
 export default function Header({ toggleDrawer, breadcrumbs }) {

@@ -13,7 +13,7 @@ const initialFormValues = {
   confirmPassword: '',
 };
 
-export default function ResetPwdPage({ validateForm, onSubmit }) {
+export default function ResetPwd({ validateForm, onSubmit }) {
   return (
     <Layout title="Reset Your Password" instruction="Enter your new password here.">
       <Formik
@@ -50,7 +50,7 @@ export default function ResetPwdPage({ validateForm, onSubmit }) {
   );
 }
 
-ResetPwdPage.propTypes = {
+ResetPwd.propTypes = {
   validateForm: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };

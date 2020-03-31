@@ -1,8 +1,8 @@
 import React from 'react';
-import UserMenuView from '../components/UserMenu';
+import UserMenu from '../components/UserMenu';
 import { useIdentity } from '../../../../common/identity';
 
-export default function UserMenu() {
+export default function UserMenuContainer() {
   const [isOpen, setIsOpen] = React.useState(false);
   const { identity } = useIdentity();
 
@@ -15,7 +15,7 @@ export default function UserMenu() {
   }
 
   return (
-    <UserMenuView
+    <UserMenu
       isMenuOpen={isOpen}
       onMenuToggle={onMenuButtonClick}
       closeMenu={closeMenu}

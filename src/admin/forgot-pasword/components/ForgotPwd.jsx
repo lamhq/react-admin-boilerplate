@@ -17,7 +17,7 @@ const initialFormValues = {
   email: '',
 };
 
-export default function ForgotPwdPage({ validateForm, onSubmit }) {
+export default function ForgotPwd({ validateForm, onSubmit }) {
   const getLinkProps = useLink();
   return (
     <Layout title="Forgot Password" instruction="Enter you email to request a new password.">
@@ -64,7 +64,7 @@ export default function ForgotPwdPage({ validateForm, onSubmit }) {
   );
 }
 
-ForgotPwdPage.propTypes = {
+ForgotPwd.propTypes = {
   validateForm: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
