@@ -5,7 +5,7 @@ import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import { useIdentity } from '../../../common/identity';
-import RegisterPage from '../components/RegisterPage';
+import RegisterPageView from '../components/RegisterPage';
 
 function validateForm(data) {
   const constraints = {
@@ -51,7 +51,7 @@ function validateForm(data) {
   return toFormikErrors(validate(data, constraints));
 }
 
-export default function RegisterPageContainer() {
+export default function RegisterPage() {
   const history = useHistory();
   const { alertSuccess, alertError } = useAlert();
   const { register } = useApi();
@@ -80,7 +80,7 @@ export default function RegisterPageContainer() {
   }
 
   return (
-    <RegisterPage
+    <RegisterPageView
       validateForm={validateForm}
       onSubmit={handleSubmit}
     />

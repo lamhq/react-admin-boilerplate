@@ -1,3 +1,3 @@
-import DashboardPage from './components/DashboardPage';
+import DashboardPage from './containers/DashboardPage';
 
 export default DashboardPage;

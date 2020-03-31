@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   EuiAvatar,
   EuiContextMenuPanel,
@@ -33,8 +32,8 @@ export default function UserMenu() {
   );
 
   const items = [
-    <EuiContextMenuItem icon="user" href="/">Profile</EuiContextMenuItem>,
-    <LogoutButton />,
+    <EuiContextMenuItem icon="user" href="/" key="profile">Profile</EuiContextMenuItem>,
+    <LogoutButton key="logout" />,
   ];
 
   return (

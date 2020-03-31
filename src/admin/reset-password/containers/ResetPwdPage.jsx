@@ -4,7 +4,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
-import ResetPwdPage from '../components/ResetPwdPage';
+import ResetPwdPageView from '../components/ResetPwdPage';
 
 function validateForm(data) {
   const constraints = {
@@ -35,7 +35,7 @@ function validateForm(data) {
   return toFormikErrors(validate(data, constraints));
 }
 
-export default function ResetPwdPageContainer() {
+export default function ResetPwdPage() {
   const history = useHistory();
   const location = useLocation();
   const { alertSuccess, alertError } = useAlert();
@@ -77,7 +77,7 @@ export default function ResetPwdPageContainer() {
   }
 
   return (
-    <ResetPwdPage
+    <ResetPwdPageView
       validateForm={validateForm}
       onSubmit={handleSubmit}
     />

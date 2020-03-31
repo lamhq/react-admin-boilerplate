@@ -1,10 +1,10 @@
 import React from 'react';
-import LogoutButton from '../components/LogoutButton';
+import LogoutButtonView from '../components/LogoutButton';
 import { useIdentity } from '../../../../common/identity';
 
-export default function LogoutButtonContainer() {
+export default function LogoutButton() {
   const { clearIdentity } = useIdentity();
   return (
-    <LogoutButton onClick={clearIdentity} />
+    <LogoutButtonView onClick={clearIdentity} />
   );
 }

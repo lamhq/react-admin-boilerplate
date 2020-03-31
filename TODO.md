@@ -17,6 +17,7 @@ integrate with backend api
     # put link on cancel button
     # reset form values after submiting
   # logout button
+  authorization check
   update profile
   user
     list
