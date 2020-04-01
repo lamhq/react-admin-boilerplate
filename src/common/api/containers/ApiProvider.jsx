@@ -66,18 +66,22 @@ export default function ApiProvider({ children, endpoint }) {
     return resp.data;
   }
 
-  async function deleteUser(post) {
-    const resp = await http.delete(`admin/posts/${post.id}`);
+  async function deleteUser(user) {
+    const resp = await http.delete(`admin/users/${user.id}`);
     return resp.data;
   }
 
-  async function createUser(values) {
-    const resp = await http.post('admin/posts', values);
+  async function addUser(data) {
+    const resp = await http.post('admin/users', {
+      email: data.email,
+      displayName: data.displayName,
+      password: data.password,
+    });
     return resp.data;
   }
 
-  async function updateUser(id, values) {
-    const resp = await http.put(`admin/posts/${id}`, values);
+  async function updateUser(id, data) {
+    const resp = await http.put(`admin/users/${id}`, data);
     return resp.data;
   }
 
@@ -90,7 +94,7 @@ export default function ApiProvider({ children, endpoint }) {
     updateProfile,
     getUsers,
     updateUser,
-    createUser,
+    addUser,
     deleteUser,
   };
   // extend all exported functions with http error handling logic

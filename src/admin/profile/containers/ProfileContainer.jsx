@@ -8,7 +8,7 @@ import Profile from '../components/Profile';
 
 function validateForm(data) {
   const constraints = {
-    fullName: {
+    displayName: {
       presence: {
         allowEmpty: false,
         message: '^common/required-input',
@@ -74,7 +74,7 @@ export default function ProfileContainer() {
   const { identity, setIdentity } = useIdentity();
   const { user } = identity;
   const initialValues = {
-    fullName: user.displayName,
+    displayName: user.displayName,
     email: user.email,
     changePassword: false,
     newPassword: '',

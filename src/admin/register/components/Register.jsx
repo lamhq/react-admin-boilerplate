@@ -5,16 +5,13 @@ import {
   EuiButton,
   EuiPanel,
   EuiHorizontalRule,
-  EuiFlexGroup,
-  EuiFlexItem,
-  EuiButtonEmpty,
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import PasswordField from '../../../eui/components/PasswordField';
 import TextField from '../../../eui/components/TextField';
 
 const initialFormValues = {
-  username: '',
+  displayName: '',
   email: '',
   password: '',
   confirmPassword: '',
@@ -32,7 +29,7 @@ export default function Register({ validateForm, onSubmit }) {
           <EuiPanel>
             <Form>
               <Field
-                name="fullName"
+                name="displayName"
                 label="Full Name"
                 component={TextField}
                 icon="user"
@@ -42,36 +39,30 @@ export default function Register({ validateForm, onSubmit }) {
                 label="email"
                 component={TextField}
                 icon="email"
+                autoComplete="off"
               />
               <Field
                 name="password"
                 label="Password"
                 component={PasswordField}
+                autoComplete="off"
               />
               <Field
                 name="confirmPassword"
                 label="Re-enter Password"
                 component={PasswordField}
+                autoComplete="off"
               />
               <EuiHorizontalRule />
 
-              <EuiFlexGroup responsive={false}>
-                <EuiFlexItem grow={false}>
-                  <EuiButton
-                    fill
-                    type="submit"
-                    color="primary"
-                    isLoading={isSubmitting}
-                  >
-                    Submit
-                  </EuiButton>
-                </EuiFlexItem>
-                <EuiFlexItem grow={false}>
-                  <EuiButtonEmpty>
-                    Cancel
-                  </EuiButtonEmpty>
-                </EuiFlexItem>
-              </EuiFlexGroup>
+              <EuiButton
+                fill
+                type="submit"
+                color="primary"
+                isLoading={isSubmitting}
+              >
+                Submit
+              </EuiButton>
             </Form>
           </EuiPanel>
         )}

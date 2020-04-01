@@ -13,26 +13,38 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
-import styles from '../../common.m.scss';
-import Layout from '../../layout/admin';
-import TextField from '../../../eui/components/TextField';
+import useLink from '../../../common/hooks/useLink';
+import styles from '../../../admin/common.m.scss';
+import Layout from '../../../admin/layout/admin';
 import PasswordField from '../../../eui/components/PasswordField';
-import SwitchField from '../../../eui/components/SwitchField';
+import TextField from '../../../eui/components/TextField';
+
+const initialFormValues = {
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
 const breadcrumbs = [
   {
-    text: 'Account Management',
+    text: 'Users',
+    href: '/users',
+  },
+  {
+    text: 'Add',
   },
 ];
 
-export default function Profile({ initialFormValues, validateForm, onSubmit }) {
+export default function AddUser({ validateForm, onSubmit }) {
+  const getLinkProps = useLink();
   return (
-    <Layout title="Edit your profile" breadcrumbs={breadcrumbs}>
+    <Layout title="Add User" breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>Profile Information</h2>
+              <h2>New User</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -42,7 +54,7 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
             validate={validateForm}
             onSubmit={onSubmit}
           >
-            {({ isSubmitting, values }) => (
+            {({ isSubmitting }) => (
               <Form>
                 <Field
                   name="displayName"
@@ -55,34 +67,22 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
                   label="Email"
                   component={TextField}
                   icon="email"
+                  autoComplete="new-password"
                 />
                 <Field
-                  name="changePassword"
-                  label="Change Password"
-                  component={SwitchField}
+                  name="password"
+                  label="Password"
+                  component={PasswordField}
+                  autoComplete="new-password"
                 />
-                {values.changePassword && (
-                <>
-                  <Field
-                    name="currentPassword"
-                    label="Current Password"
-                    component={PasswordField}
-                  />
-                  <Field
-                    name="newPassword"
-                    label="New Password"
-                    component={PasswordField}
-                    autoComplete="off"
-                  />
-                  <Field
-                    name="confirmPassword"
-                    label="Re-enter Password"
-                    component={PasswordField}
-                    autoComplete="off"
-                  />
-                </>
-                )}
+                <Field
+                  name="confirmPassword"
+                  label="Re-enter Password"
+                  component={PasswordField}
+                  autoComplete="new-password"
+                />
                 <EuiHorizontalRule />
+
                 <EuiFlexGroup responsive={false}>
                   <EuiFlexItem grow={false}>
                     <EuiButton
@@ -95,7 +95,7 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
                     </EuiButton>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
-                    <EuiButtonEmpty>
+                    <EuiButtonEmpty {...getLinkProps('/users')}>
                       Cancel
                     </EuiButtonEmpty>
                   </EuiFlexItem>
@@ -109,8 +109,7 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
   );
 }
 
-Profile.propTypes = {
-  initialFormValues: PropTypes.object.isRequired,
+AddUser.propTypes = {
   validateForm: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };

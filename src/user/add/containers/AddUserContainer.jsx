@@ -4,8 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
-import { useIdentity } from '../../../common/identity';
-import Register from '../components/Register';
+import AddUser from '../components/AddUser';
 
 function validateForm(data) {
   const constraints = {
@@ -51,18 +50,16 @@ function validateForm(data) {
   return toFormikErrors(validate(data, constraints));
 }
 
-export default function RegisterContainer() {
+export default function AddUserContainer() {
   const history = useHistory();
   const { alertSuccess, alertError } = useAlert();
-  const { register } = useApi();
-  const { setIdentity } = useIdentity();
+  const { addUser } = useApi();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
-      const identity = await register(values);
-      setIdentity(identity);
-      await alertSuccess('register/success');
-      history.push('/');
+      await addUser(values);
+      await alertSuccess('add-user/success');
+      history.push('/users');
     } catch (error) {
       if (!error.code) {
         alertError('common/runtime');
@@ -80,7 +77,7 @@ export default function RegisterContainer() {
   }
 
   return (
-    <Register
+    <AddUser
       validateForm={validateForm}
       onSubmit={handleSubmit}
     />

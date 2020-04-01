@@ -27,16 +27,16 @@ const routes = [
   },
   {
     path: '/users/add',
-    component: lazy(() => import('./admin/user/add/components/AddUserPage')),
+    component: lazy(() => import('./user/add')),
   },
-  {
-    path: '/users/edit/:id',
-    component: lazy(() => import('./admin/user/edit/components/EditUserPage')),
-  },
-  {
-    path: '/users',
-    component: lazy(() => import('./admin/user/list/components/ListUserPage')),
-  },
+  // {
+  //   path: '/users/edit/:id',
+  //   component: lazy(() => import('./user/edit/components/EditUserPage')),
+  // },
+  // {
+  //   path: '/users',
+  //   component: lazy(() => import('./user/list/components/ListUserPage')),
+  // },
 ];
 
 export default routes;

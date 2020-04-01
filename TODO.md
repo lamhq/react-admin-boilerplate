@@ -17,8 +17,8 @@ integrate with backend api
   # rename component to containers
   # update profile
   user
+    # add
     list
-    create
     update
     delete
 handling error

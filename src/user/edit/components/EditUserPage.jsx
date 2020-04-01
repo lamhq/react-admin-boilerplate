@@ -13,8 +13,8 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
-import styles from '../../../common.m.scss';
-import Layout from '../../../layout/admin';
+import styles from '../../../admin/common.m.scss';
+import Layout from '../../../admin/layout/admin';
 
 const breadcrumbs = [
   {
@@ -22,18 +22,21 @@ const breadcrumbs = [
     href: '/users',
   },
   {
-    text: 'Add',
+    text: 'Edit',
   },
 ];
 
-export default function AddUserPage() {
+export default function EditUserPage() {
   return (
-    <Layout title="Add User" breadcrumbs={breadcrumbs}>
+    <Layout title="Edit User" breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>New User</h2>
+              <h2>
+                Edit User&nbsp;
+                <strong>admin</strong>
+              </h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -41,6 +44,7 @@ export default function AddUserPage() {
           <form>
             <EuiFormRow
               label="Username"
+              helpText="Username can't be changed after creation."
             >
               <EuiFieldText
                 autoComplete="off"
@@ -48,6 +52,7 @@ export default function AddUserPage() {
                 value=""
                 onChange={() => null}
                 isInvalid={false}
+                disabled
               />
             </EuiFormRow>
 
@@ -66,7 +71,7 @@ export default function AddUserPage() {
             <EuiFormRow label="Full name">
               <EuiFieldText
                 autoComplete="off"
-                name="fullName"
+                name="displayName"
                 value=""
                 onChange={() => null}
                 disabled={false}
@@ -74,10 +79,22 @@ export default function AddUserPage() {
               />
             </EuiFormRow>
 
-            <EuiFormRow label="Password">
+            <EuiFormRow label="Current Password">
               <EuiFieldText
                 autoComplete="off"
-                name="password"
+                name="currentPassword"
+                type="password"
+                value=""
+                onChange={() => null}
+                disabled={false}
+                isInvalid={false}
+              />
+            </EuiFormRow>
+
+            <EuiFormRow label="New Password">
+              <EuiFieldText
+                autoComplete="off"
+                name="newPassword"
                 type="password"
                 value=""
                 onChange={() => null}
