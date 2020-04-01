@@ -15,7 +15,7 @@ integrate with backend api
   # authorization check
   # admin layout
   # rename component to containers
-  update profile
+  # update profile
   user
     list
     create
@@ -33,6 +33,7 @@ handling error
     server error >=500
 enable runtime language switching
 i18n for all components
+resolve missing translations
 404 page
 integrate typescript
 configure ci/cd with bitbucket pipeline

@@ -21,4 +21,6 @@ NavBar.propTypes = {
   })).isRequired,
 };
 
+NavBar.displayName = 'NavBar';
+
 export default NavBar;

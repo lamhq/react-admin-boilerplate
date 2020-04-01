@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import {
   EuiPage,
   EuiPageBody,
+  EuiSpacer,
 } from '@elastic/eui';
 import NavBar from '../containers/NavBarContainer';
 import Header from './Header';
+import Alert from '../../../../common/alert/containers/Alert';
 import styles from '../styles.m.scss';
 
 const Layout = React.forwardRef(({ children, breadcrumbs, toggleDrawer }, navDrawerRef) => (
@@ -15,6 +17,8 @@ const Layout = React.forwardRef(({ children, breadcrumbs, toggleDrawer }, navDra
     <div className={styles.contentWrapper}>
       <EuiPage>
         <EuiPageBody>
+          <Alert />
+          <EuiSpacer size="m" />
           {children}
         </EuiPageBody>
       </EuiPage>
@@ -34,5 +38,7 @@ Layout.propTypes = {
 Layout.defaultProps = {
   breadcrumbs: null,
 };
+
+Layout.displayName = 'Layout';
 
 export default Layout;
