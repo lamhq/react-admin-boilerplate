@@ -13,7 +13,7 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
-import useLink from '../../../common/hooks/useLink';
+import useClientNav from '../../../common/hooks/useClientNav';
 import styles from '../../../admin/common.m.scss';
 import Layout from '../../../admin/layout/admin';
 import PasswordField from '../../../eui/components/PasswordField';
@@ -37,7 +37,7 @@ const breadcrumbs = [
 ];
 
 export default function AddUser({ validateForm, onSubmit }) {
-  const getLinkProps = useLink();
+  const { getLinkProps } = useClientNav();
   return (
     <Layout title="Add User" breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>

@@ -11,14 +11,14 @@ import {
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
-import useLink from '../../../common/hooks/useLink';
+import useClientNav from '../../../common/hooks/useClientNav';
 
 const initialFormValues = {
   email: '',
 };
 
 export default function ForgotPwd({ validateForm, onSubmit }) {
-  const getLinkProps = useLink();
+  const { getLinkProps } = useClientNav();
   return (
     <Layout title="Forgot Password" instruction="Enter you email to request a new password.">
       <Formik

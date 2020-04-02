@@ -19,7 +19,6 @@ export default function PostAddPage({ history }) {
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
-      console.log(values);
       // update database
       await addPost(values);
 

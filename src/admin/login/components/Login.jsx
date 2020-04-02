@@ -12,10 +12,10 @@ import {
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
-import useLink from '../../../common/hooks/useLink';
+import useClientNav from '../../../common/hooks/useClientNav';
 
 export default function Login({ initialFormValues, validateForm, onSubmit }) {
-  const getLinkProps = useLink();
+  const { getLinkProps } = useClientNav();
   return (
     <Layout title="Login" instruction="Please fill in your account to continue.">
       <Formik

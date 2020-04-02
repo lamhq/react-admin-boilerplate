@@ -5,6 +5,7 @@ import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ResetPwd from '../components/ResetPwd';
+import useClientNav from '../../../common/hooks/useClientNav';
 
 function validateForm(data) {
   const constraints = {
@@ -40,6 +41,7 @@ export default function ResetPwdContainer() {
   const location = useLocation();
   const { alertSuccess, alertError } = useAlert();
   const { resetPassword } = useApi();
+  const { redirect } = useClientNav();
 
   function getResetPasswordToken() {
     const params = new URLSearchParams(location.search);
@@ -49,7 +51,7 @@ export default function ResetPwdContainer() {
   // redirect to login page if error
   React.useEffect(() => {
     if (!getResetPasswordToken()) {
-      history.push('/');
+      redirect('/');
     }
   }, []);
 
@@ -58,8 +60,8 @@ export default function ResetPwdContainer() {
       const { password } = values;
       const code = getResetPasswordToken();
       await resetPassword(code, password);
-      await alertSuccess('reset-password/success');
-      history.push('/login');
+      alertSuccess('reset-password/success');
+      redirect('/login');
     } catch (error) {
       if (!error.code) {
         alertError('common/runtime');

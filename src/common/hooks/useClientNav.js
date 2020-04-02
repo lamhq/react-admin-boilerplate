@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 
-export default function useLink() {
+export default function useClientNav() {
   const history = useHistory();
 
   function getLinkProps(href) {
@@ -15,5 +15,13 @@ export default function useLink() {
     };
   }
 
-  return getLinkProps;
+  function redirect(link) {
+    // set a delay to prevent issue state update on an unmounted component
+    setTimeout(() => history.push(link), 10);
+  }
+
+  return {
+    getLinkProps,
+    redirect,
+  };
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import validate from 'validate.js';
-import { useHistory } from 'react-router-dom';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import { useIdentity } from '../../../common/identity';
 import Register from '../components/Register';
+import useClientNav from '../../../common/hooks/useClientNav';
 
 function validateForm(data) {
   const constraints = {
@@ -52,17 +52,17 @@ function validateForm(data) {
 }
 
 export default function RegisterContainer() {
-  const history = useHistory();
   const { alertSuccess, alertError } = useAlert();
   const { register } = useApi();
   const { setIdentity } = useIdentity();
+  const { redirect } = useClientNav();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
       const identity = await register(values);
       setIdentity(identity);
-      await alertSuccess('register/success');
-      history.push('/');
+      alertSuccess('register/success');
+      redirect('/');
     } catch (error) {
       if (!error.code) {
         alertError('common/runtime');

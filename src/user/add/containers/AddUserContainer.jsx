@@ -1,10 +1,10 @@
 import React from 'react';
 import validate from 'validate.js';
-import { useHistory } from 'react-router-dom';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import AddUser from '../components/AddUser';
+import useClientNav from '../../../common/hooks/useClientNav';
 
 function validateForm(data) {
   const constraints = {
@@ -51,14 +51,14 @@ function validateForm(data) {
 }
 
 export default function AddUserContainer() {
-  const history = useHistory();
   const { alertSuccess, alertError } = useAlert();
   const { addUser } = useApi();
+  const { redirect } = useClientNav();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
       await addUser(values);
-      history.push('/users');
+      redirect('/users');
       alertSuccess('add-user/success');
     } catch (error) {
       if (!error.code) {

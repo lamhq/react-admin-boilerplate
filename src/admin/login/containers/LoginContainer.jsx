@@ -1,11 +1,12 @@
 import React from 'react';
 import validate from 'validate.js';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
 import { useAlert } from '../../../common/alert';
 import Login from '../components/Login';
+import useClientNav from '../../../common/hooks/useClientNav';
 
 function validateLoginForm(data) {
   const constraints = {
@@ -27,15 +28,15 @@ function validateLoginForm(data) {
 }
 
 export default function LoginContainer() {
-  const history = useHistory();
   const location = useLocation();
   const { login } = useApi();
   const { setIdentity } = useIdentity();
   const { alertError } = useAlert();
+  const { redirect } = useClientNav();
 
   function goBackPrevPage() {
     const { from } = location.state || { from: { pathname: '/' } };
-    history.push(from);
+    redirect(from);
   }
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {

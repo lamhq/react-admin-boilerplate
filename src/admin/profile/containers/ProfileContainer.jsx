@@ -85,7 +85,7 @@ export default function ProfileContainer() {
   async function handleSubmit(values, { setSubmitting, setErrors, resetForm }) {
     try {
       const newUser = await updateProfile(values);
-      await alertSuccess('update-profile/success');
+      alertSuccess('update-profile/success');
       setIdentity({
         ...identity,
         user: newUser,
