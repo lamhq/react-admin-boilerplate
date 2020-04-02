@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { getIn, useField } from 'formik';
+import { useField } from 'formik';
 import {
   EuiSwitch,
   EuiFormRow,
@@ -10,10 +10,8 @@ import {
 export default function SwitchField({ label, name }) {
   const { t } = useTranslation();
   const [field, meta] = useField(name);
-  const touchVal = getIn(meta.touched, field.name);
-  const errText = getIn(meta.errors, field.name);
-  const hasError = touchVal && (errText !== undefined);
-  const localizedErrText = Array.isArray(errText) ? t(...errText) : t(errText);
+  const hasError = meta.touched && meta.error !== undefined;
+  const errText = Array.isArray(meta.error) ? t(...meta.error) : t(meta.error);
   function handleChange() {
     meta.setFieldValue(field.name, !field.value);
   }
@@ -21,7 +19,7 @@ export default function SwitchField({ label, name }) {
     <EuiFormRow
       label=""
       isInvalid={hasError}
-      error={localizedErrText}
+      error={errText}
     >
       <EuiSwitch
         label={label}

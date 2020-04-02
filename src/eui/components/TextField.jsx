@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { getIn, useField } from 'formik';
+import { useField } from 'formik';
 import {
   EuiFieldText,
   EuiFormRow,
@@ -10,15 +10,13 @@ import {
 export default function TextField({ label, name, ...rest }) {
   const { t } = useTranslation();
   const [field, meta] = useField(name);
-  const touchVal = getIn(meta.touched, field.name);
-  const errText = getIn(meta.errors, field.name);
-  const hasError = touchVal && (errText !== undefined);
-  const localizedErrText = Array.isArray(errText) ? t(...errText) : t(errText);
+  const hasError = meta.touched && meta.error !== undefined;
+  const errText = Array.isArray(meta.error) ? t(...meta.error) : t(meta.error);
   return (
     <EuiFormRow
       label={label}
       isInvalid={hasError}
-      error={localizedErrText}
+      error={errText}
     >
       <EuiFieldText
         isInvalid={hasError}
