@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { getIn } from 'formik';
+import { getIn, useField } from 'formik';
 import {
   EuiFieldPassword,
   EuiFormRow,
 } from '@elastic/eui';
 
-export default function PasswordField(props) {
+export default function PasswordField({ label, name, ...rest }) {
   const { t } = useTranslation();
-  const {
-    field,
-    form: { touched, errors },
-    label,
-    ...rest
-  } = props;
-  const touchVal = getIn(touched, field.name);
-  const errText = getIn(errors, field.name);
+  const [field, meta] = useField(name);
+  const touchVal = getIn(meta.touched, field.name);
+  const errText = getIn(meta.errors, field.name);
   const hasError = touchVal && (errText !== undefined);
   const localizedErrText = Array.isArray(errText) ? t(...errText) : t(errText);
   return (
@@ -35,8 +30,7 @@ export default function PasswordField(props) {
 }
 
 PasswordField.propTypes = {
-  field: PropTypes.object.isRequired,
-  form: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
   label: PropTypes.string,
 };
 

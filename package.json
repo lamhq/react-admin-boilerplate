@@ -46,8 +46,7 @@
     "@elastic/eui": "^20.1.0",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
-    "faker": "^4.1.0",
-    "formik": "^1.5.7",
+    "formik": "^2.1.4",
     "history": "^4.7.2",
     "i18next": "^19.3.3",
     "i18next-browser-languagedetector": "^4.0.2",
@@ -58,7 +57,6 @@
     "react-dom": "^16.13.1",
     "react-i18next": "^11.3.4",
     "react-router-dom": "^5.0.1",
-    "react-select": "^3.0.4",
     "validate.js": "^0.13.1"
   }
 }

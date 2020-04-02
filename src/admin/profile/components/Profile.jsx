@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import {
   EuiPageContent,
   EuiPageContentHeader,
@@ -44,40 +44,34 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
           >
             {({ isSubmitting, values }) => (
               <Form>
-                <Field
+                <TextField
                   name="displayName"
                   label="Full Name"
-                  component={TextField}
                   icon="user"
                 />
-                <Field
+                <TextField
                   name="email"
                   label="Email"
-                  component={TextField}
                   icon="email"
                 />
-                <Field
+                <SwitchField
                   name="changePassword"
                   label="Change Password"
-                  component={SwitchField}
                 />
                 {values.changePassword && (
                 <>
-                  <Field
+                  <PasswordField
                     name="currentPassword"
                     label="Current Password"
-                    component={PasswordField}
                   />
-                  <Field
+                  <PasswordField
                     name="newPassword"
                     label="New Password"
-                    component={PasswordField}
                     autoComplete="off"
                   />
-                  <Field
+                  <PasswordField
                     name="confirmPassword"
                     label="Re-enter Password"
-                    component={PasswordField}
                     autoComplete="off"
                   />
                 </>

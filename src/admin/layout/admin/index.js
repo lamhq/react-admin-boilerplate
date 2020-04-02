@@ -1,3 +1,3 @@
-import LayoutContainer from './containers/LayoutContainer';
+import AdminLayoutContainer from './containers/AdminLayoutContainer';
 
-export default LayoutContainer;
+export default AdminLayoutContainer;

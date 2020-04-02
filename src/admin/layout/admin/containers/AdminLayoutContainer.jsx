@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../components/Layout';
 import { appName } from '../../../../config';
+import withAuth from '../../../../common/identity/hocs/withAuth';
 
-export default function LayoutContainer({ title, children, breadcrumbs }) {
+function AdminLayoutContainer({ title, children, breadcrumbs }) {
   const navDrawerRef = React.useRef(null);
 
   function toggleDrawer() {
@@ -27,7 +28,7 @@ export default function LayoutContainer({ title, children, breadcrumbs }) {
   );
 }
 
-LayoutContainer.propTypes = {
+AdminLayoutContainer.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   breadcrumbs: PropTypes.arrayOf(PropTypes.shape({
@@ -36,7 +37,9 @@ LayoutContainer.propTypes = {
   })),
 };
 
-LayoutContainer.defaultProps = {
+AdminLayoutContainer.defaultProps = {
   title: '',
   breadcrumbs: null,
 };
+
+export default withAuth('/login')(AdminLayoutContainer);

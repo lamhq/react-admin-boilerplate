@@ -56,14 +56,21 @@ export default function ApiProvider({ children, endpoint }) {
     return resp.data;
   }
 
-  async function getUsers(page = 0, limit = 10) {
-    const resp = await http.get('admin/posts', {
+  async function findUsers(search = '', sort = 'username', dir = 'asc', page = 0, limit = 10) {
+    const resp = await http.get('admin/users', {
       params: {
         offset: page * limit,
         limit,
+        search,
+        sort,
+        dir,
       },
     });
-    return resp.data;
+    const { meta, data } = resp.data;
+    return {
+      totalItemCount: meta.total,
+      filteredItems: data,
+    };
   }
 
   async function deleteUser(user) {
@@ -92,7 +99,7 @@ export default function ApiProvider({ children, endpoint }) {
     resetPassword,
     register,
     updateProfile,
-    getUsers,
+    findUsers,
     updateUser,
     addUser,
     deleteUser,

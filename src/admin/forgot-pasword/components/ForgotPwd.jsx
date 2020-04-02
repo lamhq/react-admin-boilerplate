@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import {
   EuiButton,
   EuiPanel,
@@ -29,10 +29,9 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
         {({ isSubmitting }) => (
           <EuiPanel>
             <Form>
-              <Field
+              <TextField
                 name="email"
                 label="Email"
-                component={TextField}
                 icon="email"
               />
               <EuiSpacer />

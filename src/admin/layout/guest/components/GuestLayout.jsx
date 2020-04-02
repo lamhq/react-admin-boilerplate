@@ -13,7 +13,7 @@ import { appName } from '../../../../config';
 import styles from './styles.m.scss';
 import Alert from '../../../../common/alert/containers/Alert';
 
-export default function Layout({ title, instruction, children }) {
+export default function GuestLayout({ title, instruction, children }) {
   React.useEffect(() => {
     if (title) {
       document.title = `${title} - ${appName}`;
@@ -51,13 +51,13 @@ export default function Layout({ title, instruction, children }) {
   );
 }
 
-Layout.propTypes = {
+GuestLayout.propTypes = {
   children: PropTypes.node.isRequired,
   title: PropTypes.string,
   instruction: PropTypes.string,
 };
 
-Layout.defaultProps = {
+GuestLayout.defaultProps = {
   title: '',
   instruction: '',
 };

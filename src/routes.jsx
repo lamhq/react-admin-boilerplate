@@ -33,10 +33,10 @@ const routes = [
   //   path: '/users/edit/:id',
   //   component: lazy(() => import('./user/edit/components/EditUserPage')),
   // },
-  // {
-  //   path: '/users',
-  //   component: lazy(() => import('./user/list/components/ListUserPage')),
-  // },
+  {
+    path: '/users',
+    component: lazy(() => import('./user/list')),
+  },
 ];
 
 export default routes;

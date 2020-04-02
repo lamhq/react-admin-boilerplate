@@ -1,3 +1,3 @@
-import Layout from './components/Layout';
+import GuestLayout from './components/GuestLayout';
 
-export default Layout;
+export default GuestLayout;

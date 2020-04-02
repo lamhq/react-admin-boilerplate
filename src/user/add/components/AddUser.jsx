@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import {
   EuiPageContent,
   EuiPageContentHeader,
@@ -56,29 +56,25 @@ export default function AddUser({ validateForm, onSubmit }) {
           >
             {({ isSubmitting }) => (
               <Form>
-                <Field
+                <TextField
                   name="displayName"
                   label="Full Name"
-                  component={TextField}
                   icon="user"
                 />
-                <Field
+                <TextField
                   name="email"
                   label="Email"
-                  component={TextField}
                   icon="email"
                   autoComplete="new-password"
                 />
-                <Field
+                <PasswordField
                   name="password"
                   label="Password"
-                  component={PasswordField}
                   autoComplete="new-password"
                 />
-                <Field
+                <PasswordField
                   name="confirmPassword"
                   label="Re-enter Password"
-                  component={PasswordField}
                   autoComplete="new-password"
                 />
                 <EuiHorizontalRule />

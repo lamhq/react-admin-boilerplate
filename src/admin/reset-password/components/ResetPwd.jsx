@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import {
   EuiButton,
   EuiPanel,
@@ -24,15 +24,13 @@ export default function ResetPwd({ validateForm, onSubmit }) {
         {({ isSubmitting }) => (
           <EuiPanel>
             <Form>
-              <Field
+              <PasswordField
                 name="password"
                 label="Password"
-                component={PasswordField}
               />
-              <Field
+              <PasswordField
                 name="confirmPassword"
                 label="Re-enter Password"
-                component={PasswordField}
               />
               <EuiButton
                 type="submit"

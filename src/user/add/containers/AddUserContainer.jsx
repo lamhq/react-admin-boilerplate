@@ -58,8 +58,8 @@ export default function AddUserContainer() {
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
       await addUser(values);
-      await alertSuccess('add-user/success');
       history.push('/users');
+      alertSuccess('add-user/success');
     } catch (error) {
       if (!error.code) {
         alertError('common/runtime');

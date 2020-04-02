@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import {
   EuiButton,
   EuiPanel,
@@ -26,16 +26,14 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
         {({ isSubmitting }) => (
           <EuiPanel>
             <Form>
-              <Field
+              <TextField
                 name="username"
                 label="Username"
-                component={TextField}
                 icon="user"
               />
-              <Field
+              <PasswordField
                 name="password"
                 label="Password"
-                component={PasswordField}
               />
               <EuiSpacer />
               <EuiFlexGroup justifyContent="spaceBetween">

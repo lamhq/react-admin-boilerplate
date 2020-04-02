@@ -1,4 +1,4 @@
-import faker from 'faker';
+import PropTypes from 'prop-types';
 import React from 'react';
 import {
   EuiPageContent,
@@ -14,8 +14,7 @@ import {
   EuiSpacer,
   EuiFieldSearch,
 } from '@elastic/eui';
-import Layout from '../../../layout/admin';
-import useLoadingState from '../../../../common/hooks/useLoadingState';
+import Layout from '../../../admin/layout/admin';
 
 const breadcrumbs = [
   {
@@ -23,59 +22,22 @@ const breadcrumbs = [
   },
 ];
 
-const users = Array.from(Array(40), () => ({
-  id: faker.random.number().toString(),
-  username: faker.internet.userName(),
-  fullname: `${faker.name.firstName()} ${faker.name.lastName()}`,
-  email: faker.internet.email(),
-  dob: faker.date.past,
-}));
-
-function filterUsers(query = '', sort = 'username', dir = 'asc', limit = 10, offset = 0) {
-  function compare(a, b) {
-    let comparison = 0;
-    if (a[sort] > b[sort]) {
-      comparison = 1;
-    } else if (a[sort] < b[sort]) {
-      comparison = -1;
-    }
-    return comparison * (dir === 'asc' ? 1 : -1);
-  }
-  let filteredItems = users
-    .filter(user => user.username.indexOf(query) > -1)
-    .slice().sort(compare);
-  const totalItemCount = filteredItems.length;
-  filteredItems = filteredItems.slice(offset, offset + limit);
-  return {
-    totalItemCount,
-    filteredItems,
-  };
-}
-
-export default function ListUserPage() {
-  const [query, setQuery] = React.useState('');
-  const [pageIndex, setPageIndex] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(10);
-  const [sortField, setSortField] = React.useState('username');
-  const [sortDirection, setSortDirection] = React.useState('asc');
-  const [selectedItems, updateSelectedItems] = React.useState([]);
-  const {
-    data,
-    load: loadUsers,
-    loading,
-    error,
-  } = useLoadingState(filterUsers);
-
-  let totalItemCount = 0;
-  let items = [];
-  if (data !== null) {
-    ({ totalItemCount, filteredItems: items } = data);
-  }
-
+export default function UserList({
+  onSearch,
+  onSelectionChange,
+  onTableChange,
+  isLoading,
+  loadError,
+  items,
+  pagination,
+  sorting,
+  selectedItems,
+  search,
+}) {
   const columns = [
     {
-      field: 'username',
-      name: 'User Name',
+      field: 'displayName',
+      name: 'Full Name',
       sortable: true,
       truncateText: true,
       render: (username, record) => (
@@ -87,12 +49,6 @@ export default function ListUserPage() {
     {
       field: 'email',
       name: 'Email Address',
-      sortable: true,
-      truncateText: true,
-    },
-    {
-      field: 'fullname',
-      name: 'Full Name',
       sortable: true,
       truncateText: true,
     },
@@ -130,42 +86,13 @@ export default function ListUserPage() {
 
   const selectionConfig = {
     itemId: 'id',
-    onSelectionChange: (updatedSelection) => {
-      updateSelectedItems(updatedSelection);
-    },
+    onSelectionChange,
   };
 
-  const pagination = {
-    pageIndex,
-    pageSize,
-    totalItemCount,
-    pageSizeOptions: [10, 20, 50, 100],
-  };
-
-  const sorting = {
-    sort: {
-      field: sortField,
-      direction: sortDirection,
-    },
-  };
-
-  React.useEffect(() => {
-    loadUsers(query, sortField, sortDirection, pageSize, pageSize * pageIndex);
-  }, [query, pageIndex, pageSize, sortField, sortDirection]);
-
-  function handleTableChange(nextValues) {
-    setPageIndex(nextValues.page.index);
-    setPageSize(nextValues.page.size);
-    setSortField(nextValues.sort.field);
-    setSortDirection(nextValues.sort.direction);
-  }
 
   function handleSearchChange(e) {
     const { value } = e.target;
-    setTimeout(() => {
-      setQuery(value);
-      setPageIndex(0);
-    }, 700);
+    setTimeout(() => onSearch(value), 700);
   }
 
   return (
@@ -199,7 +126,7 @@ export default function ListUserPage() {
             <EuiFlexItem grow>
               <EuiFieldSearch
                 placeholder="Enter keyword to search"
-                defaultValue={query}
+                defaultValue={search}
                 onChange={handleSearchChange}
                 isClearable
                 fullWidth
@@ -213,8 +140,8 @@ export default function ListUserPage() {
             pagination={pagination}
             sorting={sorting}
             selection={selectionConfig}
-            onChange={handleTableChange}
-            loading={loading}
+            onChange={onTableChange}
+            loading={isLoading}
             itemId="id"
             rowHeader="id"
             responsive
@@ -222,10 +149,27 @@ export default function ListUserPage() {
             isSelectable
             isExpandable={false}
             noItemsMessage="No items match."
-            error={error}
+            error={loadError}
           />
         </EuiPageContentBody>
       </EuiPageContent>
     </Layout>
   );
 }
+
+UserList.propTypes = {
+  items: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  loadError: PropTypes.string,
+  selectedItems: PropTypes.array.isRequired,
+  onSelectionChange: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired,
+  pagination: PropTypes.object.isRequired,
+  sorting: PropTypes.object.isRequired,
+  onTableChange: PropTypes.func.isRequired,
+};
+
+UserList.defaultProps = {
+  loadError: '',
+};
