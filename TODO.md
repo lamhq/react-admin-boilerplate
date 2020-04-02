@@ -1,8 +1,9 @@
 # Todo
 ```yml
 # update formik input field with useField hook
-fix error "React state update on an unmounted component" when creating user
-add column Joined date in user list
+# fix issue "update on an unmounted component"
+# Add column Joined date in user list
+use client navigation for all link buttons
 # integrate elastic ui
 # remove react-hot-loader, fix hmr
 # remove package @babel/polyfill

@@ -105,7 +105,7 @@ export function formatDateTime(value) {
  * @param {String} value
  */
 export function formatDate(value) {
-  return moment(value).format('DD MMM YYYY');
+  return moment(value).format('DD/MM/YYYY');
 }
 
 /**

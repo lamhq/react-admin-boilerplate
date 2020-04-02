@@ -15,6 +15,7 @@ import {
   EuiFieldSearch,
 } from '@elastic/eui';
 import Layout from '../../../admin/layout/admin';
+import { formatDate } from '../../../common/utils';
 
 const breadcrumbs = [
   {
@@ -53,7 +54,15 @@ export default function UserList({
       truncateText: true,
     },
     {
+      field: 'createdAt',
+      name: 'Joined Date',
+      sortable: true,
+      truncateText: true,
+      render: createdAt => formatDate(createdAt),
+    },
+    {
       name: 'Actions',
+      width: '200px',
       actions: [
         {
           name: 'Delete',
