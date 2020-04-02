@@ -5,7 +5,7 @@ import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ResetPwd from '../components/ResetPwd';
-import useClientNav from '../../../common/hooks/useClientNav';
+import useNavigator from '../../../common/hooks/useNavigator';
 
 function validateForm(data) {
   const constraints = {
@@ -41,7 +41,7 @@ export default function ResetPwdContainer() {
   const location = useLocation();
   const { alertSuccess, alertError } = useAlert();
   const { resetPassword } = useApi();
-  const { redirect } = useClientNav();
+  const { redirect } = useNavigator();
 
   function getResetPasswordToken() {
     const params = new URLSearchParams(location.search);

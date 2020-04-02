@@ -16,6 +16,7 @@ import {
 } from '@elastic/eui';
 import Layout from '../../../admin/layout/admin';
 import { formatDate } from '../../../common/utils';
+import useNavigator from '../../../common/hooks/useNavigator';
 
 const breadcrumbs = [
   {
@@ -35,6 +36,7 @@ export default function UserList({
   selectedItems,
   search,
 }) {
+  const { redirect, getLinkProps } = useNavigator();
   const columns = [
     {
       field: 'displayName',
@@ -42,7 +44,7 @@ export default function UserList({
       sortable: true,
       truncateText: true,
       render: (username, record) => (
-        <EuiLink href={`/users/edit/${record.id}`}>
+        <EuiLink {...getLinkProps(`/users/edit/${record.id}`)}>
           {username}
         </EuiLink>
       ),
@@ -79,15 +81,7 @@ export default function UserList({
           description: 'Edit this user',
           icon: 'pencil',
           type: 'icon',
-          onClick: () => {},
-        },
-        {
-          name: 'View',
-          isPrimary: true,
-          description: 'View this user',
-          icon: 'eye',
-          type: 'icon',
-          onClick: () => {},
+          onClick: user => redirect(`/users/edit/${user.id}`),
         },
       ],
     },
@@ -114,7 +108,7 @@ export default function UserList({
             </EuiTitle>
           </EuiPageContentHeaderSection>
           <EuiPageContentHeaderSection>
-            <EuiButton data-test-subj="createUserButton" href="/users/add">
+            <EuiButton {...getLinkProps('/users/add')}>
               Create user
             </EuiButton>
           </EuiPageContentHeaderSection>

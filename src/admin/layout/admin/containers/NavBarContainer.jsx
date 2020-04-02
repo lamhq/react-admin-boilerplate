@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import useClientNav from '../../../../common/hooks/useClientNav';
+import useNavigator from '../../../../common/hooks/useNavigator';
 import NavBar from '../components/NavBar';
 
 const navLinks = [
@@ -32,7 +32,7 @@ const navLinks = [
 ];
 
 function NavBarContainer(props, ref) {
-  const { getLinkProps } = useClientNav();
+  const { getLinkProps } = useNavigator();
   const location = useLocation();
   function decorateLink(item) {
     return ({

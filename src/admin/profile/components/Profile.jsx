@@ -18,6 +18,7 @@ import Layout from '../../layout/admin';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
 import SwitchField from '../../../eui/components/SwitchField';
+import useNavigator from '../../../common/hooks/useNavigator';
 
 const breadcrumbs = [
   {
@@ -26,6 +27,7 @@ const breadcrumbs = [
 ];
 
 export default function Profile({ initialFormValues, validateForm, onSubmit }) {
+  const { getLinkProps } = useNavigator();
   return (
     <Layout title="Edit your profile" breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
@@ -89,7 +91,7 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
                     </EuiButton>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
-                    <EuiButtonEmpty>
+                    <EuiButtonEmpty {...getLinkProps('/')}>
                       Cancel
                     </EuiButtonEmpty>
                   </EuiFlexItem>

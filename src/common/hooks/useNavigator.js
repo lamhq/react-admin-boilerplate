@@ -1,7 +1,8 @@
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
-export default function useClientNav() {
+export default function useNavigator() {
   const history = useHistory();
+  const location = useLocation();
 
   function getLinkProps(href) {
     function onClick(e) {
@@ -20,8 +21,14 @@ export default function useClientNav() {
     setTimeout(() => history.push(link), 10);
   }
 
+  function goBack() {
+    const { from } = location.state || { from: { pathname: '/' } };
+    redirect(from);
+  }
+
   return {
     getLinkProps,
     redirect,
+    goBack,
   };
 }

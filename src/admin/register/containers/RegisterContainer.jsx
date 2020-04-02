@@ -5,7 +5,7 @@ import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import { useIdentity } from '../../../common/identity';
 import Register from '../components/Register';
-import useClientNav from '../../../common/hooks/useClientNav';
+import useNavigator from '../../../common/hooks/useNavigator';
 
 function validateForm(data) {
   const constraints = {
@@ -55,7 +55,7 @@ export default function RegisterContainer() {
   const { alertSuccess, alertError } = useAlert();
   const { register } = useApi();
   const { setIdentity } = useIdentity();
-  const { redirect } = useClientNav();
+  const { redirect } = useNavigator();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {

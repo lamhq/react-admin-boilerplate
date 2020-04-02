@@ -4,7 +4,7 @@ import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import AddUser from '../components/AddUser';
-import useClientNav from '../../../common/hooks/useClientNav';
+import useNavigator from '../../../common/hooks/useNavigator';
 
 function validateForm(data) {
   const constraints = {
@@ -53,7 +53,7 @@ function validateForm(data) {
 export default function AddUserContainer() {
   const { alertSuccess, alertError } = useAlert();
   const { addUser } = useApi();
-  const { redirect } = useClientNav();
+  const { redirect } = useNavigator();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
