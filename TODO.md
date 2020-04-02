@@ -22,8 +22,10 @@ integrate with backend api
   # update profile
   user
     # add
-    # list
     update
+      fix bug validate email duplication
+    list
+      display failed error when loading list
     delete
 handling error
   # runtime error (exception)

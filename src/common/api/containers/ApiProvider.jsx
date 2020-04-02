@@ -78,6 +78,11 @@ export default function ApiProvider({ children, endpoint }) {
     return resp.data;
   }
 
+  async function getUserDetail(id) {
+    const resp = await http.get(`admin/users/${id}`);
+    return resp.data;
+  }
+
   async function addUser(data) {
     const resp = await http.post('admin/users', {
       email: data.email,
@@ -103,6 +108,7 @@ export default function ApiProvider({ children, endpoint }) {
     updateUser,
     addUser,
     deleteUser,
+    getUserDetail,
   };
   // extend all exported functions with http error handling logic
   Object.keys(contextValue).forEach((key) => {

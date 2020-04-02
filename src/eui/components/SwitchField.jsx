@@ -9,11 +9,11 @@ import {
 
 export default function SwitchField({ label, name }) {
   const { t } = useTranslation();
-  const [field, meta] = useField(name);
+  const [field, meta, helpers] = useField(name);
   const hasError = meta.touched && meta.error !== undefined;
   const errText = Array.isArray(meta.error) ? t(...meta.error) : t(meta.error);
-  function handleChange() {
-    meta.setFieldValue(field.name, !field.value);
+  function handleChange(e) {
+    helpers.setValue(e.target.checked);
   }
   return (
     <EuiFormRow

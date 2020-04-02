@@ -29,10 +29,10 @@ const routes = [
     path: '/users/add',
     component: lazy(() => import('./user/add')),
   },
-  // {
-  //   path: '/users/edit/:id',
-  //   component: lazy(() => import('./user/edit/components/EditUserPage')),
-  // },
+  {
+    path: '/users/edit/:id',
+    component: lazy(() => import('./user/edit')),
+  },
   {
     path: '/users',
     component: lazy(() => import('./user/list')),
