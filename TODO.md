@@ -21,16 +21,12 @@ integrate with backend api
   # rename component to containers
   # update profile
   user
-    # update navigation
-    update
-      # fix bug validate email duplication
-      # add status select box to form
-      api: return error code instead of message
+    # put link in navigation
+    # update
     # add
-      # add status select box
     list
       # add column status
-      display failed error when loading list
+      # display failed error when loading list
     delete
     bulk delete
 handling error

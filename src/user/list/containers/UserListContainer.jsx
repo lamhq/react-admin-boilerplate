@@ -3,7 +3,7 @@ import useLoadingState from '../../../common/hooks/useLoadingState';
 import UserList from '../components/UserList';
 import { useApi } from '../../../common/api';
 
-export default function UserListPage() {
+export default function UserListContainer() {
   const [search, setSearch] = React.useState('');
   const [pageIndex, setPageIndex] = React.useState(0);
   const [pageSize, setPageSize] = React.useState(10);
@@ -60,7 +60,7 @@ export default function UserListPage() {
     <UserList
       items={items}
       isLoading={loading}
-      // loadError={}
+      hasError={!!error}
       selectedItems={selectedItems}
       onSelectionChange={handleSelectionChange}
       search={search}

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   EuiPageContent,
   EuiPageContentHeader,
@@ -30,13 +31,14 @@ export default function UserList({
   onSelectionChange,
   onTableChange,
   isLoading,
-  loadError,
+  hasError,
   items,
   pagination,
   sorting,
   selectedItems,
   search,
 }) {
+  const { t } = useTranslation();
   const { redirect, getLinkProps } = useNavigator();
   const columns = [
     {
@@ -160,7 +162,7 @@ export default function UserList({
             isSelectable
             isExpandable={false}
             noItemsMessage="No items match."
-            error={loadError}
+            error={hasError ? t('common/load-data-fail') : ''}
           />
         </EuiPageContentBody>
       </EuiPageContent>
@@ -171,7 +173,7 @@ export default function UserList({
 UserList.propTypes = {
   items: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  loadError: PropTypes.string,
+  hasError: PropTypes.bool,
   selectedItems: PropTypes.array.isRequired,
   onSelectionChange: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
@@ -182,5 +184,5 @@ UserList.propTypes = {
 };
 
 UserList.defaultProps = {
-  loadError: '',
+  hasError: false,
 };

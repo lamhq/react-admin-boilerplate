@@ -14,6 +14,7 @@ const translation = {
       'invalid-email': 'Invalid email.',
       'password-too-long': 'Password is too long, maximum: {{max}} characters',
       'password-too-short': 'Password is too short, minimum: {{min}} characters',
+      'load-data-fail': 'Failed to load the list.',
     },
     login: {
       'user-not-found': 'This user is not available.',
