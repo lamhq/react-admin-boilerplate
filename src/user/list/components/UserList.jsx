@@ -15,8 +15,9 @@ import {
   EuiFieldSearch,
 } from '@elastic/eui';
 import Layout from '../../../admin/layout/admin';
-import { formatDate } from '../../../common/utils';
+import { formatDate, formatEnum } from '../../../common/utils';
 import useNavigator from '../../../common/hooks/useNavigator';
+import { userStatusOptions } from '../../constants';
 
 const breadcrumbs = [
   {
@@ -61,6 +62,13 @@ export default function UserList({
       sortable: true,
       truncateText: true,
       render: createdAt => formatDate(createdAt),
+    },
+    {
+      field: 'status',
+      name: 'Status',
+      sortable: true,
+      truncateText: true,
+      render: status => formatEnum(status, userStatusOptions),
     },
     {
       name: 'Actions',

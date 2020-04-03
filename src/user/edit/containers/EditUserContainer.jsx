@@ -72,7 +72,7 @@ function validateForm(data) {
 
 export default function EditUserContainer() {
   const { alertSuccess, alertError } = useAlert();
-  const { addUser, getUserDetail } = useApi();
+  const { updateUser, getUserDetail } = useApi();
   const { redirect } = useNavigator();
   const { id: userId } = useParams();
   const { data: user, load: loadUser, loading } = useLoadingState(getUserDetail);
@@ -83,7 +83,7 @@ export default function EditUserContainer() {
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
-      await addUser(values);
+      await updateUser(userId, values);
       redirect('/users');
       alertSuccess('add-user/success');
     } catch (error) {

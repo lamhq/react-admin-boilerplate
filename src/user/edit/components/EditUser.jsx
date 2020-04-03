@@ -20,6 +20,8 @@ import PasswordField from '../../../eui/components/PasswordField';
 import TextField from '../../../eui/components/TextField';
 import SwitchField from '../../../eui/components/SwitchField';
 import LoadingContent from '../../../common/components/LoadingContent';
+import SelectField from '../../../eui/components/SelectField';
+import { userStatusOptions } from '../../constants';
 
 const breadcrumbs = [
   {
@@ -64,6 +66,11 @@ export default function EditUser({
                     name="email"
                     label="Email"
                     icon="email"
+                  />
+                  <SelectField
+                    name="status"
+                    label="Status"
+                    options={userStatusOptions}
                   />
                   <SwitchField
                     name="changePassword"

@@ -21,12 +21,18 @@ integrate with backend api
   # rename component to containers
   # update profile
   user
-    # add
+    # update navigation
     update
-      fix bug validate email duplication
+      # fix bug validate email duplication
+      # add status select box to form
+      api: return error code instead of message
+    # add
+      # add status select box
     list
+      # add column status
       display failed error when loading list
     delete
+    bulk delete
 handling error
   # runtime error (exception)
   http error
@@ -41,11 +47,9 @@ enable runtime language switching
 i18n for all components
 resolve missing translations
 404 page
-integrate typescript
 configure ci/cd with bitbucket pipeline
 host assets in CDN
-# use swr for data fetching
-# use sass css module for styling
+integrate typescript
 ```
 
 

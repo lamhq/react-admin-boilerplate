@@ -88,12 +88,18 @@ export default function ApiProvider({ children, endpoint }) {
       email: data.email,
       displayName: data.displayName,
       password: data.password,
+      status: data.status,
     });
     return resp.data;
   }
 
   async function updateUser(id, data) {
-    const resp = await http.put(`admin/users/${id}`, data);
+    const resp = await http.put(`admin/users/${id}`, {
+      email: data.email,
+      displayName: data.displayName,
+      password: data.password,
+      status: data.status,
+    });
     return resp.data;
   }
 

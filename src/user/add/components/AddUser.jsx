@@ -18,12 +18,15 @@ import styles from '../../../admin/common.m.scss';
 import Layout from '../../../admin/layout/admin';
 import PasswordField from '../../../eui/components/PasswordField';
 import TextField from '../../../eui/components/TextField';
+import SelectField from '../../../eui/components/SelectField';
+import { userStatusOptions } from '../../constants';
 
 const initialFormValues = {
   displayName: '',
   email: '',
   password: '',
   confirmPassword: '',
+  status: '',
 };
 
 const breadcrumbs = [
@@ -66,6 +69,11 @@ export default function AddUser({ validateForm, onSubmit }) {
                   label="Email"
                   icon="email"
                   autoComplete="new-password"
+                />
+                <SelectField
+                  name="status"
+                  label="Status"
+                  options={userStatusOptions}
                 />
                 <PasswordField
                   name="password"

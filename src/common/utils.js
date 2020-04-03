@@ -141,3 +141,8 @@ export function formatNumber(val) {
 export function toNumber(val) {
   return parseInt(val, 10) || 0;
 }
+
+export function formatEnum(value, options) {
+  const optionItem = options.find(item => item.value === value);
+  return optionItem ? optionItem.text : '';
+}

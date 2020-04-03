@@ -7,27 +7,17 @@ const navLinks = [
   {
     label: 'Dashboard',
     iconType: 'dashboardApp',
-    href: '/admin/page-a',
+    href: '/dashboard',
   },
   {
-    label: 'Reports',
-    iconType: 'visualizeApp',
-    href: '/admin/page-b',
-  },
-  {
-    label: 'Monitoring',
-    iconType: 'monitoringApp',
-    href: '/admin/page-c',
-  },
-  {
-    label: 'Tools',
-    iconType: 'devToolsApp',
-    href: '/admin/page-d',
+    label: 'Users',
+    iconType: 'user',
+    href: '/users',
   },
   {
     label: 'Configure',
     iconType: 'managementApp',
-    href: '/admin/page-e',
+    href: '/settings',
   },
 ];
 
