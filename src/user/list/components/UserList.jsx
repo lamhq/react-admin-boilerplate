@@ -18,8 +18,7 @@ import Layout from '../../../admin/layout/admin';
 import { formatDate, formatEnum } from '../../../common/utils';
 import { useNavigator, useTranslation } from '../../../common/hooks';
 import { userStatusOptions } from '../../constants';
-import DeleteUserButton from '../containers/DeleteUserButton';
-
+import DeleteUserBtn from '../containers/DeleteUserBtn';
 
 const breadcrumbs = [
   {
@@ -38,6 +37,7 @@ export default function UserList({
   sorting,
   selectedItems,
   search,
+  loadList,
 }) {
   const { t } = useTranslation();
   const { redirect, getLinkProps } = useNavigator();
@@ -78,7 +78,7 @@ export default function UserList({
       width: '200px',
       actions: [
         {
-          render: user => <DeleteUserButton user={user} />,
+          render: user => <DeleteUserBtn user={user} onSuccess={loadList} />,
         },
         {
           name: 'Edit',
@@ -166,6 +166,7 @@ export default function UserList({
 }
 
 UserList.propTypes = {
+  loadList: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool,

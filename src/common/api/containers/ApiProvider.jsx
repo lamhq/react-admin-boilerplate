@@ -73,8 +73,8 @@ export default function ApiProvider({ children, endpoint }) {
     };
   }
 
-  async function deleteUser(user) {
-    const resp = await http.delete(`admin/users/${user.id}`);
+  async function deleteUser(id) {
+    const resp = await http.delete(`admin/users/${id}`);
     return resp.data;
   }
 

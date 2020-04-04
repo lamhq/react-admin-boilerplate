@@ -6,7 +6,7 @@ import { useApi } from '../../../common/api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
 
-export default function DeleteUserButton({ user }) {
+export default function DeleteUserBtn({ user, onSuccess }) {
   const confirm = useDialog();
   const { alertSuccess, alertError } = useAlert();
   const { deleteUser } = useApi();
@@ -29,6 +29,7 @@ export default function DeleteUserButton({ user }) {
       try {
         await execDeleteUser(user.id);
         alertSuccess('user-management/delete-success');
+        onSuccess();
       } catch (error) {
         if (!error.code) {
           alertError('common/runtime');
@@ -51,6 +52,7 @@ export default function DeleteUserButton({ user }) {
   );
 }
 
-DeleteUserButton.propTypes = {
+DeleteUserBtn.propTypes = {
   user: PropTypes.object.isRequired,
+  onSuccess: PropTypes.func.isRequired,
 };

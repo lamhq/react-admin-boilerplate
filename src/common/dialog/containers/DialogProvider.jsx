@@ -27,55 +27,51 @@ function getButtonColor(type) {
 }
 
 export default function DialogProvider({ children }) {
-  const [isOpen, setOpen] = React.useState(false);
   const { t } = useTranslation();
-  const [settings, setSettings] = React.useState({
-    title: '',
-    content: '',
-    type: '',
-    confirmButtonText: 'common/confirm-button',
-    cancelButtonText: 'common/cancel-button',
-  });
-  let resolve = null;
+  const [dialog, setDialog] = React.useState(null);
 
   function showConfirmDialog(title, content, options = {}) {
-    setSettings({
-      ...settings,
-      ...options,
+    const settings = {
+      type: '',
+      confirmButtonText: 'common/confirm-button',
+      cancelButtonText: 'common/cancel-button',
       title,
       content,
-    });
-    setOpen(true);
-    return new Promise((rs) => { resolve = rs; });
-  }
+      ...options,
+    };
 
-  function handleConfirm() {
-    setOpen(false);
-    resolve(true);
-  }
+    return new Promise((resolve) => {
+      function handleConfirm() {
+        setDialog(null);
+        resolve(true);
+      }
 
-  function handleCancel() {
-    setOpen(false);
-    resolve(false);
-  }
+      function handleCancel() {
+        setDialog(null);
+        resolve(false);
+      }
 
-  return (
-    <>
-      {isOpen && (
+      setDialog((
         <EuiOverlayMask>
           <EuiConfirmModal
             title={t(settings.title)}
-            onCancel={handleCancel}
-            onConfirm={handleConfirm}
             cancelButtonText={t(settings.cancelButtonText)}
             confirmButtonText={t(settings.confirmButtonText)}
             buttonColor={getButtonColor(settings.type)}
             defaultFocusedButton="confirm"
+            onCancel={handleCancel}
+            onConfirm={handleConfirm}
           >
             <div>{t(settings.content)}</div>
           </EuiConfirmModal>
         </EuiOverlayMask>
-      )}
+      ));
+    });
+  }
+
+  return (
+    <>
+      {dialog}
       <DialogContext.Provider value={showConfirmDialog}>
         {children}
       </DialogContext.Provider>

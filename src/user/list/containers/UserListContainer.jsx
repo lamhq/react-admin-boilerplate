@@ -68,6 +68,7 @@ export default function UserListContainer() {
       pagination={pagination}
       sorting={sorting}
       onTableChange={handleTableChange}
+      loadList={loadUsers}
     />
   );
 }
