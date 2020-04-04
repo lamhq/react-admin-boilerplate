@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  EuiConfirmModal,
-  EuiOverlayMask,
-} from '@elastic/eui';
+import { EuiConfirmModal, EuiOverlayMask } from '@elastic/eui';
 import DialogContext from '../contexts/dialog';
+import { useTranslation } from '../../hooks';
 
 function getButtonColor(type) {
   let color;
@@ -30,15 +28,15 @@ function getButtonColor(type) {
 
 export default function DialogProvider({ children }) {
   const [isOpen, setOpen] = React.useState(false);
+  const { t } = useTranslation();
   const [settings, setSettings] = React.useState({
     title: '',
     content: '',
     type: '',
-    confirmButtonText: '',
-    cancelButtonText: '',
+    confirmButtonText: 'common/confirm-button',
+    cancelButtonText: 'common/cancel-button',
   });
   let resolve = null;
-  const promise = new Promise((rs) => { resolve = rs; });
 
   function showConfirmDialog(title, content, options = {}) {
     setSettings({
@@ -48,7 +46,7 @@ export default function DialogProvider({ children }) {
       content,
     });
     setOpen(true);
-    return promise;
+    return new Promise((rs) => { resolve = rs; });
   }
 
   function handleConfirm() {
@@ -66,15 +64,15 @@ export default function DialogProvider({ children }) {
       {isOpen && (
         <EuiOverlayMask>
           <EuiConfirmModal
-            title={settings.title}
+            title={t(settings.title)}
             onCancel={handleCancel}
             onConfirm={handleConfirm}
-            cancelButtonText={settings.cancelButtonText}
-            confirmButtonText={settings.confirmButtonText}
+            cancelButtonText={t(settings.cancelButtonText)}
+            confirmButtonText={t(settings.confirmButtonText)}
             buttonColor={getButtonColor(settings.type)}
             defaultFocusedButton="confirm"
           >
-            {settings.content}
+            <div>{t(settings.content)}</div>
           </EuiConfirmModal>
         </EuiOverlayMask>
       )}

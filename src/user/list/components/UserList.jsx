@@ -18,6 +18,7 @@ import Layout from '../../../admin/layout/admin';
 import { formatDate, formatEnum } from '../../../common/utils';
 import { useNavigator, useTranslation } from '../../../common/hooks';
 import { userStatusOptions } from '../../constants';
+import DeleteUserButton from '../containers/DeleteUserButton';
 
 
 const breadcrumbs = [
@@ -77,13 +78,7 @@ export default function UserList({
       width: '200px',
       actions: [
         {
-          name: 'Delete',
-          isPrimary: true,
-          description: 'Delete this user',
-          icon: 'trash',
-          color: 'danger',
-          type: 'icon',
-          onClick: () => {},
+          render: user => <DeleteUserButton user={user} />,
         },
         {
           name: 'Edit',

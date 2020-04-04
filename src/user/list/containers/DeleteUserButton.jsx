@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import UserList from '../components/UserList';
-import { useLoadingState } from '../../../common/hooks';
+import { EuiLoadingSpinner, EuiButtonIcon, EuiToolTip } from '@elastic/eui';
+import { useLoadingState, useTranslation } from '../../../common/hooks';
 import { useApi } from '../../../common/api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
@@ -13,12 +13,17 @@ export default function DeleteUserButton({ user }) {
   const {
     load: execDeleteUser,
     loading: isDeleting,
-  } = useLoadingState(deleteUser, { defer: true, exception: true });
+  } = useLoadingState(deleteUser, {
+    defer: true,
+    exception: true,
+  });
+  const { t } = useTranslation();
 
   async function handleClick() {
     const shouldDelete = await confirm(
       'user-management/delete-user-warning',
       ['user-management/delete-user-message', { user }],
+      { type: 'error' },
     );
     if (shouldDelete) {
       try {
@@ -34,19 +39,15 @@ export default function DeleteUserButton({ user }) {
     }
   }
 
-  return (
-    <UserList
-      items={items}
-      isLoading={loading}
-      hasError={!!error}
-      selectedItems={selectedItems}
-      onSelectionChange={handleSelectionChange}
-      search={search}
-      onSearch={handleSearch}
-      pagination={pagination}
-      sorting={sorting}
-      onTableChange={handleTableChange}
-    />
+  return isDeleting ? <EuiLoadingSpinner size="m" /> : (
+    <EuiToolTip content={t('user-management/delete-user')}>
+      <EuiButtonIcon
+        color="danger"
+        iconType="trash"
+        onClick={handleClick}
+        aria-label="Delete"
+      />
+    </EuiToolTip>
   );
 }
 
