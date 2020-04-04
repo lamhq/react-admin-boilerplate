@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   EuiPageContent,
   EuiPageContentHeader,
@@ -17,8 +16,9 @@ import {
 } from '@elastic/eui';
 import Layout from '../../../admin/layout/admin';
 import { formatDate, formatEnum } from '../../../common/utils';
-import useNavigator from '../../../common/hooks/useNavigator';
+import { useNavigator, useTranslation } from '../../../common/hooks';
 import { userStatusOptions } from '../../constants';
+
 
 const breadcrumbs = [
   {

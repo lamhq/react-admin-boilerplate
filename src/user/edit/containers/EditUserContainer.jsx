@@ -4,9 +4,9 @@ import { useParams } from 'react-router-dom';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
+import { useNavigator, useLoadingState } from '../../../common/hooks';
 import EditUser from '../components/EditUser';
-import useNavigator from '../../../common/hooks/useNavigator';
-import useLoadingState from '../../../common/hooks/useLoadingState';
+
 
 function validateForm(data) {
   const constraints = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import usePermanentState from '../../hooks/usePermanentState';
+import { usePermanentState } from '../../hooks';
 import IdentityContext from '../contexts/identity';
 
 export default function IdentityProvider({ children }) {

@@ -18,7 +18,7 @@ import Layout from '../../layout/admin';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
 import SwitchField from '../../../eui/components/SwitchField';
-import useNavigator from '../../../common/hooks/useNavigator';
+import { useNavigator } from '../../../common/hooks';
 
 const breadcrumbs = [
   {

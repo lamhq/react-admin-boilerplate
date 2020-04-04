@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import { useField } from 'formik';
 import {
   EuiSelect,
   EuiFormRow,
 } from '@elastic/eui';
+import { useTranslation } from '../../common/hooks';
 
 export default function SelectField({
   label,
@@ -16,12 +16,11 @@ export default function SelectField({
   const { t } = useTranslation();
   const [field, meta] = useField(name);
   const hasError = meta.touched && meta.error !== undefined;
-  const errText = Array.isArray(meta.error) ? t(...meta.error) : t(meta.error);
   return (
     <EuiFormRow
       label={label}
       isInvalid={hasError}
-      error={errText}
+      error={t(meta.error)}
     >
       <EuiSelect
         isInvalid={hasError}

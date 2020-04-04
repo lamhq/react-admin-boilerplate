@@ -5,7 +5,7 @@ import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
 import { useAlert } from '../../../common/alert';
 import Login from '../components/Login';
-import useNavigator from '../../../common/hooks/useNavigator';
+import { useNavigator } from '../../../common/hooks';
 
 function validateLoginForm(data) {
   const constraints = {

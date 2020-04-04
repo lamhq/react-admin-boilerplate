@@ -8,7 +8,7 @@ import {
   EuiPopover,
 } from '@elastic/eui';
 import LogoutButton from '../containers/LogoutButtonContainer';
-import useNavigator from '../../../../common/hooks/useNavigator';
+import { useNavigator } from '../../../../common/hooks';
 
 export default function UserMenu({
   isMenuOpen, onMenuToggle, closeMenu, user,

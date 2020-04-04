@@ -13,7 +13,7 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
-import useNavigator from '../../../common/hooks/useNavigator';
+import { useNavigator } from '../../../common/hooks';
 import styles from '../../../admin/common.m.scss';
 import Layout from '../../../admin/layout/admin';
 import PasswordField from '../../../eui/components/PasswordField';

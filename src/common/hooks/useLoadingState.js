@@ -34,7 +34,7 @@ export default function useLoadingState(fn, options = {}) {
   const opt = {
     // don't run async action on load
     defer: false,
-    // throw exception when async action failed
+    // throw exception when async function is rejected
     exception: false,
     ...options,
   };

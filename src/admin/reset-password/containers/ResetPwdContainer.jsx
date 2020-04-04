@@ -5,7 +5,7 @@ import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ResetPwd from '../components/ResetPwd';
-import useNavigator from '../../../common/hooks/useNavigator';
+import { useNavigator } from '../../../common/hooks';
 
 function validateForm(data) {
   const constraints = {

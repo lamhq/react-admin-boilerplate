@@ -28,6 +28,9 @@ const translation = {
     'reset-password': {
       success: 'Your password has been updated. You can login with the new password.',
     },
+    'user-management': {
+      'delete-user-warning': 'Deleting User!',
+    },
   },
 };
 

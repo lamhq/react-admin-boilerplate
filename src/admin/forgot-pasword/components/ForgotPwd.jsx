@@ -11,7 +11,7 @@ import {
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
-import useNavigator from '../../../common/hooks/useNavigator';
+import { useNavigator } from '../../../common/hooks';
 
 const initialFormValues = {
   email: '',

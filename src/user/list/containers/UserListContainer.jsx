@@ -1,5 +1,5 @@
 import React from 'react';
-import useLoadingState from '../../../common/hooks/useLoadingState';
+import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
 import { useApi } from '../../../common/api';
 

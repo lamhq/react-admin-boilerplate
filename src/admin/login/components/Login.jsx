@@ -12,7 +12,7 @@ import {
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
-import useNavigator from '../../../common/hooks/useNavigator';
+import { useNavigator } from '../../../common/hooks';
 
 export default function Login({ initialFormValues, validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();

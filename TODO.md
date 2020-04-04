@@ -28,7 +28,13 @@ integrate with backend api
       # add column status
       # display failed error when loading list
     delete
+      show delete confirmation
+      delete user
+      reload list after delete
     bulk delete
+      show delete confirmation
+      delete users
+      reload list after delete
 handling error
   # runtime error (exception)
   http error
