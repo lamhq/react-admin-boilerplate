@@ -18,7 +18,7 @@ import Layout from '../../../admin/layout/admin';
 import { formatDate, formatEnum } from '../../../common/utils';
 import { useNavigator, useTranslation } from '../../../common/hooks';
 import { userStatusOptions } from '../../constants';
-import DeleteUserBtn from '../containers/DeleteUserBtn';
+import DeleteUserBtn from '../containers/DeleteUserContainer';
 
 const breadcrumbs = [
   {
