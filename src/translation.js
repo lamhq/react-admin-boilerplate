@@ -31,6 +31,7 @@ const translation = {
     'user-management': {
       'delete-user-warning': 'Deleting User!',
       'delete-user-message': 'Are you sure to delete "{{user.displayName}}" ?',
+      'delete-users-message': 'Are you sure to delete {{count}} user(s) ?',
     },
   },
 };

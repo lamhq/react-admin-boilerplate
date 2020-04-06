@@ -1,33 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EuiLoadingSpinner, EuiButtonIcon, EuiToolTip } from '@elastic/eui';
-import { useLoadingState, useTranslation } from '../../../common/hooks';
+import { useLoadingState } from '../../../common/hooks';
 import { useApi } from '../../../common/api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
+import BulkDeleteBtn from '../components/BulkDeleteBtn';
 
-export default function DeleteUserBtn({ user, onSuccess }) {
+export default function BuilkDeleteContainer({ users, onSuccess }) {
   const confirm = useDialog();
   const { alertSuccess, alertError } = useAlert();
-  const { deleteUser } = useApi();
+  const { deleteUsers } = useApi();
   const {
-    load: execDeleteUser,
+    load: execDeleteUsers,
     loading: isDeleting,
-  } = useLoadingState(deleteUser, {
+  } = useLoadingState(deleteUsers, {
     defer: true,
     exception: true,
   });
-  const { t } = useTranslation();
 
-  async function handleClick() {
+  async function handleDelete() {
     const shouldDelete = await confirm(
       'user-management/delete-user-warning',
-      ['user-management/delete-user-message', { user }],
+      ['user-management/delete-users-message', { count: users.length }],
       { type: 'error' },
     );
     if (shouldDelete) {
       try {
-        await execDeleteUser(user.id);
+        await execDeleteUsers(users);
         alertSuccess('user-management/delete-success');
         onSuccess();
       } catch (error) {
@@ -40,19 +39,10 @@ export default function DeleteUserBtn({ user, onSuccess }) {
     }
   }
 
-  return isDeleting ? <EuiLoadingSpinner size="m" /> : (
-    <EuiToolTip content={t('user-management/delete-user')}>
-      <EuiButtonIcon
-        color="danger"
-        iconType="trash"
-        onClick={handleClick}
-        aria-label="Delete"
-      />
-    </EuiToolTip>
-  );
+  return <BulkDeleteBtn isLoading={isDeleting} onDelete={handleDelete} />;
 }
 
-DeleteUserBtn.propTypes = {
-  user: PropTypes.object.isRequired,
+BuilkDeleteContainer.propTypes = {
+  users: PropTypes.array.isRequired,
   onSuccess: PropTypes.func.isRequired,
 };

@@ -3,10 +3,12 @@
 user management
   # delete
     # refactor: split delete button to containers/components
+    disable deleting of current logged user
   bulk delete
-    show delete confirmation
-    delete users
-    reload list after delete
+    # show delete confirmation
+    # delete users (api)
+    # reload list after delete
+    disable selection of current logged user
 handling error
 404 page
 error boundary

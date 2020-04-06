@@ -19,6 +19,7 @@ import { formatDate, formatEnum } from '../../../common/utils';
 import { useNavigator, useTranslation } from '../../../common/hooks';
 import { userStatusOptions } from '../../constants';
 import DeleteUserBtn from '../containers/DeleteUserContainer';
+import BuilkDeleteContainer from '../containers/BuilkDeleteContainer';
 
 const breadcrumbs = [
   {
@@ -97,7 +98,6 @@ export default function UserList({
     onSelectionChange,
   };
 
-
   function handleSearchChange(e) {
     const { value } = e.target;
     setTimeout(() => onSearch(value), 700);
@@ -122,13 +122,7 @@ export default function UserList({
           <EuiFlexGroup responsive={false}>
             {selectedItems.length > 0 && (
             <EuiFlexItem grow={false}>
-              <EuiButton
-                color="danger"
-                iconType="trash"
-                size="m"
-              >
-                Delete
-              </EuiButton>
+              <BuilkDeleteContainer users={selectedItems} onSuccess={loadList} />
             </EuiFlexItem>
             )}
             <EuiFlexItem grow>

@@ -78,6 +78,14 @@ export default function ApiProvider({ children, endpoint }) {
     return resp.data;
   }
 
+  async function deleteUsers(users) {
+    const resp = await http.patch('admin/users', {
+      action: 'delete',
+      records: users.map(u => u.id),
+    });
+    return resp.data;
+  }
+
   async function getUserDetail(id) {
     const resp = await http.get(`admin/users/${id}`);
     return resp.data;
@@ -115,6 +123,7 @@ export default function ApiProvider({ children, endpoint }) {
     addUser,
     deleteUser,
     getUserDetail,
+    deleteUsers,
   };
   // extend all exported functions with http error handling logic
   Object.keys(contextValue).forEach((key) => {
