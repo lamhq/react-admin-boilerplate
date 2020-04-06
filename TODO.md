@@ -3,23 +3,21 @@
 # user management
 handling error
   # no route found
-  unauthenticated
-  implement error page (refer kibana)
-  component render error
-    implement error boundary
+  # unauthenticated
   # runtime error (exception)
   http error
     # no internet
     # timeout 504
     # invalid request 400
     # input error 400
+    # unauthorized error 401
     forbidden error 403
-      show error page
-    unauthorized error 401
       show alert
-      go to login page
     server error >=500
       show alert
+  implement error page (refer kibana)
+  component render error
+    implement error boundary
 i18n
 deployment
 ```

@@ -57,20 +57,27 @@ export default function ApiProvider({ children, endpoint }) {
   }
 
   async function findUsers(search = '', sort = 'username', dir = 'asc', page = 0, limit = 10) {
-    const resp = await http.get('admin/users', {
-      params: {
-        offset: page * limit,
-        limit,
-        search,
-        sort,
-        dir,
-      },
-    });
-    const { meta, data } = resp.data;
-    return {
-      totalItemCount: meta.total,
-      filteredItems: data,
-    };
+    try {
+      const resp = await http.get('admin/users', {
+        params: {
+          offset: page * limit,
+          limit,
+          search,
+          sort,
+          dir,
+        },
+      });
+      const { meta, data } = resp.data;
+      return {
+        totalItemCount: meta.total,
+        filteredItems: data,
+      };
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        clearIdentity();
+      }
+      throw error;
+    }
   }
 
   async function deleteUser(id) {
