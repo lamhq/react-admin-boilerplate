@@ -11,6 +11,7 @@ import { ApiProvider } from './common/api';
 import { AlertProvider } from './common/alert';
 import { DialogProvider } from './common/dialog';
 import { apiUrl } from './config';
+import NotFoundPage from './error/components/NotFoundPage';
 
 const history = createBrowserHistory();
 
@@ -36,7 +37,7 @@ function App() {
                   <Route path="/" exact>
                     <Redirect to="/dashboard" />
                   </Route>
-                  <Route render={() => <p>The content was not found.</p>} />
+                  <Route render={() => <NotFoundPage />} />
                 </Switch>
               </Suspense>
             </Router>

@@ -15,6 +15,9 @@ const translation = {
       'password-too-long': 'Password is too long, maximum: {{max}} characters',
       'password-too-short': 'Password is too short, minimum: {{min}} characters',
       'load-data-fail': 'Failed to load the list.',
+      'page-not-found': 'Page not found',
+      'page-not-found-msg': 'No page was found at this URL. Try going back to homepage.',
+      'back-to-home': 'Back to home',
     },
     login: {
       'user-not-found': 'This user is not available.',
