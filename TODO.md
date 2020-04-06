@@ -1,14 +1,6 @@
 # TODO Mon 6/4 => 12/4
 ```yml
-user management
-  # delete
-    # refactor: split delete button to containers/components
-    disable deleting of current logged user
-  bulk delete
-    # show delete confirmation
-    # delete users (api)
-    # reload list after delete
-    disable selection of current logged user
+# user management
 handling error
 404 page
 error boundary

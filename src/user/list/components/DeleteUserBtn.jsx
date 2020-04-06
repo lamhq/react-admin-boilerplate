@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import { EuiLoadingSpinner, EuiButtonIcon, EuiToolTip } from '@elastic/eui';
 import { useTranslation } from '../../../common/hooks';
 
-export default function DeleteUserBtn({ isLoading, onDelete }) {
+export default function DeleteUserBtn({ isLoading, onDelete, canDelete }) {
   const { t } = useTranslation();
+  const tooltipText = t(canDelete ? 'user-management/delete-user' : 'user-management/can-not-delete-user');
 
   return isLoading ? <EuiLoadingSpinner size="m" /> : (
-    <EuiToolTip content={t('user-management/delete-user')}>
+    <EuiToolTip content={tooltipText}>
       <EuiButtonIcon
         color="danger"
         iconType="trash"
         onClick={onDelete}
-        aria-label="Delete"
+        aria-label={tooltipText}
+        isDisabled={!canDelete}
       />
     </EuiToolTip>
   );
@@ -20,5 +22,11 @@ export default function DeleteUserBtn({ isLoading, onDelete }) {
 
 DeleteUserBtn.propTypes = {
   isLoading: PropTypes.bool.isRequired,
+  canDelete: PropTypes.bool,
   onDelete: PropTypes.func.isRequired,
+};
+
+
+DeleteUserBtn.defaultProps = {
+  canDelete: true,
 };

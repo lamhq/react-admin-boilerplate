@@ -29,7 +29,7 @@ const breadcrumbs = [
 
 export default function UserList({
   onSearch,
-  onSelectionChange,
+  selection,
   onTableChange,
   isLoading,
   hasError,
@@ -93,11 +93,6 @@ export default function UserList({
     },
   ];
 
-  const selectionConfig = {
-    itemId: 'id',
-    onSelectionChange,
-  };
-
   function handleSearchChange(e) {
     const { value } = e.target;
     setTimeout(() => onSearch(value), 700);
@@ -141,7 +136,7 @@ export default function UserList({
             columns={columns}
             pagination={pagination}
             sorting={sorting}
-            selection={selectionConfig}
+            selection={selection}
             onChange={onTableChange}
             loading={isLoading}
             itemId="id"
@@ -165,7 +160,7 @@ UserList.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   hasError: PropTypes.bool,
   selectedItems: PropTypes.array.isRequired,
-  onSelectionChange: PropTypes.func.isRequired,
+  selection: PropTypes.object.isRequired,
   search: PropTypes.string.isRequired,
   onSearch: PropTypes.func.isRequired,
   pagination: PropTypes.object.isRequired,

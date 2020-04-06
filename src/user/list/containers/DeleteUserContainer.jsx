@@ -5,9 +5,11 @@ import { useApi } from '../../../common/api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
 import DeleteUserBtn from '../components/DeleteUserBtn';
+import useIdentity from '../../../common/identity/hooks/useIdentity';
 
 export default function DeleteUserContainer({ user, onSuccess }) {
   const confirm = useDialog();
+  const { identity } = useIdentity();
   const { alertSuccess, alertError } = useAlert();
   const { deleteUser } = useApi();
   const {
@@ -38,7 +40,13 @@ export default function DeleteUserContainer({ user, onSuccess }) {
     }
   }
 
-  return <DeleteUserBtn isLoading={isDeleting} onDelete={handleDelete} />;
+  return (
+    <DeleteUserBtn
+      isLoading={isDeleting}
+      onDelete={handleDelete}
+      canDelete={identity.user.id !== user.id}
+    />
+  );
 }
 
 DeleteUserContainer.propTypes = {

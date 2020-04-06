@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
 import { useApi } from '../../../common/api';
+import { useIdentity } from '../../../common/identity';
 
 export default function UserListContainer() {
   const [search, setSearch] = React.useState('');
@@ -10,6 +11,7 @@ export default function UserListContainer() {
   const [sortField, setSortField] = React.useState('displayName');
   const [sortDirection, setSortDirection] = React.useState('asc');
   const [selectedItems, updateSelectedItems] = React.useState([]);
+  const { identity } = useIdentity();
   const { findUsers } = useApi();
   const {
     data,
@@ -36,6 +38,12 @@ export default function UserListContainer() {
     },
   };
 
+  const selection = {
+    itemId: 'id',
+    selectable: user => user.id !== identity.user.id,
+    onSelectionChange: updatedSelection => updateSelectedItems(updatedSelection),
+  };
+
   React.useEffect(() => {
     loadUsers(search, sortField, sortDirection, pageSize, pageSize * pageIndex);
   }, [search, pageIndex, pageSize, sortField, sortDirection]);
@@ -52,17 +60,13 @@ export default function UserListContainer() {
     setPageIndex(0);
   }
 
-  function handleSelectionChange(updatedSelection) {
-    updateSelectedItems(updatedSelection);
-  }
-
   return (
     <UserList
       items={items}
       isLoading={loading}
       hasError={!!error}
       selectedItems={selectedItems}
-      onSelectionChange={handleSelectionChange}
+      selection={selection}
       search={search}
       onSearch={handleSearch}
       pagination={pagination}
