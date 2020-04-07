@@ -4,6 +4,7 @@ const translation = {
     // namespaces
     common: {
       runtime: 'Something went wrong. Please try again later.',
+      'server-error': 'Server error',
       'request-timeout': 'Request timeout. Please try again later.',
       'network-unavailable': 'Network unavailable. Please check your connection.',
       'invalid-user-input': 'There\'re some errors with your input.',

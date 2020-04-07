@@ -3,6 +3,7 @@ import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
+import { useAlert } from '../../../common/alert';
 
 export default function UserListContainer() {
   const [search, setSearch] = React.useState('');
@@ -12,6 +13,7 @@ export default function UserListContainer() {
   const [sortDirection, setSortDirection] = React.useState('asc');
   const [selectedItems, updateSelectedItems] = React.useState([]);
   const { identity } = useIdentity();
+  const { alertError } = useAlert();
   const { findUsers } = useApi();
   const {
     data,
@@ -44,9 +46,17 @@ export default function UserListContainer() {
     onSelectionChange: updatedSelection => updateSelectedItems(updatedSelection),
   };
 
+  // load user list
   React.useEffect(() => {
     loadUsers(search, sortField, sortDirection, pageSize, pageSize * pageIndex);
   }, [search, pageIndex, pageSize, sortField, sortDirection]);
+
+  // show error
+  React.useEffect(() => {
+    if (error) {
+      alertError(error.code);
+    }
+  }, [error]);
 
   function handleTableChange(nextValues) {
     setPageIndex(nextValues.page.index);
