@@ -3,7 +3,7 @@ const translation = {
   en: {
     // namespaces
     common: {
-      runtime: 'Something went wrong. Please try again later.',
+      'runtime-error': 'Something went wrong',
       'server-error': 'Server error',
       'request-timeout': 'Request timeout. Please try again later.',
       'network-unavailable': 'Network unavailable. Please check your connection.',
@@ -19,6 +19,7 @@ const translation = {
       'page-not-found': 'Page not found',
       'page-not-found-msg': 'No page was found at this URL. Try going back to homepage.',
       'back-to-home': 'Back to home',
+      'error-page-content': 'Oops. Looks like it\'s broken, please try again later. If you continue to see this error, please contact ab@example.com',
     },
     login: {
       'user-not-found': 'This user is not available.',

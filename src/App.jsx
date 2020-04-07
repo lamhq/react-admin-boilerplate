@@ -12,6 +12,7 @@ import { AlertProvider } from './common/alert';
 import { DialogProvider } from './common/dialog';
 import { apiUrl } from './config';
 import NotFoundPage from './error/components/NotFoundPage';
+import ErrorBoundary from './error/containers/ErrorBoundary';
 
 const history = createBrowserHistory();
 
@@ -22,24 +23,26 @@ function App() {
         <DialogProvider>
           <ApiProvider endpoint={apiUrl}>
             <Router history={history} key={Math.random()}>
-              <Suspense fallback={<LoadingScreen />}>
-                <Switch>
-                  {routes.map(r => (
-                    // Added property`key` to Router to fix warning when hot reloading Route component
-                    <Route
-                      key={r.path}
-                      path={r.path}
-                      component={r.component}
-                      exact
-                    />
-                  ))}
-                  {/* Set default homepage */}
-                  <Route path="/" exact>
-                    <Redirect to="/dashboard" />
-                  </Route>
-                  <Route render={() => <NotFoundPage />} />
-                </Switch>
-              </Suspense>
+              <ErrorBoundary>
+                <Suspense fallback={<LoadingScreen />}>
+                  <Switch>
+                    {routes.map(r => (
+                      // Added property`key` to Router to fix warning when hot reloading Route component
+                      <Route
+                        key={r.path}
+                        path={r.path}
+                        component={r.component}
+                        exact
+                      />
+                    ))}
+                    {/* Set default homepage */}
+                    <Route path="/" exact>
+                      <Redirect to="/dashboard" />
+                    </Route>
+                    <Route render={() => <NotFoundPage />} />
+                  </Switch>
+                </Suspense>
+              </ErrorBoundary>
             </Router>
           </ApiProvider>
         </DialogProvider>

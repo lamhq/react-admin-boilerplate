@@ -93,7 +93,7 @@ export default function ProfileContainer() {
       resetForm();
     } catch (error) {
       if (!error.code) {
-        alertError('common/runtime');
+        alertError('common/runtime-error');
         throw error;
       }
 

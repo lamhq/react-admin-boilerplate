@@ -1,7 +1,7 @@
 # TODO Mon 6/4 => 12/4
 ```yml
 # user management
-handling error
+# handling error
   # no route found
   # unauthenticated
   # runtime error (exception)
@@ -13,9 +13,8 @@ handling error
     # unauthorized error 401
     # forbidden error 403
     # server error >=500
-  implement error page (refer kibana)
-  component render error
-    implement error boundary
+  # implement error page
+  # component render error (error boundary)
 deployment
   configure ci/cd with bitbucket pipeline
   host assets in CDN
@@ -34,6 +33,7 @@ i18n
 handling error
 i18n
 deployment
+integrate js error reporting (usersnap + slack notification)
 integrate typescript
 ```
 

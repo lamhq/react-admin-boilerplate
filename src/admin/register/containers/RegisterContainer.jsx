@@ -65,7 +65,7 @@ export default function RegisterContainer() {
       redirect('/');
     } catch (error) {
       if (!error.code) {
-        alertError('common/runtime');
+        alertError('common/runtime-error');
         throw error;
       }
 

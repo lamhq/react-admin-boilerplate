@@ -31,7 +31,7 @@ export default function BuilkDeleteContainer({ users, onSuccess }) {
         onSuccess();
       } catch (error) {
         if (!error.code) {
-          alertError('common/runtime');
+          alertError('common/runtime-error');
           throw error;
         }
         alertError(error.code);

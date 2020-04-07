@@ -8,7 +8,7 @@ import numeral from 'numeral';
 function toAppError(error) {
   const result = {};
   if (error.response) {
-    let code = 'common/runtime';
+    let code = 'common/runtime-error';
     const { status, data } = error.response;
     switch (status) {
       case 504:
