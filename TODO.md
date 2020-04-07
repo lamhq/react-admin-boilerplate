@@ -1,6 +1,7 @@
 # TODO Mon 6/4 => 12/4
 ```yml
 # user management
+  # debounce searching
 # handling error
   # no route found
   # unauthenticated
@@ -16,8 +17,8 @@
   # implement error page
   # component render error (error boundary)
 deployment
-  configure ci/cd with bitbucket pipeline
   host assets in CDN
+  configure ci/cd with bitbucket pipeline
 i18n
   enable catching missing translations
   enable runtime language switching
@@ -30,10 +31,10 @@ i18n
 ```yml
 # integrate elastic ui
 # user management
-handling error
-i18n
+# handling error
 deployment
 integrate js error reporting (usersnap + slack notification)
+i18n
 integrate typescript
 ```
 

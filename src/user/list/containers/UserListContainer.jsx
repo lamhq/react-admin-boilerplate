@@ -1,4 +1,5 @@
 import React from 'react';
+import debounce from 'lodash.debounce';
 import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
 import { useApi } from '../../../common/api';
@@ -65,10 +66,10 @@ export default function UserListContainer() {
     setSortDirection(nextValues.sort.direction);
   }
 
-  function handleSearch(value) {
+  const handleSearch = debounce((value) => {
     setSearch(value);
     setPageIndex(0);
-  }
+  }, 500);
 
   return (
     <UserList
