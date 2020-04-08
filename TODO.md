@@ -3,13 +3,16 @@
 # user management
 # handling error
 deployment
-  implement deploy script
+  deploy script
     # setup publicPath for the build
     # test the build
+    # create docker compose file
+    # proxy api request to api service
+    # create docker compose + init db
+    # push docker image to docker hub
     host assets in CDN (cloudfront)
-    push docker image to docker hub
-    proxy api request
-  configure ci/cd with bitbucket pipeline
+      can not create Cloudfront distribution due to service limit
+  configure bitbucket pipeline
 i18n
   enable catching missing translations
   enable runtime language switching
