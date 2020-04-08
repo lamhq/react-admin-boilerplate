@@ -5,16 +5,14 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common.js');
 
-// set the base url in case we want to deploy
-// the assets in CDN instead of our local web server
-// const baseUrl = process.env.CDN_BASE_URL;
+const ASSET_PATH = process.env.CDN_BASE_URL || '/';
 
 module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
   output: {
     filename: 'scripts.[chunkhash].js',
-    // publicPath: `${baseUrl}/`,
+    publicPath: ASSET_PATH,
   },
   optimization: {
     minimizer: [

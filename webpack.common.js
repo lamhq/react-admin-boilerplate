@@ -46,18 +46,10 @@ module.exports = {
       },
       // load css file
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
+        exclude: /\.m\.(sc|sa)ss$/,
         loader: [
           // extract CSS into separate files
-          nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-        ],
-      },
-      // load scss file
-      {
-        test: /\.(scss|sass)$/,
-        exclude: /\.m\.(scss|sass)$/,
-        loader: [
           nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
           'sass-loader',
@@ -65,8 +57,7 @@ module.exports = {
       },
       // load scss module file
       {
-        test: /\.(scss|sass)$/,
-        include: /\.m\.(scss|sass)$/,
+        test: /\.m\.(sc|sa)ss$/,
         use: [
           nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           {

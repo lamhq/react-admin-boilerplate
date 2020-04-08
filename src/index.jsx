@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import '@elastic/eui/dist/eui_theme_light.css';
+import './styles.scss';
 import './i18n';
 import App from './App';
 
