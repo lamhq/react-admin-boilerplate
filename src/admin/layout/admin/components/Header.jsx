@@ -12,6 +12,7 @@ import {
 } from '@elastic/eui';
 import UserMenu from '../containers/UserMenuContainer';
 import styles from '../styles.m.scss';
+import LanguageSwitch from './LanguageSwitch';
 
 export default function Header({ toggleDrawer, breadcrumbs }) {
   return (
@@ -42,6 +43,11 @@ export default function Header({ toggleDrawer, breadcrumbs }) {
           : <nav className="euiBreadcrumbs euiHeaderBreadcrumbs euiBreadcrumbs--truncate euiBreadcrumbs--responsive" />
         }
 
+        <EuiHeaderSection side="right">
+          <EuiHeaderSectionItem>
+            <LanguageSwitch />
+          </EuiHeaderSectionItem>
+        </EuiHeaderSection>
         <EuiHeaderSection side="right">
           <EuiHeaderSectionItem>
             <UserMenu />

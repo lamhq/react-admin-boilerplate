@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   EuiPageContent,
   EuiPageContentHeader,
@@ -99,12 +99,12 @@ export default function UserList({
   }
 
   return (
-    <Layout title="Users" breadcrumbs={breadcrumbs}>
+    <Layout title={t('user-management/users')} breadcrumbs={breadcrumbs}>
       <EuiPageContent>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>Users</h2>
+              <h2>{t('user-management/users')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
           <EuiPageContentHeaderSection>

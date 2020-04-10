@@ -12,6 +12,7 @@ import {
 import { appName } from '../../../../config';
 import styles from './styles.m.scss';
 import Alert from '../../../../common/alert/containers/Alert';
+import LanguageSwitch from './LanguageSwitch';
 
 export default function GuestLayout({ title, instruction, children }) {
   React.useEffect(() => {
@@ -22,6 +23,7 @@ export default function GuestLayout({ title, instruction, children }) {
 
   return (
     <div className={styles.layout}>
+      <LanguageSwitch />
       <header className={styles.header}>
         <div className={`${styles.content} eui-textCenter`}>
           <EuiSpacer size="xl" />

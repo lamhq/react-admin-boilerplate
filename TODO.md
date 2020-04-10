@@ -3,20 +3,13 @@
 i18n
   # enable catching missing translations
   enable runtime language switching
-  test all features
+    update styling for LanguageSwitch
+    add proptypes for Render
+  test all features, add translation key for all components
   resolve missing translations
 # user management
 # handling error
 # deployment
-  # configure bitbucket-pipeline.yml
-  # deploy script
-    # setup publicPath for the build
-    # test the build
-    # create docker compose file
-    # proxy api request to api service
-    # create docker compose + init db
-    # push docker image to docker hub
-    # host assets in CDN (cloudfront)
 ```
 
 
@@ -25,14 +18,14 @@ i18n
 # integrate elastic ui
 # user management
 # handling error
-deployment
+# deployment
 i18n
 error reporting (sentry + slack notification)
 upgrade packages to latest version
+integrate typescript
+unit test
 logging
   https://www.scalyr.com/blog/getting-started-react-logging/
   https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
-integrate typescript
-unit test
 ```
 
