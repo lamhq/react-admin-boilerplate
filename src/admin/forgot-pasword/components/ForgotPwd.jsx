@@ -11,7 +11,7 @@ import {
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
-import { useNavigator } from '../../../common/hooks';
+import { useNavigator, useTranslation } from '../../../common/hooks';
 
 const initialFormValues = {
   email: '',
@@ -19,8 +19,9 @@ const initialFormValues = {
 
 export default function ForgotPwd({ validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();
+  const { t } = useTranslation();
   return (
-    <Layout title="Forgot Password" instruction="Enter you email to request a new password.">
+    <Layout title={t('forgot-pwd/title')} instruction={t('forgot-pwd/instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -31,7 +32,7 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
             <Form>
               <TextField
                 name="email"
-                label="Email"
+                label={t('user/email')}
                 icon="email"
               />
               <EuiSpacer />
@@ -41,7 +42,7 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
                     iconType="arrowLeft"
                     {...getLinkProps('/login')}
                   >
-                    Cancel
+                    {t('forgot-pwd/cancel')}
                   </EuiButtonEmpty>
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
@@ -51,7 +52,7 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
                     isLoading={isSubmitting}
                     fill
                   >
-                    Reset Password
+                    {t('forgot-pwd/submit')}
                   </EuiButton>
                 </EuiFlexItem>
               </EuiFlexGroup>

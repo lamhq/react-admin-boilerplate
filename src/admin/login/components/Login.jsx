@@ -18,7 +18,7 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();
   const { t } = useTranslation();
   return (
-    <Layout title={t('login/page-title')} instruction={t('login/instruction')}>
+    <Layout title={t('login/title')} instruction={t('login/instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -29,12 +29,12 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
             <Form>
               <TextField
                 name="username"
-                label={t('login/username')}
+                label={t('user/username')}
                 icon="user"
               />
               <PasswordField
                 name="password"
-                label={t('login/password')}
+                label={t('user/password')}
               />
               <EuiSpacer />
               <EuiFlexGroup justifyContent="spaceBetween">
@@ -45,7 +45,7 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
                     isLoading={isSubmitting}
                     fill
                   >
-                    {t('login/login-btn')}
+                    {t('login/submit')}
                   </EuiButton>
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
@@ -54,7 +54,7 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
                       color="subdued"
                       {...getLinkProps('/forgot-password')}
                     >
-                      {t('login/forgot-password')}
+                      {t('login/forgot-pwd')}
                     </EuiLink>
                   </small>
                 </EuiFlexItem>

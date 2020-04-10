@@ -1,17 +1,18 @@
 import React from 'react';
 import Layout from '../../layout/admin';
-
+import { useTranslation } from '../../../common/hooks';
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const breadcrumbs = [
     {
-      text: 'Dashboard',
+      text: t('dashboard/title'),
     },
   ];
 
   return (
-    <Layout title="Dashboard" breadcrumbs={breadcrumbs}>
-      Dashboard page
+    <Layout title={t('dashboard/title')} breadcrumbs={breadcrumbs}>
+      TBC
     </Layout>
   );
 }

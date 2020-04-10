@@ -12,6 +12,7 @@ const translation = {
       unauthorized: 'You are not allowed to perform this action.',
       'required-input': 'This field can not be blank.',
       'invalid-email': 'Invalid email.',
+      'password-not-match': 'Password does not match',
       'password-too-long': 'Password is too long, maximum: {{max}} characters',
       'password-too-short': 'Password is too short, minimum: {{min}} characters',
       'load-data-fail': 'Failed to load the list.',
@@ -24,23 +25,52 @@ const translation = {
       'lang-en': 'English',
       'lang-vi': 'Vietnamese',
     },
-    login: {
-      'page-title': 'Login',
-      instruction: 'Please fill in your account to continue.',
+    app: {
+      'email-not-exist': 'There\'s no user associated with this email.',
+      logout: 'Logout',
+      profile: 'Profile',
+      dashboard: 'Dashboard',
+      users: 'Users',
+      settings: 'Settings',
+    },
+    user: {
+      email: 'Email',
       username: 'Username',
       password: 'Password',
-      'login-btn': 'Login',
-      'forgot-password': 'Forgot Password?',
-      'user-not-found': 'This user is not available.',
-      'invalid-password': 'Invalid password.',
-      'user-is-disabled': 'This user is disabled.',
+      displayName: 'Full Name',
     },
-    'forgot-password': {
+    'forgot-pwd': {
+      title: 'Forgot Password',
+      instruction: 'Enter you email to request a new password.',
+      cancel: 'Cancel',
+      submit: 'Reset Pasword',
       success: 'Please check your inbox and reset the password within 1 hour',
-      'user-not-found': 'This user is not available.',
     },
     'reset-password': {
       success: 'Your password has been updated. You can login with the new password.',
+    },
+    login: {
+      title: 'Login',
+      instruction: 'Please fill in your account to continue.',
+      submit: 'Login',
+      'forgot-pwd': 'Forgot Password?',
+      'user-not-found': 'Invalid user or password.',
+      'invalid-password': 'Invalid user or password.',
+      'user-is-disabled': 'This user is not active.',
+    },
+    profile: {
+      title: 'Edit profile',
+      header: 'Profile Information',
+      'change-password': 'Change Password',
+      'current-password': 'Current Password',
+      'new-password': 'New Password',
+      'confirm-password': 'Re-enter Password',
+      'invalid-current-password': 'Invalid current password',
+      cancel: 'Cancel',
+      submit: 'Update',
+    },
+    dashboard: {
+      title: 'Dashboard',
     },
     'user-management': {
       'delete-user-warning': 'Deleting User!',
@@ -79,17 +109,20 @@ const translation = {
       username: 'Username',
       password: 'Password',
       'login-btn': 'Login',
-      'forgot-password': 'Forgot Password?',
+      'forgot-pwd': 'Forgot Password?',
       'user-not-found': 'This user is not available.',
       'invalid-password': 'Invalid password.',
       'user-is-disabled': 'This user is disabled.',
     },
-    'forgot-password': {
+    'forgot-pwd': {
       success: 'Please check your inbox and reset the password within 1 hour',
       'user-not-found': 'This user is not available.',
     },
     'reset-password': {
       success: 'Your password has been updated. You can login with the new password.',
+    },
+    dashboard: {
+      title: 'Bảng điều khiển',
     },
     'user-management': {
       'delete-user-warning': 'Deleting User!',

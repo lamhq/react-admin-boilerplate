@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Layout from '../components/Layout';
+import AdminLayout from '../components/AdminLayout';
 import { appName } from '../../../../config';
 import withAuth from '../../../../common/identity/hocs/withAuth';
 
@@ -18,13 +18,13 @@ function AdminLayoutContainer({ title, children, breadcrumbs }) {
   }, [title]);
 
   return (
-    <Layout
+    <AdminLayout
       breadcrumbs={breadcrumbs}
       toggleDrawer={toggleDrawer}
       ref={navDrawerRef}
     >
       {children}
-    </Layout>
+    </AdminLayout>
   );
 }
 

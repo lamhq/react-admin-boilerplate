@@ -33,7 +33,6 @@ export default function Header({ toggleDrawer, breadcrumbs }) {
             <EuiHeaderLogo
               iconType="logoKibana"
               href="/"
-              aria-label="Goes to home"
             />
           </EuiHeaderSectionItem>
         </EuiHeaderSection>

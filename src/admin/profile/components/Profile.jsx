@@ -18,23 +18,24 @@ import Layout from '../../layout/admin';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
 import SwitchField from '../../../eui/components/SwitchField';
-import { useNavigator } from '../../../common/hooks';
-
-const breadcrumbs = [
-  {
-    text: 'Account Management',
-  },
-];
+import { useNavigator, useTranslation } from '../../../common/hooks';
 
 export default function Profile({ initialFormValues, validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();
+  const { t } = useTranslation();
+  const breadcrumbs = [
+    {
+      text: t('profile/title'),
+    },
+  ];
+
   return (
-    <Layout title="Edit your profile" breadcrumbs={breadcrumbs}>
+    <Layout title={t('profile/title')} breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>Profile Information</h2>
+              <h2>{t('profile/header')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -48,32 +49,32 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
               <Form>
                 <TextField
                   name="displayName"
-                  label="Full Name"
+                  label={t('user/displayName')}
                   icon="user"
                 />
                 <TextField
                   name="email"
-                  label="Email"
+                  label={t('user/email')}
                   icon="email"
                 />
                 <SwitchField
                   name="changePassword"
-                  label="Change Password"
+                  label={t('profile/change-password')}
                 />
                 {values.changePassword && (
                 <>
                   <PasswordField
                     name="currentPassword"
-                    label="Current Password"
+                    label={t('profile/current-password')}
                   />
                   <PasswordField
                     name="newPassword"
-                    label="New Password"
+                    label={t('profile/new-password')}
                     autoComplete="off"
                   />
                   <PasswordField
                     name="confirmPassword"
-                    label="Re-enter Password"
+                    label={t('profile/confirm-password')}
                     autoComplete="off"
                   />
                 </>
@@ -87,12 +88,12 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
                       color="primary"
                       isLoading={isSubmitting}
                     >
-                      Submit
+                      {t('profile/submit')}
                     </EuiButton>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
                     <EuiButtonEmpty {...getLinkProps('/')}>
-                      Cancel
+                      {t('profile/cancel')}
                     </EuiButtonEmpty>
                   </EuiFlexItem>
                 </EuiFlexGroup>

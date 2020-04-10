@@ -2,11 +2,8 @@
 ```yml
 i18n
   # enable catching missing translations
-  enable runtime language switching
-    update styling for LanguageSwitch
-    add proptypes for Render
-  test all features, add translation key for all components
-  resolve missing translations
+  # enable runtime language switching
+  add translation for all components
 # user management
 # handling error
 # deployment

@@ -1,21 +1,21 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useNavigator } from '../../../../common/hooks';
+import { useNavigator, useTranslation } from '../../../../common/hooks';
 import NavBar from '../components/NavBar';
 
 const navLinks = [
   {
-    label: 'Dashboard',
+    label: 'app/dashboard',
     iconType: 'dashboardApp',
     href: '/dashboard',
   },
   {
-    label: 'Users',
+    label: 'app/users',
     iconType: 'user',
     href: '/users',
   },
   {
-    label: 'Configure',
+    label: 'app/settings',
     iconType: 'managementApp',
     href: '/settings',
   },
@@ -24,10 +24,13 @@ const navLinks = [
 function NavBarContainer(props, ref) {
   const { getLinkProps } = useNavigator();
   const location = useLocation();
+  const { t } = useTranslation();
+
   function decorateLink(item) {
     return ({
       ...item,
       ...getLinkProps(item.href),
+      label: t(item.label),
       isActive: item.href === location.pathname,
     });
   }

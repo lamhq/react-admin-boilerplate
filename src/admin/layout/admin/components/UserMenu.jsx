@@ -8,18 +8,18 @@ import {
   EuiPopover,
 } from '@elastic/eui';
 import LogoutButton from '../containers/LogoutButtonContainer';
-import { useNavigator } from '../../../../common/hooks';
+import { useNavigator, useTranslation } from '../../../../common/hooks';
 
 export default function UserMenu({
   isMenuOpen, onMenuToggle, closeMenu, user,
 }) {
+  const { t } = useTranslation();
   const { getLinkProps } = useNavigator();
   const button = (
     <EuiHeaderSectionItemButton
       aria-controls="headerUserMenu"
       aria-expanded={isMenuOpen}
       aria-haspopup="true"
-      aria-label="Account menu"
       onClick={onMenuToggle}
     >
       <EuiAvatar name={user.displayName} size="s" />
@@ -32,7 +32,7 @@ export default function UserMenu({
       icon="user"
       {...getLinkProps('/profile')}
     >
-      Profile
+      {t('app/profile')}
     </EuiContextMenuItem>,
     <LogoutButton key="logout" />,
   ];
