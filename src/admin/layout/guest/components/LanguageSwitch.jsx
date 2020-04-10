@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   EuiButtonEmpty,
   EuiPopover,
@@ -7,6 +8,7 @@ import {
 } from '@elastic/eui';
 import { useTranslation } from '../../../../common/hooks';
 import LanguageSwitchContainer from '../../../../common/language';
+import styles from '../styles.m.scss';
 
 function Render({
   onButtonClick,
@@ -42,11 +44,20 @@ function Render({
       panelPaddingSize="none"
       withTitle
       anchorPosition="downLeft"
+      className={styles.languageSwitch}
     >
       <EuiContextMenuPanel items={items} />
     </EuiPopover>
   );
 }
+
+Render.propTypes = {
+  onButtonClick: PropTypes.func.isRequired,
+  isPopoverOpen: PropTypes.bool.isRequired,
+  closePopover: PropTypes.func.isRequired,
+  panels: PropTypes.object.isRequired,
+  language: PropTypes.string.isRequired,
+};
 
 export default function LanguageSwitch() {
   return (

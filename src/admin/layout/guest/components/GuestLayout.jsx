@@ -10,7 +10,7 @@ import {
 } from '@elastic/eui';
 
 import { appName } from '../../../../config';
-import styles from './styles.m.scss';
+import styles from '../styles.m.scss';
 import Alert from '../../../../common/alert/containers/Alert';
 import LanguageSwitch from './LanguageSwitch';
 

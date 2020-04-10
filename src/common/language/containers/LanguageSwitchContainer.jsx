@@ -1,7 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from '../../hooks';
-import LanguageSwitch from '../components/LanguageSwitch';
 
 const allowedLanguages = ['en', 'vi'];
 
@@ -38,7 +36,3 @@ export default function LanguageSwitchContainer({ children: render }) {
     language: currentLanguage,
   });
 }
-
-LanguageSwitch.propTypes = {
-  children: PropTypes.func.isRequired,
-};
