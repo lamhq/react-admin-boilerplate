@@ -7,6 +7,7 @@ import {
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import PasswordField from '../../../eui/components/PasswordField';
+import { useTranslation } from '../../../common/hooks';
 
 const initialFormValues = {
   password: '',
@@ -14,8 +15,9 @@ const initialFormValues = {
 };
 
 export default function ResetPwd({ validateForm, onSubmit }) {
+  const { t } = useTranslation();
   return (
-    <Layout title="Reset Your Password" instruction="Enter your new password here.">
+    <Layout title={t('reset-pwd/title')} instruction={t('reset-pwd/instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -26,11 +28,11 @@ export default function ResetPwd({ validateForm, onSubmit }) {
             <Form>
               <PasswordField
                 name="password"
-                label="Password"
+                label={t('user/displayName')}
               />
               <PasswordField
                 name="confirmPassword"
-                label="Re-enter Password"
+                label={t('user/confirm-password')}
               />
               <EuiButton
                 type="submit"
@@ -38,7 +40,7 @@ export default function ResetPwd({ validateForm, onSubmit }) {
                 isLoading={isSubmitting}
                 fill
               >
-                Update
+                {t('reset-pwd/submit')}
               </EuiButton>
             </Form>
           </EuiPanel>

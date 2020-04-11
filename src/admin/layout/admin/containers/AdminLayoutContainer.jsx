@@ -1,20 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AdminLayout from '../components/AdminLayout';
-import { appName } from '../../../../config';
+import { useDocumentTitle } from '../../../../common/hooks';
 
 export default function AdminLayoutContainer({ title, children, breadcrumbs }) {
+  useDocumentTitle(title);
   const navDrawerRef = React.useRef(null);
 
   function toggleDrawer() {
     navDrawerRef.current.toggleOpen();
   }
-
-  React.useEffect(() => {
-    if (title) {
-      document.title = `${title} - ${appName}`;
-    }
-  }, [title]);
 
   return (
     <AdminLayout

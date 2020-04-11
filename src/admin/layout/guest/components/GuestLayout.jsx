@@ -9,18 +9,13 @@ import {
   EuiTitle,
 } from '@elastic/eui';
 
-import { appName } from '../../../../config';
 import styles from '../styles.m.scss';
 import Alert from '../../../../common/alert/containers/Alert';
 import LanguageSwitch from './LanguageSwitch';
+import { useDocumentTitle } from '../../../../common/hooks';
 
 export default function GuestLayout({ title, instruction, children }) {
-  React.useEffect(() => {
-    if (title) {
-      document.title = `${title} - ${appName}`;
-    }
-  }, [title]);
-
+  useDocumentTitle(title);
   return (
     <div className={styles.layout}>
       <LanguageSwitch />

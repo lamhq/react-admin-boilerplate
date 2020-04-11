@@ -7,10 +7,11 @@ import {
   EuiPageContent,
   EuiButton,
 } from '@elastic/eui';
-import styles from './styles.m.scss';
-import { useTranslation } from '../../common/hooks';
+import styles from '../styles.m.scss';
+import { useTranslation, useDocumentTitle } from '../../common/hooks';
 
 export default function ErrorPage({ title, message }) {
+  useDocumentTitle(title);
   const { t } = useTranslation();
   return (
     <div className={styles.layout}>
@@ -20,12 +21,12 @@ export default function ErrorPage({ title, message }) {
             <EuiEmptyPrompt
               iconType="alert"
               iconColor="danger"
-              title={<h2>{t(title)}</h2>}
+              title={<h2>{title}</h2>}
               body={(
                 <>
-                  <p>{t(message)}</p>
+                  <p>{message}</p>
                   <EuiButton href="/">
-                    {t('common/back-to-home')}
+                    {t('common/go-to-home')}
                   </EuiButton>
                 </>
               )}

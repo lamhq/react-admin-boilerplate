@@ -1,6 +1,6 @@
 import React from 'react';
 import validate from 'validate.js';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
@@ -37,7 +37,6 @@ function validateForm(data) {
 }
 
 export default function ResetPwdContainer() {
-  const history = useHistory();
   const location = useLocation();
   const { alertSuccess, alertError } = useAlert();
   const { resetPassword } = useApi();
@@ -60,7 +59,7 @@ export default function ResetPwdContainer() {
       const { password } = values;
       const code = getResetPasswordToken();
       await resetPassword(code, password);
-      alertSuccess('reset-password/success');
+      alertSuccess('reset-pwd/success');
       redirect('/login');
     } catch (error) {
       if (!error.code) {

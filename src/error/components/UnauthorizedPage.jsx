@@ -1,6 +1,8 @@
 import React from 'react';
 import ErrorPage from './ErrorPage';
+import { useTranslation } from '../../common/hooks';
 
 export default function UnauthorizedPage() {
-  return <ErrorPage title="common/unauthorized" message="common/unauthorized-msg" />;
+  const { t } = useTranslation();
+  return <ErrorPage title={t('common/403-page-title')} message={t('common/403-page-content')} />;
 }

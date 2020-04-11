@@ -9,6 +9,7 @@ import {
 import Layout from '../../layout/guest';
 import PasswordField from '../../../eui/components/PasswordField';
 import TextField from '../../../eui/components/TextField';
+import { useTranslation } from '../../../common/hooks';
 
 const initialFormValues = {
   displayName: '',
@@ -18,8 +19,9 @@ const initialFormValues = {
 };
 
 export default function Register({ validateForm, onSubmit }) {
+  const { t } = useTranslation();
   return (
-    <Layout title="Register A New Account" instruction="Enter your info to create an account.">
+    <Layout title={t('register/title')} instruction={t('register/instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -30,23 +32,23 @@ export default function Register({ validateForm, onSubmit }) {
             <Form>
               <TextField
                 name="displayName"
-                label="Full Name"
+                label={t('user/displayName')}
                 icon="user"
               />
               <TextField
                 name="email"
-                label="email"
+                label={t('user/email')}
                 icon="email"
                 autoComplete="off"
               />
               <PasswordField
                 name="password"
-                label="Password"
+                label={t('user/password')}
                 autoComplete="off"
               />
               <PasswordField
                 name="confirmPassword"
-                label="Re-enter Password"
+                label={t('user/confirm-password')}
                 autoComplete="off"
               />
               <EuiHorizontalRule />
@@ -57,7 +59,7 @@ export default function Register({ validateForm, onSubmit }) {
                 color="primary"
                 isLoading={isSubmitting}
               >
-                Submit
+                {t('register/submit')}
               </EuiButton>
             </Form>
           </EuiPanel>

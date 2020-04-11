@@ -59,22 +59,22 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
                 />
                 <SwitchField
                   name="changePassword"
-                  label={t('profile/change-password')}
+                  label={t('user/change-password')}
                 />
                 {values.changePassword && (
                 <>
                   <PasswordField
                     name="currentPassword"
-                    label={t('profile/current-password')}
+                    label={t('user/current-password')}
                   />
                   <PasswordField
                     name="newPassword"
-                    label={t('profile/new-password')}
+                    label={t('user/new-password')}
                     autoComplete="off"
                   />
                   <PasswordField
                     name="confirmPassword"
-                    label={t('profile/confirm-password')}
+                    label={t('user/confirm-password')}
                     autoComplete="off"
                   />
                 </>

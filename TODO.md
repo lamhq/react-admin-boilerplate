@@ -1,13 +1,23 @@
 # TODO Mon 6/4 => 12/4
 ```yml
 # authorization
-  # add permission declaration to routes.js
-  # implement protected route
-  # remove authentication checking in layout
+# implement hook useDocumentTitle
 i18n
   # enable catching missing translations
   # enable runtime language switching
   add translation for all components
+    # register
+    # reset pwd
+    # loading screen
+    # dialog
+    # error component
+    # not found page
+    # unauthorized page
+    DialogProvider
+    eui\Alert.jsx
+    user list
+    user add
+    user edit
 # user management
 # handling error
 # deployment

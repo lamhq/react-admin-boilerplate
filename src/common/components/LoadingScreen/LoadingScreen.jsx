@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './styles.m.scss';
+import { useTranslation } from '../../hooks';
 
 /**
  * Display a loading page with spinner
  */
 export default function LoadingPage() {
+  const { t } = useTranslation();
   return (
     <div className={styles.loadingView}>
       <div className={styles.loaderWrap}>
@@ -15,7 +17,7 @@ export default function LoadingPage() {
       </div>
 
       <div className={styles.loadingText}>
-        Loading ...
+        {t('common/loading')}
       </div>
     </div>
   );

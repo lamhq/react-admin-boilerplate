@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ErrorPage from '../components/ErrorPage';
+import RuntimeErrorPage from '../components/RuntimeErrorPage';
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ export default class ErrorBoundary extends React.Component {
     const { children } = this.props;
     if (hasError) {
       // Render fallback UI
-      return <ErrorPage title="common/runtime-error" message="common/error-page-content" />;
+      return <RuntimeErrorPage />;
     }
 
     return children;
