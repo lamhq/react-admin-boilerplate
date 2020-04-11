@@ -146,3 +146,12 @@ export function formatEnum(value, options) {
   const optionItem = options.find(item => item.value === value);
   return optionItem ? optionItem.text : '';
 }
+
+/**
+ * Check if array contains sub array
+ * @param {array} master
+ * @param {array} sub
+ */
+export function hasSubArray(master, sub) {
+  return sub.every(item => master.includes(item));
+}

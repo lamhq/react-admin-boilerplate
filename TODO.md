@@ -1,5 +1,9 @@
 # TODO Mon 6/4 => 12/4
 ```yml
+# authorization
+  # add permission declaration to routes.js
+  # implement protected route
+  # remove authentication checking in layout
 i18n
   # enable catching missing translations
   # enable runtime language switching

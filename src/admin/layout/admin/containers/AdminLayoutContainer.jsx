@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AdminLayout from '../components/AdminLayout';
 import { appName } from '../../../../config';
-import withAuth from '../../../../common/identity/hocs/withAuth';
 
-function AdminLayoutContainer({ title, children, breadcrumbs }) {
+export default function AdminLayoutContainer({ title, children, breadcrumbs }) {
   const navDrawerRef = React.useRef(null);
 
   function toggleDrawer() {
@@ -41,5 +40,3 @@ AdminLayoutContainer.defaultProps = {
   title: '',
   breadcrumbs: null,
 };
-
-export default withAuth('/login')(AdminLayoutContainer);

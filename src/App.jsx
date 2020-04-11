@@ -6,7 +6,7 @@ import {
 
 import routes from './routes';
 import LoadingScreen from './common/components/LoadingScreen';
-import { IdentityProvider } from './common/identity';
+import { IdentityProvider, ProtectedRoute } from './common/identity';
 import { ApiProvider } from './common/api';
 import { AlertProvider } from './common/alert';
 import { DialogProvider } from './common/dialog';
@@ -28,17 +28,15 @@ function App() {
                   <Switch>
                     {routes.map(r => (
                       // Added property`key` to Router to fix warning when hot reloading Route component
-                      <Route
-                        key={r.path}
-                        path={r.path}
-                        component={r.component}
-                        exact
-                      />
+                      <ProtectedRoute key={r.path} {...r} />
                     ))}
+
                     {/* Set default homepage */}
                     <Route path="/" exact>
                       <Redirect to="/dashboard" />
                     </Route>
+
+                    {/* 404 homepage */}
                     <Route render={() => <NotFoundPage />} />
                   </Switch>
                 </Suspense>
