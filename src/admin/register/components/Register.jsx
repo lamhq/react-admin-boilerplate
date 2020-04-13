@@ -9,7 +9,7 @@ import {
 import Layout from '../../layout/guest';
 import PasswordField from '../../../eui/components/PasswordField';
 import TextField from '../../../eui/components/TextField';
-import { useTranslation } from '../../../common/hooks';
+import { useTranslation } from 'react-i18next';
 
 const initialFormValues = {
   displayName: '',

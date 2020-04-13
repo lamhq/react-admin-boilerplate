@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useNavigator, useTranslation } from '../../../../common/hooks';
+import { useNavigator } from '../../../../common/hooks';
+import { useTranslation } from 'react-i18next';
 import NavBar from '../components/NavBar';
 
 const navLinks = [

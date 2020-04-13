@@ -5,7 +5,6 @@ import {
   EuiSelect,
   EuiFormRow,
 } from '@elastic/eui';
-import { useTranslation } from '../../common/hooks';
 
 export default function SelectField({
   label,
@@ -13,14 +12,13 @@ export default function SelectField({
   name,
   ...rest
 }) {
-  const { t } = useTranslation();
   const [field, meta] = useField(name);
   const hasError = meta.touched && meta.error !== undefined;
   return (
     <EuiFormRow
       label={label}
       isInvalid={hasError}
-      error={t(meta.error)}
+      error={meta.error}
     >
       <EuiSelect
         isInvalid={hasError}

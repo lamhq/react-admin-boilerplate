@@ -7,8 +7,9 @@ import {
   EuiPageContent,
   EuiButton,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import styles from '../styles.m.scss';
-import { useTranslation, useDocumentTitle } from '../../common/hooks';
+import { useDocumentTitle } from '../../common/hooks';
 
 export default function ErrorPage({ title, message }) {
   useDocumentTitle(title);

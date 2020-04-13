@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiButton } from '@elastic/eui';
-import { useTranslation } from '../../../common/hooks';
+import { useTranslation } from 'react-i18next';
 
 export default function BulkDeleteBtn({ isLoading, onDelete }) {
   const { t } = useTranslation();

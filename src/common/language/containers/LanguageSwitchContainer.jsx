@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from '../../hooks';
+import { useTranslation } from 'react-i18next';
 
 const allowedLanguages = ['en', 'vi'];
 

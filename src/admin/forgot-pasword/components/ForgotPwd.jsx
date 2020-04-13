@@ -9,9 +9,10 @@ import {
   EuiButtonEmpty,
   EuiSpacer,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
-import { useNavigator, useTranslation } from '../../../common/hooks';
+import { useNavigator } from '../../../common/hooks';
 
 const initialFormValues = {
   email: '',

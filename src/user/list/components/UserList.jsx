@@ -16,7 +16,8 @@ import {
 } from '@elastic/eui';
 import Layout from '../../../admin/layout/admin';
 import { formatDate, formatEnum } from '../../../common/utils';
-import { useNavigator, useTranslation } from '../../../common/hooks';
+import { useTranslation } from 'react-i18next';
+import { useNavigator } from '../../../common/hooks';
 import { userStatusOptions } from '../../constants';
 import DeleteUserBtn from '../containers/DeleteUserContainer';
 import BuilkDeleteContainer from '../containers/BuilkDeleteContainer';

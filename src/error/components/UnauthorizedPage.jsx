@@ -1,6 +1,6 @@
 import React from 'react';
 import ErrorPage from './ErrorPage';
-import { useTranslation } from '../../common/hooks';
+import { useTranslation } from 'react-i18next';
 
 export default function UnauthorizedPage() {
   const { t } = useTranslation();

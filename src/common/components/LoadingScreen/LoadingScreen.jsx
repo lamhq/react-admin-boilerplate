@@ -1,6 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './styles.m.scss';
-import { useTranslation } from '../../hooks';
 
 /**
  * Display a loading page with spinner

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiLoadingSpinner, EuiButtonIcon, EuiToolTip } from '@elastic/eui';
-import { useTranslation } from '../../../common/hooks';
+import { useTranslation } from 'react-i18next';
 
 export default function DeleteUserBtn({ isLoading, onDelete, canDelete }) {
   const { t } = useTranslation();

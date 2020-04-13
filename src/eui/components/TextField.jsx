@@ -5,17 +5,15 @@ import {
   EuiFieldText,
   EuiFormRow,
 } from '@elastic/eui';
-import { useTranslation } from '../../common/hooks';
 
 export default function TextField({ label, name, ...rest }) {
-  const { t } = useTranslation();
   const [field, meta] = useField(name);
   const hasError = meta.touched && meta.error !== undefined;
   return (
     <EuiFormRow
       label={label}
       isInvalid={hasError}
-      error={t(meta.error)}
+      error={meta.error}
     >
       <EuiFieldText
         isInvalid={hasError}

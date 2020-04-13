@@ -12,7 +12,8 @@ import {
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
-import { useNavigator, useTranslation } from '../../../common/hooks';
+import { useTranslation } from 'react-i18next';
+import { useNavigator } from '../../../common/hooks';
 
 export default function Login({ initialFormValues, validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();

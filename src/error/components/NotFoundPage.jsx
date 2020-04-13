@@ -1,6 +1,6 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ErrorPage from './ErrorPage';
-import { useTranslation } from '../../common/hooks';
 
 export default function NotFoundPage() {
   const { t } = useTranslation();

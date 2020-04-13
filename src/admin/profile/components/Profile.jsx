@@ -18,7 +18,8 @@ import Layout from '../../layout/admin';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
 import SwitchField from '../../../eui/components/SwitchField';
-import { useNavigator, useTranslation } from '../../../common/hooks';
+import { useTranslation } from 'react-i18next';
+import { useNavigator } from '../../../common/hooks';
 
 export default function Profile({ initialFormValues, validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();

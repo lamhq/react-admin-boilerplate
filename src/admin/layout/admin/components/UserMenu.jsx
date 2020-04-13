@@ -7,8 +7,9 @@ import {
   EuiHeaderSectionItemButton,
   EuiPopover,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import LogoutButton from '../containers/LogoutButtonContainer';
-import { useNavigator, useTranslation } from '../../../../common/hooks';
+import { useNavigator } from '../../../../common/hooks';
 
 export default function UserMenu({
   isMenuOpen, onMenuToggle, closeMenu, user,

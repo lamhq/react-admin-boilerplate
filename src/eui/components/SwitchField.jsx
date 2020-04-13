@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useField } from 'formik';
 import { EuiSwitch, EuiFormRow } from '@elastic/eui';
-import { useTranslation } from '../../common/hooks';
 
 export default function SwitchField({ label, name }) {
-  const { t } = useTranslation();
   const [field, meta, helpers] = useField(name);
   const hasError = meta.touched && meta.error !== undefined;
   function handleChange(e) {
@@ -15,7 +13,7 @@ export default function SwitchField({ label, name }) {
     <EuiFormRow
       label=""
       isInvalid={hasError}
-      error={t(meta.error)}
+      error={meta.error}
     >
       <EuiSwitch
         label={label}

@@ -7,7 +7,7 @@ import {
 } from '@elastic/eui';
 import Layout from '../../layout/guest';
 import PasswordField from '../../../eui/components/PasswordField';
-import { useTranslation } from '../../../common/hooks';
+import { useTranslation } from 'react-i18next';
 
 const initialFormValues = {
   password: '',

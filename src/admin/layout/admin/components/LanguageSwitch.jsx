@@ -5,7 +5,7 @@ import {
   EuiPopover,
   EuiHeaderSectionItemButton,
 } from '@elastic/eui';
-import { useTranslation } from '../../../../common/hooks';
+import { useTranslation } from 'react-i18next';
 import LanguageSwitchContainer from '../../../../common/language';
 
 export default function LanguageSwitch() {
