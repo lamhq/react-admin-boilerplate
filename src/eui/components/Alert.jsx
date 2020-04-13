@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiCallOut } from '@elastic/eui';
-import { useTranslation } from '../../common/hooks';
 
 export default function Alert({ type, message }) {
-  const { t } = useTranslation();
   let color = 'success';
   let icon = 'checkInCircleFilled';
   switch (type) {
@@ -31,7 +29,7 @@ export default function Alert({ type, message }) {
     <EuiCallOut
       size="s"
       color={color}
-      title={t(message)}
+      title={message}
       iconType={icon}
       role="alert"
     />

@@ -33,8 +33,8 @@ export default function DialogProvider({ children }) {
   function showConfirmDialog(title, content, options = {}) {
     const settings = {
       type: '',
-      confirmButtonText: 'common/confirm-button',
-      cancelButtonText: 'common/cancel-button',
+      confirmButtonText: t('common/confirm-button'),
+      cancelButtonText: t('common/cancel-button'),
       title,
       content,
       ...options,
@@ -54,15 +54,15 @@ export default function DialogProvider({ children }) {
       setDialog((
         <EuiOverlayMask>
           <EuiConfirmModal
-            title={t(settings.title)}
-            cancelButtonText={t(settings.cancelButtonText)}
-            confirmButtonText={t(settings.confirmButtonText)}
+            title={settings.title}
+            cancelButtonText={settings.cancelButtonText}
+            confirmButtonText={settings.confirmButtonText}
             buttonColor={getButtonColor(settings.type)}
             defaultFocusedButton="confirm"
             onCancel={handleCancel}
             onConfirm={handleConfirm}
           >
-            <div>{t(settings.content)}</div>
+            <div>{settings.content}</div>
           </EuiConfirmModal>
         </EuiOverlayMask>
       ));

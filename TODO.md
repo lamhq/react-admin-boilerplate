@@ -5,6 +5,7 @@
 i18n
   # enable catching missing translations
   # enable runtime language switching
+  fix bug translation interpolation: remove common/hooks/useTranslation
   add translation for all components
     # register
     # reset pwd
@@ -13,11 +14,12 @@ i18n
     # error component
     # not found page
     # unauthorized page
-    DialogProvider
-    eui\Alert.jsx
-    user list
+    # DialogProvider
+    # eui\Alert.jsx
+    # user list
     user add
     user edit
+  find solution to translate error message when handling api error
 # user management
 # handling error
 # deployment

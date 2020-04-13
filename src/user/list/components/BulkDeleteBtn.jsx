@@ -14,7 +14,7 @@ export default function BulkDeleteBtn({ isLoading, onDelete }) {
       iconType="trash"
       size="m"
     >
-      {t('user-management/delete')}
+      {t('user-mng/delete')}
     </EuiButton>
   );
 }

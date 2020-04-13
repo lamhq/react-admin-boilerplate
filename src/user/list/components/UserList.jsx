@@ -21,12 +21,6 @@ import { userStatusOptions } from '../../constants';
 import DeleteUserBtn from '../containers/DeleteUserContainer';
 import BuilkDeleteContainer from '../containers/BuilkDeleteContainer';
 
-const breadcrumbs = [
-  {
-    text: 'Users',
-  },
-];
-
 export default function UserList({
   onSearch,
   selection,
@@ -41,11 +35,17 @@ export default function UserList({
   loadList,
 }) {
   const { t } = useTranslation();
+  const breadcrumbs = [
+    {
+      text: t('user-mng/title'),
+    },
+  ];
+
   const { redirect, getLinkProps } = useNavigator();
   const columns = [
     {
       field: 'displayName',
-      name: 'Full Name',
+      name: t('user/displayName'),
       sortable: true,
       truncateText: true,
       render: (username, record) => (
@@ -56,26 +56,26 @@ export default function UserList({
     },
     {
       field: 'email',
-      name: 'Email Address',
+      name: t('user/email'),
       sortable: true,
       truncateText: true,
     },
     {
       field: 'createdAt',
-      name: 'Joined Date',
+      name: t('user/createdAt'),
       sortable: true,
       truncateText: true,
       render: createdAt => formatDate(createdAt),
     },
     {
       field: 'status',
-      name: 'Status',
+      name: t('user/status'),
       sortable: true,
       truncateText: true,
       render: status => formatEnum(status, userStatusOptions),
     },
     {
-      name: 'Actions',
+      name: t('common/actions'),
       width: '200px',
       actions: [
         {
@@ -84,7 +84,7 @@ export default function UserList({
         {
           name: 'Edit',
           isPrimary: true,
-          description: 'Edit this user',
+          description: t('user-mng/edit-action'),
           icon: 'pencil',
           type: 'icon',
           onClick: user => redirect(`/users/edit/${user.id}`),
@@ -99,17 +99,17 @@ export default function UserList({
   }
 
   return (
-    <Layout title={t('user-management/users')} breadcrumbs={breadcrumbs}>
+    <Layout title={t('user-mng/title')} breadcrumbs={breadcrumbs}>
       <EuiPageContent>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>{t('user-management/users')}</h2>
+              <h2>{t('user-mng/title')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
           <EuiPageContentHeaderSection>
             <EuiButton {...getLinkProps('/users/add')}>
-              Create user
+              {t('user-mng/create')}
             </EuiButton>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -122,7 +122,7 @@ export default function UserList({
             )}
             <EuiFlexItem grow>
               <EuiFieldSearch
-                placeholder="Enter keyword to search"
+                placeholder={t('user-mng/search-help-text')}
                 defaultValue={search}
                 onChange={handleSearchChange}
                 isClearable
@@ -145,7 +145,7 @@ export default function UserList({
             hasActions
             isSelectable
             isExpandable={false}
-            noItemsMessage="No items match."
+            noItemsMessage={t('common/no-items')}
             error={hasError ? t('common/load-data-fail') : ''}
           />
         </EuiPageContentBody>
