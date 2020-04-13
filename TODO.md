@@ -1,3 +1,19 @@
+# TODO 13/4 => 19/4
+```yml
+i18n
+  add translation for all components
+    # user add
+    user edit
+  translate success message (alertSuccess)
+  translate form input errors
+  translate server error message (alertError)
+  translate server form input errors
+error reporting (sentry + slack notification)
+take a look on https://github.com/dai-shi/react-hooks-global-state
+upgrade packages to latest version
+```
+
+
 # TODO Mon 6/4 => 12/4
 ```yml
 # authorization
@@ -5,7 +21,7 @@
 i18n
   # enable catching missing translations
   # enable runtime language switching
-  fix bug translation interpolation: remove common/hooks/useTranslation
+  # remove common/hooks/useTranslation
   add translation for all components
     # register
     # reset pwd
@@ -19,7 +35,6 @@ i18n
     # user list
     user add
     user edit
-  find solution to translate error message when handling api error
 # user management
 # handling error
 # deployment

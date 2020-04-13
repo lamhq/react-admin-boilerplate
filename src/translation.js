@@ -104,6 +104,9 @@ const translation = {
       'delete-user-dlg-content': 'Are you sure to delete "{{name}}" ?',
       'delete-users-dlg-content': 'Are you sure to delete {{count}} user ?',
       'delete-users-dlg-content_plural': 'Are you sure to delete {{count}} users ?',
+      submit: 'Submit',
+      cancel: 'Cancel',
+      'add-user-success': 'User created successfully.',
     },
   },
 };

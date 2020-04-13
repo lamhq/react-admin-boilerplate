@@ -1,5 +1,6 @@
 import React from 'react';
 import validate from 'validate.js';
+import { useTranslation } from 'react-i18next';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
@@ -54,12 +55,13 @@ export default function AddUserContainer() {
   const { alertSuccess, alertError } = useAlert();
   const { addUser } = useApi();
   const { redirect } = useNavigator();
+  const { t } = useTranslation();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
       await addUser(values);
       redirect('/users');
-      alertSuccess('add-user/success');
+      alertSuccess(t('user-mng/add-user-success'));
     } catch (error) {
       if (!error.code) {
         alertError('common/runtime-error');
