@@ -5,9 +5,9 @@ import {
   EuiButton,
   EuiPanel,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/guest';
 import PasswordField from '../../../eui/components/PasswordField';
-import { useTranslation } from 'react-i18next';
 
 const initialFormValues = {
   password: '',
@@ -17,7 +17,7 @@ const initialFormValues = {
 export default function ResetPwd({ validateForm, onSubmit }) {
   const { t } = useTranslation();
   return (
-    <Layout title={t('reset-pwd/title')} instruction={t('reset-pwd/instruction')}>
+    <Layout title={t('reset-pwd:title')} instruction={t('reset-pwd:instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -28,11 +28,11 @@ export default function ResetPwd({ validateForm, onSubmit }) {
             <Form>
               <PasswordField
                 name="password"
-                label={t('user/displayName')}
+                label={t('user:displayName')}
               />
               <PasswordField
                 name="confirmPassword"
-                label={t('user/confirm-password')}
+                label={t('user:confirm-password')}
               />
               <EuiButton
                 type="submit"
@@ -40,7 +40,7 @@ export default function ResetPwd({ validateForm, onSubmit }) {
                 isLoading={isSubmitting}
                 fill
               >
-                {t('reset-pwd/submit')}
+                {t('reset-pwd:submit')}
               </EuiButton>
             </Form>
           </EuiPanel>

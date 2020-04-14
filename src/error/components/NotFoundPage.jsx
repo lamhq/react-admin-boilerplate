@@ -4,5 +4,5 @@ import ErrorPage from './ErrorPage';
 
 export default function NotFoundPage() {
   const { t } = useTranslation();
-  return <ErrorPage title={t('common/404-page-title')} message={t('common/404-page-content')} />;
+  return <ErrorPage title={t('common:404-page-title')} message={t('common:404-page-content')} />;
 }

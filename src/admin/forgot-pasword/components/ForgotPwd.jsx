@@ -22,7 +22,7 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();
   const { t } = useTranslation();
   return (
-    <Layout title={t('forgot-pwd/title')} instruction={t('forgot-pwd/instruction')}>
+    <Layout title={t('forgot-pwd:title')} instruction={t('forgot-pwd:instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -33,7 +33,7 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
             <Form>
               <TextField
                 name="email"
-                label={t('user/email')}
+                label={t('user:email')}
                 icon="email"
               />
               <EuiSpacer />
@@ -43,7 +43,7 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
                     iconType="arrowLeft"
                     {...getLinkProps('/login')}
                   >
-                    {t('forgot-pwd/cancel')}
+                    {t('forgot-pwd:cancel')}
                   </EuiButtonEmpty>
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
@@ -53,7 +53,7 @@ export default function ForgotPwd({ validateForm, onSubmit }) {
                     isLoading={isSubmitting}
                     fill
                   >
-                    {t('forgot-pwd/submit')}
+                    {t('forgot-pwd:submit')}
                   </EuiButton>
                 </EuiFlexItem>
               </EuiFlexGroup>

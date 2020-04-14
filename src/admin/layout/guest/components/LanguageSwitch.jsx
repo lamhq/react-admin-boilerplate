@@ -36,7 +36,7 @@ function Render({
           iconSide="right"
           onClick={onButtonClick}
         >
-          {t(`common/lang-${language}`)}
+          {t(`common:lang-${language}`)}
         </EuiButtonEmpty>
       )}
       isOpen={isPopoverOpen}

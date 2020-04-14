@@ -35,7 +35,7 @@ export default function ForgotPwdContainer() {
       resetForm();
     } catch (error) {
       if (!error.code) {
-        alertError('common/runtime-error');
+        alertError('common:runtime-error');
         throw error;
       }
 

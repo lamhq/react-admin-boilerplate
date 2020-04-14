@@ -6,17 +6,17 @@ import NavBar from '../components/NavBar';
 
 const navLinks = [
   {
-    label: 'app/dashboard',
+    label: 'app:dashboard',
     iconType: 'dashboardApp',
     href: '/dashboard',
   },
   {
-    label: 'app/users',
+    label: 'app:users',
     iconType: 'user',
     href: '/users',
   },
   {
-    label: 'app/settings',
+    label: 'app:settings',
     iconType: 'managementApp',
     href: '/settings',
   },

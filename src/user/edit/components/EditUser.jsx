@@ -30,22 +30,22 @@ export default function EditUser({
   const { t } = useTranslation();
   const breadcrumbs = [
     {
-      text: t('user-mng/title'),
+      text: t('user-mng:title'),
       href: '/users',
     },
     {
-      text: t('user-mng/edit'),
+      text: t('user-mng:edit'),
     },
   ];
 
   const { getLinkProps } = useNavigator();
   return (
-    <Layout title={t('user-mng/edit')} breadcrumbs={breadcrumbs}>
+    <Layout title={t('user-mng:edit')} breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>{t('user-mng/edit')}</h2>
+              <h2>{t('user-mng:edit')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -61,37 +61,37 @@ export default function EditUser({
                 <Form>
                   <TextField
                     name="displayName"
-                    label={t('user/displayName')}
+                    label={t('user:displayName')}
                     icon="user"
                   />
                   <TextField
                     name="email"
-                    label={t('user/email')}
+                    label={t('user:email')}
                     icon="email"
                   />
                   <SelectField
                     name="status"
-                    label={t('user/status')}
+                    label={t('user:status')}
                     options={userStatusOptions}
                   />
                   <SwitchField
                     name="changePassword"
-                    label={t('user/change-password')}
+                    label={t('user:change-password')}
                   />
                   {values.changePassword && (
                     <>
                       <PasswordField
                         name="currentPassword"
-                        label={t('user/current-password')}
+                        label={t('user:current-password')}
                       />
                       <PasswordField
                         name="newPassword"
-                        label={t('user/new-password')}
+                        label={t('user:new-password')}
                         autoComplete="off"
                       />
                       <PasswordField
                         name="confirmPassword"
-                        label={t('user/confirm-password')}
+                        label={t('user:confirm-password')}
                         autoComplete="off"
                       />
                     </>
@@ -105,12 +105,12 @@ export default function EditUser({
                         color="primary"
                         isLoading={isSubmitting}
                       >
-                        {t('user-mng/submit')}
+                        {t('user-mng:submit')}
                       </EuiButton>
                     </EuiFlexItem>
                     <EuiFlexItem grow={false}>
                       <EuiButtonEmpty {...getLinkProps('/')}>
-                        {t('user-mng/cancel')}
+                        {t('user-mng:cancel')}
                       </EuiButtonEmpty>
                     </EuiFlexItem>
                   </EuiFlexGroup>

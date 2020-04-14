@@ -9,17 +9,17 @@ import {
   EuiFlexItem,
   EuiLink,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/guest';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
-import { useTranslation } from 'react-i18next';
 import { useNavigator } from '../../../common/hooks';
 
 export default function Login({ initialFormValues, validateForm, onSubmit }) {
   const { getLinkProps } = useNavigator();
   const { t } = useTranslation();
   return (
-    <Layout title={t('login/title')} instruction={t('login/instruction')}>
+    <Layout title={t('login:title')} instruction={t('login:instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -30,12 +30,12 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
             <Form>
               <TextField
                 name="username"
-                label={t('user/username')}
+                label={t('user:username')}
                 icon="user"
               />
               <PasswordField
                 name="password"
-                label={t('user/password')}
+                label={t('user:password')}
               />
               <EuiSpacer />
               <EuiFlexGroup justifyContent="spaceBetween">
@@ -46,7 +46,7 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
                     isLoading={isSubmitting}
                     fill
                   >
-                    {t('login/submit')}
+                    {t('login:submit')}
                   </EuiButton>
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
@@ -55,7 +55,7 @@ export default function Login({ initialFormValues, validateForm, onSubmit }) {
                       color="subdued"
                       {...getLinkProps('/forgot-password')}
                     >
-                      {t('login/forgot-pwd')}
+                      {t('login:forgot-pwd')}
                     </EuiLink>
                   </small>
                 </EuiFlexItem>

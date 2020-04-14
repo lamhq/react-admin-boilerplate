@@ -33,7 +33,7 @@ export default function UserMenu({
       icon="user"
       {...getLinkProps('/profile')}
     >
-      {t('app/profile')}
+      {t('app:profile')}
     </EuiContextMenuItem>,
     <LogoutButton key="logout" />,
   ];

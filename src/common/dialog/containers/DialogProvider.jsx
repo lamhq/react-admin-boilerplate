@@ -33,8 +33,8 @@ export default function DialogProvider({ children }) {
   function showConfirmDialog(title, content, options = {}) {
     const settings = {
       type: '',
-      confirmButtonText: t('common/confirm-button'),
-      cancelButtonText: t('common/cancel-button'),
+      confirmButtonText: t('common:confirm-button'),
+      cancelButtonText: t('common:cancel-button'),
       title,
       content,
       ...options,

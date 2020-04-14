@@ -6,12 +6,12 @@ export default function Dashboard() {
   const { t } = useTranslation();
   const breadcrumbs = [
     {
-      text: t('dashboard/title'),
+      text: t('dashboard:title'),
     },
   ];
 
   return (
-    <Layout title={t('dashboard/title')} breadcrumbs={breadcrumbs}>
+    <Layout title={t('dashboard:title')} breadcrumbs={breadcrumbs}>
       TBC
     </Layout>
   );

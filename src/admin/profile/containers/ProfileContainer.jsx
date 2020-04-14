@@ -45,8 +45,8 @@ function validateForm(data) {
         length: {
           minimum: 6,
           maximum: 30,
-          tooLong: ['common/password-too-long', { max: 30 }],
-          tooShort: ['common/password-too-short', { min: 6 }],
+          tooLong: ['common:password-too-long', { max: 30 }],
+          tooShort: ['common:password-too-short', { min: 6 }],
         },
       } : false;
     },
@@ -87,7 +87,7 @@ export default function ProfileContainer() {
   async function handleSubmit(values, { setSubmitting, setErrors, resetForm }) {
     try {
       const newUser = await updateProfile(values);
-      alertSuccess(t('profile/success'));
+      alertSuccess(t('profile:success'));
       setIdentity({
         ...identity,
         user: newUser,
@@ -95,7 +95,7 @@ export default function ProfileContainer() {
       resetForm();
     } catch (error) {
       if (!error.code) {
-        alertError('common/runtime-error');
+        alertError('common:runtime-error');
         throw error;
       }
 

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function DeleteUserBtn({ isLoading, onDelete, canDelete }) {
   const { t } = useTranslation();
-  const tooltipText = t(canDelete ? 'user-mng/delete-user' : 'user-mng/can-not-delete-user');
+  const tooltipText = t(canDelete ? 'user-mng:delete-user' : 'user-mng:can-not-delete-user');
 
   return isLoading ? <EuiLoadingSpinner size="m" /> : (
     <EuiToolTip content={tooltipText}>

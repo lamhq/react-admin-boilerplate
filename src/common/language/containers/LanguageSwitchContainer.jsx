@@ -17,9 +17,9 @@ export default function LanguageSwitchContainer({ children: render }) {
 
   const panels = [{
     id: 0,
-    title: t('common/select-language'),
+    title: t('common:select-language'),
     items: allowedLanguages.map(lang => ({
-      name: t(`common/lang-${lang}`),
+      name: t(`common:lang-${lang}`),
       icon: currentLanguage === lang ? 'check' : 'empty',
       onClick: () => {
         i18n.changeLanguage(lang);

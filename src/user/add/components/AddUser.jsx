@@ -35,20 +35,20 @@ export default function AddUser({ validateForm, onSubmit }) {
   const { t } = useTranslation();
   const breadcrumbs = [
     {
-      text: t('user-mng/title'),
+      text: t('user-mng:title'),
       href: '/users',
     },
     {
-      text: t('user-mng/create'),
+      text: t('user-mng:create'),
     },
   ];
   return (
-    <Layout title={t('user-mng/create')} breadcrumbs={breadcrumbs}>
+    <Layout title={t('user-mng:create')} breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>{t('user-mng/create')}</h2>
+              <h2>{t('user-mng:create')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -62,28 +62,28 @@ export default function AddUser({ validateForm, onSubmit }) {
               <Form>
                 <TextField
                   name="displayName"
-                  label={t('user/displayName')}
+                  label={t('user:displayName')}
                   icon="user"
                 />
                 <TextField
                   name="email"
-                  label={t('user/email')}
+                  label={t('user:email')}
                   icon="email"
                   autoComplete="new-password"
                 />
                 <SelectField
                   name="status"
-                  label={t('user/status')}
+                  label={t('user:status')}
                   options={userStatusOptions}
                 />
                 <PasswordField
                   name="password"
-                  label={t('user/password')}
+                  label={t('user:password')}
                   autoComplete="new-password"
                 />
                 <PasswordField
                   name="confirmPassword"
-                  label={t('user/confirm-password')}
+                  label={t('user:confirm-password')}
                   autoComplete="new-password"
                 />
                 <EuiHorizontalRule />
@@ -96,12 +96,12 @@ export default function AddUser({ validateForm, onSubmit }) {
                       color="primary"
                       isLoading={isSubmitting}
                     >
-                      {t('user-mng/submit')}
+                      {t('user-mng:submit')}
                     </EuiButton>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
                     <EuiButtonEmpty {...getLinkProps('/users')}>
-                      {t('user-mng/cancel')}
+                      {t('user-mng:cancel')}
                     </EuiButtonEmpty>
                   </EuiFlexItem>
                 </EuiFlexGroup>

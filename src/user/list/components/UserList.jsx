@@ -14,9 +14,9 @@ import {
   EuiSpacer,
   EuiFieldSearch,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import Layout from '../../../admin/layout/admin';
 import { formatDate, formatEnum } from '../../../common/utils';
-import { useTranslation } from 'react-i18next';
 import { useNavigator } from '../../../common/hooks';
 import { userStatusOptions } from '../../constants';
 import DeleteUserBtn from '../containers/DeleteUserContainer';
@@ -38,7 +38,7 @@ export default function UserList({
   const { t } = useTranslation();
   const breadcrumbs = [
     {
-      text: t('user-mng/title'),
+      text: t('user-mng:title'),
     },
   ];
 
@@ -46,7 +46,7 @@ export default function UserList({
   const columns = [
     {
       field: 'displayName',
-      name: t('user/displayName'),
+      name: t('user:displayName'),
       sortable: true,
       truncateText: true,
       render: (username, record) => (
@@ -57,26 +57,26 @@ export default function UserList({
     },
     {
       field: 'email',
-      name: t('user/email'),
+      name: t('user:email'),
       sortable: true,
       truncateText: true,
     },
     {
       field: 'createdAt',
-      name: t('user/createdAt'),
+      name: t('user:createdAt'),
       sortable: true,
       truncateText: true,
       render: createdAt => formatDate(createdAt),
     },
     {
       field: 'status',
-      name: t('user/status'),
+      name: t('user:status'),
       sortable: true,
       truncateText: true,
       render: status => formatEnum(status, userStatusOptions),
     },
     {
-      name: t('common/actions'),
+      name: t('common:actions'),
       width: '200px',
       actions: [
         {
@@ -85,7 +85,7 @@ export default function UserList({
         {
           name: 'Edit',
           isPrimary: true,
-          description: t('user-mng/edit-action'),
+          description: t('user-mng:edit-action'),
           icon: 'pencil',
           type: 'icon',
           onClick: user => redirect(`/users/edit/${user.id}`),
@@ -100,17 +100,17 @@ export default function UserList({
   }
 
   return (
-    <Layout title={t('user-mng/title')} breadcrumbs={breadcrumbs}>
+    <Layout title={t('user-mng:title')} breadcrumbs={breadcrumbs}>
       <EuiPageContent>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>{t('user-mng/title')}</h2>
+              <h2>{t('user-mng:title')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
           <EuiPageContentHeaderSection>
             <EuiButton {...getLinkProps('/users/add')}>
-              {t('user-mng/create')}
+              {t('user-mng:create')}
             </EuiButton>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -123,7 +123,7 @@ export default function UserList({
             )}
             <EuiFlexItem grow>
               <EuiFieldSearch
-                placeholder={t('user-mng/search-help-text')}
+                placeholder={t('user-mng:search-help-text')}
                 defaultValue={search}
                 onChange={handleSearchChange}
                 isClearable
@@ -146,8 +146,8 @@ export default function UserList({
             hasActions
             isSelectable
             isExpandable={false}
-            noItemsMessage={t('common/no-items')}
-            error={hasError ? t('common/load-data-fail') : ''}
+            noItemsMessage={t('common:no-items')}
+            error={hasError ? t('common:load-data-fail') : ''}
           />
         </EuiPageContentBody>
       </EuiPageContent>

@@ -6,10 +6,10 @@ import {
   EuiPanel,
   EuiHorizontalRule,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/guest';
 import PasswordField from '../../../eui/components/PasswordField';
 import TextField from '../../../eui/components/TextField';
-import { useTranslation } from 'react-i18next';
 
 const initialFormValues = {
   displayName: '',
@@ -21,7 +21,7 @@ const initialFormValues = {
 export default function Register({ validateForm, onSubmit }) {
   const { t } = useTranslation();
   return (
-    <Layout title={t('register/title')} instruction={t('register/instruction')}>
+    <Layout title={t('register:title')} instruction={t('register:instruction')}>
       <Formik
         initialValues={initialFormValues}
         validate={validateForm}
@@ -32,23 +32,23 @@ export default function Register({ validateForm, onSubmit }) {
             <Form>
               <TextField
                 name="displayName"
-                label={t('user/displayName')}
+                label={t('user:displayName')}
                 icon="user"
               />
               <TextField
                 name="email"
-                label={t('user/email')}
+                label={t('user:email')}
                 icon="email"
                 autoComplete="off"
               />
               <PasswordField
                 name="password"
-                label={t('user/password')}
+                label={t('user:password')}
                 autoComplete="off"
               />
               <PasswordField
                 name="confirmPassword"
-                label={t('user/confirm-password')}
+                label={t('user:confirm-password')}
                 autoComplete="off"
               />
               <EuiHorizontalRule />
@@ -59,7 +59,7 @@ export default function Register({ validateForm, onSubmit }) {
                 color="primary"
                 isLoading={isSubmitting}
               >
-                {t('register/submit')}
+                {t('register:submit')}
               </EuiButton>
             </Form>
           </EuiPanel>

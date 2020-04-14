@@ -19,7 +19,7 @@ export default function LanguageSwitch() {
         <EuiPopover
           button={(
             <EuiHeaderSectionItemButton onClick={onButtonClick}>
-              <EuiIcon type="flag" size="m" title={t('common/language')} />
+              <EuiIcon type="flag" size="m" title={t('common:language')} />
             </EuiHeaderSectionItemButton>
           )}
           isOpen={isPopoverOpen}

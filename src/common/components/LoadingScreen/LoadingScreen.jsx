@@ -17,7 +17,7 @@ export default function LoadingPage() {
       </div>
 
       <div className={styles.loadingText}>
-        {t('common/loading')}
+        {t('common:loading')}
       </div>
     </div>
   );

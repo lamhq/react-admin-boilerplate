@@ -23,18 +23,18 @@ export default function DeleteUserContainer({ user, onSuccess }) {
   });
   async function handleDelete() {
     const shouldDelete = await confirm(
-      t('user-mng/delete-user-dlg-title'),
-      t('user-mng/delete-user-dlg-content', { name: user.displayName }),
+      t('user-mng:delete-user-dlg-title'),
+      t('user-mng:delete-user-dlg-content', { name: user.displayName }),
       { type: 'error' },
     );
     if (shouldDelete) {
       try {
         await execDeleteUser(user.id);
-        alertSuccess(t('user-mng/delete-success'));
+        alertSuccess(t('user-mng:delete-success'));
         onSuccess();
       } catch (error) {
         if (!error.code) {
-          alertError('common/runtime-error');
+          alertError('common:runtime-error');
           throw error;
         }
         alertError(error.code);

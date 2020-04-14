@@ -13,12 +13,12 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import styles from '../../common.m.scss';
 import Layout from '../../layout/admin';
 import TextField from '../../../eui/components/TextField';
 import PasswordField from '../../../eui/components/PasswordField';
 import SwitchField from '../../../eui/components/SwitchField';
-import { useTranslation } from 'react-i18next';
 import { useNavigator } from '../../../common/hooks';
 
 export default function Profile({ initialFormValues, validateForm, onSubmit }) {
@@ -26,17 +26,17 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
   const { t } = useTranslation();
   const breadcrumbs = [
     {
-      text: t('profile/title'),
+      text: t('profile:title'),
     },
   ];
 
   return (
-    <Layout title={t('profile/title')} breadcrumbs={breadcrumbs}>
+    <Layout title={t('profile:title')} breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>{t('profile/header')}</h2>
+              <h2>{t('profile:header')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -50,32 +50,32 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
               <Form>
                 <TextField
                   name="displayName"
-                  label={t('user/displayName')}
+                  label={t('user:displayName')}
                   icon="user"
                 />
                 <TextField
                   name="email"
-                  label={t('user/email')}
+                  label={t('user:email')}
                   icon="email"
                 />
                 <SwitchField
                   name="changePassword"
-                  label={t('user/change-password')}
+                  label={t('user:change-password')}
                 />
                 {values.changePassword && (
                 <>
                   <PasswordField
                     name="currentPassword"
-                    label={t('user/current-password')}
+                    label={t('user:current-password')}
                   />
                   <PasswordField
                     name="newPassword"
-                    label={t('user/new-password')}
+                    label={t('user:new-password')}
                     autoComplete="off"
                   />
                   <PasswordField
                     name="confirmPassword"
-                    label={t('user/confirm-password')}
+                    label={t('user:confirm-password')}
                     autoComplete="off"
                   />
                 </>
@@ -89,12 +89,12 @@ export default function Profile({ initialFormValues, validateForm, onSubmit }) {
                       color="primary"
                       isLoading={isSubmitting}
                     >
-                      {t('profile/submit')}
+                      {t('profile:submit')}
                     </EuiButton>
                   </EuiFlexItem>
                   <EuiFlexItem grow={false}>
                     <EuiButtonEmpty {...getLinkProps('/')}>
-                      {t('profile/cancel')}
+                      {t('profile:cancel')}
                     </EuiButtonEmpty>
                   </EuiFlexItem>
                 </EuiFlexGroup>

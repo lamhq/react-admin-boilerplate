@@ -40,7 +40,7 @@ export default function LoginContainer() {
       goBack();
     } catch (error) {
       if (!error.code) {
-        alertError('common/runtime-error');
+        alertError('common:runtime-error');
         throw error;
       }
 

@@ -22,18 +22,18 @@ export default function BuilkDeleteContainer({ users, onSuccess }) {
 
   async function handleDelete() {
     const shouldDelete = await confirm(
-      t('user-mng/delete-user-dlg-title'),
-      t('user-mng/delete-users-dlg-content', { count: users.length }),
+      t('user-mng:delete-user-dlg-title'),
+      t('user-mng:delete-users-dlg-content', { count: users.length }),
       { type: 'error' },
     );
     if (shouldDelete) {
       try {
         await execDeleteUsers(users);
-        alertSuccess(t('user-mng/delete-success'));
+        alertSuccess(t('user-mng:delete-success'));
         onSuccess();
       } catch (error) {
         if (!error.code) {
-          alertError('common/runtime-error');
+          alertError('common:runtime-error');
           throw error;
         }
         alertError(error.code);

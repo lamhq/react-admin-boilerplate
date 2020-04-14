@@ -27,7 +27,7 @@ export default function ErrorPage({ title, message }) {
                 <>
                   <p>{message}</p>
                   <EuiButton href="/">
-                    {t('common/go-to-home')}
+                    {t('common:go-to-home')}
                   </EuiButton>
                 </>
               )}

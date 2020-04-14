@@ -8,16 +8,16 @@ import numeral from 'numeral';
 function toAppError(error) {
   const result = {};
   if (error.response) {
-    let code = 'common/runtime-error';
+    let code = 'common:runtime-error';
     const { status, data } = error.response;
     switch (status) {
       case 504:
-        code = 'common/request-timeout';
+        code = 'common:request-timeout';
         break;
 
       case 400:
         if (data.errors) {
-          code = 'common/invalid-user-input';
+          code = 'common:invalid-user-input';
           result.inputErrors = data.errors;
         } else {
           ({ code } = data);
@@ -25,11 +25,11 @@ function toAppError(error) {
         break;
 
       case 401:
-        code = 'common/unauthenticated';
+        code = 'common:unauthenticated';
         break;
 
       case 403:
-        code = 'common/unauthorized';
+        code = 'common:unauthorized';
         break;
 
       default:
@@ -39,7 +39,7 @@ function toAppError(error) {
     result.code = code;
   } else if (error.message === 'Network Error') {
     // device is offline
-    result.code = 'common/network-unavailable';
+    result.code = 'common:network-unavailable';
   }
 
   return result;

@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 export default function LogoutButton({ onClick }) {
   const { t } = useTranslation();
   return (
-    <EuiContextMenuItem icon="exit" onClick={onClick}>{t('app/logout')}</EuiContextMenuItem>
+    <EuiContextMenuItem icon="exit" onClick={onClick}>{t('app:logout')}</EuiContextMenuItem>
   );
 }
 

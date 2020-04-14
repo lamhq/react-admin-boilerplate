@@ -32,8 +32,8 @@ function validateForm(data) {
       length: {
         minimum: 6,
         maximum: 30,
-        tooLong: ['common/password-too-long', { max: 30 }],
-        tooShort: ['common/password-too-short', { min: 6 }],
+        tooLong: ['common:password-too-long', { max: 30 }],
+        tooShort: ['common:password-too-short', { min: 6 }],
       },
     },
     confirmPassword: {
@@ -61,10 +61,10 @@ export default function AddUserContainer() {
     try {
       await addUser(values);
       redirect('/users');
-      alertSuccess(t('user-mng/add-user-success'));
+      alertSuccess(t('user-mng:add-user-success'));
     } catch (error) {
       if (!error.code) {
-        alertError('common/runtime-error');
+        alertError('common:runtime-error');
         throw error;
       }
 
