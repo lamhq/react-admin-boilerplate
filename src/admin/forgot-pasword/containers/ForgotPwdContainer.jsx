@@ -1,7 +1,6 @@
 import React from 'react';
-import validate from 'validate.js';
 import { useTranslation } from 'react-i18next';
-import { toFormikErrors } from '../../../common/utils';
+import { validate } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ForgotPwd from '../components/ForgotPwd';
@@ -10,16 +9,16 @@ function validateForm(data) {
   const constraints = {
     email: {
       email: {
-        message: '^common/invalid-email',
+        message: '^common:invalid-email',
       },
       presence: {
         allowEmpty: false,
-        message: '^common/required-field',
+        message: '^common:required-field',
       },
     },
   };
 
-  return toFormikErrors(validate(data, constraints));
+  return validate(data, constraints);
 }
 
 export default function ForgotPwdContainer() {
@@ -40,7 +39,7 @@ export default function ForgotPwdContainer() {
       }
 
       if (error.inputErrors) {
-        setErrors(toFormikErrors(error.inputErrors));
+        setErrors(error.inputErrors);
       }
 
       alertError(error.code);

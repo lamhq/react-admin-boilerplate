@@ -1,5 +1,6 @@
 import moment from 'moment';
 import numeral from 'numeral';
+import validateObject from 'validate.js';
 
 /**
  * Convert http error to application error
@@ -70,21 +71,32 @@ export function getComponentName(Component) {
   return Component.displayName || Component.name || 'Component';
 }
 
-/**
- * Convert validate.js errors to Formik errors
- */
-export function toFormikErrors(errors) {
-  if (!errors) return {};
+// Change the format of validation result
+// { foo: 'Foo is totally wrong' }
+// eslint-disable-next-line arrow-body-style
+validateObject.formatters.custom = (errors) => {
+  return errors.reduce((result, item) => ({
+    ...result,
+    [item.attribute]: item.error,
+  }), {});
+};
 
-  const formatedErrors = Object.entries(errors).reduce((accumulator, currentValue) => {
-    const key = currentValue[0];
-    const messages = currentValue[1];
-    return {
-      ...accumulator,
-      [key]: messages[0],
-    };
-  }, {});
-  return formatedErrors;
+/**
+ * Validate form inputs
+ * @param {Ojbect} data
+ * @param {Object} constraints
+ */
+export function validate(data, constraints) {
+  return validateObject(data, constraints, { format: 'custom' });
+}
+
+/**
+ * Validate form inputs (async)
+ * @param {Ojbect} data
+ * @param {Object} constraints
+ */
+export function asyncValidate(data, constraints) {
+  return validateObject.async(data, constraints, { format: 'custom' });
 }
 
 export function compose(...fns) {

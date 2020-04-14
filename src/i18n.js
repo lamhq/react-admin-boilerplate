@@ -8,7 +8,6 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources: translation,
-    fallbackLng: 'en',
     defaultNS: 'common',
     keySeparator: false, // we do not use keys in form messages.welcome
     interpolation: {
@@ -16,7 +15,7 @@ i18n
     },
     saveMissing: true,
     missingKeyHandler: (lng, ns, key) => {
-      console.warn(`missing translation: ${ns}/${key} (${lng})`);
+      console.warn(`Missing translation: ${ns}:${key} (${lng})`);
     },
   });
 

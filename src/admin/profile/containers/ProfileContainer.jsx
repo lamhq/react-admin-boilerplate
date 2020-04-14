@@ -1,7 +1,7 @@
 import React from 'react';
-import validate from 'validate.js';
+
 import { useTranslation } from 'react-i18next';
-import { toFormikErrors } from '../../../common/utils';
+import { validate } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import { useIdentity } from '../../../common/identity';
@@ -12,16 +12,16 @@ function validateForm(data) {
     displayName: {
       presence: {
         allowEmpty: false,
-        message: '^common/required-input',
+        message: '^common:required-input',
       },
     },
     email: {
       presence: {
         allowEmpty: false,
-        message: '^common/required-input',
+        message: '^common:required-input',
       },
       email: {
-        message: '^common/invalid-email',
+        message: '^common:invalid-email',
       },
     },
     // eslint-disable-next-line arrow-body-style, no-unused-vars
@@ -30,7 +30,7 @@ function validateForm(data) {
       return attributes.changePassword ? {
         presence: {
           allowEmpty: false,
-          message: '^common/required-input',
+          message: '^common:required-input',
         },
       } : false;
     },
@@ -40,7 +40,7 @@ function validateForm(data) {
       return attributes.changePassword ? {
         presence: {
           allowEmpty: false,
-          message: '^common/required-input',
+          message: '^common:required-input',
         },
         length: {
           minimum: 6,
@@ -56,17 +56,17 @@ function validateForm(data) {
       return attributes.changePassword ? {
         presence: {
           allowEmpty: false,
-          message: '^common/required-input',
+          message: '^common:required-input',
         },
         equality: {
           attribute: 'newPassword',
-          message: '^common/password-not-match',
+          message: '^common:password-not-match',
         },
       } : false;
     },
   };
 
-  return toFormikErrors(validate(data, constraints));
+  return validate(data, constraints);
 }
 
 export default function ProfileContainer() {
@@ -100,7 +100,7 @@ export default function ProfileContainer() {
       }
 
       if (error.inputErrors) {
-        setErrors(toFormikErrors(error.inputErrors));
+        setErrors(error.inputErrors);
       }
 
       alertError(error.code);

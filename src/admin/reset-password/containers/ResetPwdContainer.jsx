@@ -1,7 +1,8 @@
 import React from 'react';
-import validate from 'validate.js';
+
 import { useLocation } from 'react-router-dom';
-import { toFormikErrors } from '../../../common/utils';
+import { useTranslation } from 'react-i18next';
+import { validate } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ResetPwd from '../components/ResetPwd';
@@ -12,7 +13,7 @@ function validateForm(data) {
     password: {
       presence: {
         allowEmpty: false,
-        message: '^common/required-input',
+        message: '^common:required-input',
       },
       length: {
         minimum: 6,
@@ -24,16 +25,16 @@ function validateForm(data) {
     confirmPassword: {
       presence: {
         allowEmpty: false,
-        message: '^common/required-input',
+        message: '^common:required-input',
       },
       equality: {
         attribute: 'password',
-        message: '^common/password-not-match',
+        message: '^common:password-not-match',
       },
     },
   };
 
-  return toFormikErrors(validate(data, constraints));
+  return validate(data, constraints);
 }
 
 export default function ResetPwdContainer() {
@@ -69,7 +70,7 @@ export default function ResetPwdContainer() {
       }
 
       if (error.inputErrors) {
-        setErrors(toFormikErrors(error.inputErrors));
+        setErrors(error.inputErrors);
       }
 
       alertError(error.code);

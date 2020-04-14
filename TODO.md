@@ -3,6 +3,7 @@
 i18n
   # add translation for all components
   # translate success message (alertSuccess)
+  # refactor code of form validation
   translate form input errors
   refactor code of handling async events
   server translation

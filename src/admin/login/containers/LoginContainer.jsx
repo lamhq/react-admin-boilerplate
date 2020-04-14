@@ -1,6 +1,6 @@
 import React from 'react';
-import validate from 'validate.js';
-import { toFormikErrors } from '../../../common/utils';
+
+import { validate } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
 import { useAlert } from '../../../common/alert';
@@ -12,18 +12,18 @@ function validateLoginForm(data) {
     username: {
       presence: {
         allowEmpty: false,
-        message: '^common/required-input',
+        message: '^common:required-input',
       },
     },
     password: {
       presence: {
         allowEmpty: false,
-        message: '^common/required-input',
+        message: '^common:required-input',
       },
     },
   };
 
-  return toFormikErrors(validate(data, constraints));
+  return validate(data, constraints);
 }
 
 export default function LoginContainer() {
@@ -45,7 +45,7 @@ export default function LoginContainer() {
       }
 
       if (error.inputErrors) {
-        setErrors(toFormikErrors(error.inputErrors));
+        setErrors(error.inputErrors);
       }
 
       alertError(error.code);
