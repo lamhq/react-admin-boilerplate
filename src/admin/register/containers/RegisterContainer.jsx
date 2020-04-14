@@ -1,5 +1,6 @@
 import React from 'react';
 import validate from 'validate.js';
+import { useTranslation } from 'react-i18next';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
@@ -52,6 +53,7 @@ function validateForm(data) {
 }
 
 export default function RegisterContainer() {
+  const { t } = useTranslation();
   const { alertSuccess, alertError } = useAlert();
   const { register } = useApi();
   const { setIdentity } = useIdentity();
@@ -61,7 +63,7 @@ export default function RegisterContainer() {
     try {
       const identity = await register(values);
       setIdentity(identity);
-      alertSuccess('register/success');
+      alertSuccess(t('register/success'));
       redirect('/');
     } catch (error) {
       if (!error.code) {

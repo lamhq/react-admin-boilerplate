@@ -1,5 +1,6 @@
 import React from 'react';
 import validate from 'validate.js';
+import { useTranslation } from 'react-i18next';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
@@ -22,6 +23,7 @@ function validateForm(data) {
 }
 
 export default function ForgotPwdContainer() {
+  const { t } = useTranslation();
   const { requestPasswordReset } = useApi();
   const { alertSuccess, alertError } = useAlert();
 
@@ -29,7 +31,7 @@ export default function ForgotPwdContainer() {
     try {
       const { email } = values;
       await requestPasswordReset(email);
-      alertSuccess('forgot-password/success');
+      alertSuccess(t('forgot-password/success'));
       resetForm();
     } catch (error) {
       if (!error.code) {

@@ -30,7 +30,7 @@ export default function DeleteUserContainer({ user, onSuccess }) {
     if (shouldDelete) {
       try {
         await execDeleteUser(user.id);
-        alertSuccess('user-mng/delete-success');
+        alertSuccess(t('user-mng/delete-success'));
         onSuccess();
       } catch (error) {
         if (!error.code) {

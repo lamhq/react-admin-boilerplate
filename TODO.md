@@ -1,13 +1,12 @@
 # TODO 13/4 => 19/4
 ```yml
 i18n
-  add translation for all components
-    # user add
-    user edit
-  translate success message (alertSuccess)
+  # add translation for all components
+  # translate success message (alertSuccess)
   translate form input errors
-  translate server error message (alertError)
-  translate server form input errors
+  server translation
+    error message (alertError)
+    form input errors
 error reporting (sentry + slack notification)
 take a look on https://github.com/dai-shi/react-hooks-global-state
 upgrade packages to latest version

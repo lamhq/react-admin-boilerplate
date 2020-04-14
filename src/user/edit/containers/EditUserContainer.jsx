@@ -1,6 +1,7 @@
 import React from 'react';
 import validate from 'validate.js';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
@@ -71,6 +72,7 @@ function validateForm(data) {
 }
 
 export default function EditUserContainer() {
+  const { t } = useTranslation();
   const { alertSuccess, alertError } = useAlert();
   const { updateUser, getUserDetail } = useApi();
   const { redirect } = useNavigator();
@@ -85,7 +87,7 @@ export default function EditUserContainer() {
     try {
       await updateUser(userId, values);
       redirect('/users');
-      alertSuccess('add-user/success');
+      alertSuccess(t('user-mng/update-user-success'));
     } catch (error) {
       if (!error.code) {
         alertError('common/runtime-error');

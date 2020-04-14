@@ -29,7 +29,7 @@ export default function BuilkDeleteContainer({ users, onSuccess }) {
     if (shouldDelete) {
       try {
         await execDeleteUsers(users);
-        alertSuccess('user-mng/delete-success');
+        alertSuccess(t('user-mng/delete-success'));
         onSuccess();
       } catch (error) {
         if (!error.code) {

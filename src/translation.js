@@ -79,6 +79,7 @@ const translation = {
       cancel: 'Cancel',
       submit: 'Update',
       'invalid-current-password': 'Invalid current password',
+      success: 'Update profile successfully',
     },
     register: {
       title: 'Register A New Account',
@@ -95,6 +96,7 @@ const translation = {
     'user-mng': {
       title: 'Users',
       create: 'Create user',
+      edit: 'Edit user',
       'search-help-text': 'Search by email, name',
       'edit-action': 'Edit this user',
       delete: 'Delete',
@@ -107,6 +109,7 @@ const translation = {
       submit: 'Submit',
       cancel: 'Cancel',
       'add-user-success': 'User created successfully.',
+      'update-user-success': 'User updated successfully.',
     },
   },
 };

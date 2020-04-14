@@ -13,6 +13,7 @@ import {
   EuiFlexItem,
   EuiButtonEmpty,
 } from '@elastic/eui';
+import { useTranslation } from 'react-i18next';
 import { useNavigator } from '../../../common/hooks';
 import styles from '../../../admin/common.m.scss';
 import Layout from '../../../admin/layout/admin';
@@ -23,27 +24,28 @@ import LoadingContent from '../../../common/components/LoadingContent';
 import SelectField from '../../../eui/components/SelectField';
 import { userStatusOptions } from '../../constants';
 
-const breadcrumbs = [
-  {
-    text: 'Users',
-    href: '/users',
-  },
-  {
-    text: 'Edit',
-  },
-];
-
 export default function EditUser({
   initialFormValues, validateForm, onSubmit, isLoading,
 }) {
+  const { t } = useTranslation();
+  const breadcrumbs = [
+    {
+      text: t('user-mng/title'),
+      href: '/users',
+    },
+    {
+      text: t('user-mng/edit'),
+    },
+  ];
+
   const { getLinkProps } = useNavigator();
   return (
-    <Layout title="Edit User" breadcrumbs={breadcrumbs}>
+    <Layout title={t('user-mng/edit')} breadcrumbs={breadcrumbs}>
       <EuiPageContent className={styles.centeredContent}>
         <EuiPageContentHeader>
           <EuiPageContentHeaderSection>
             <EuiTitle>
-              <h2>Edit User</h2>
+              <h2>{t('user-mng/edit')}</h2>
             </EuiTitle>
           </EuiPageContentHeaderSection>
         </EuiPageContentHeader>
@@ -59,37 +61,37 @@ export default function EditUser({
                 <Form>
                   <TextField
                     name="displayName"
-                    label="Full Name"
+                    label={t('user/displayName')}
                     icon="user"
                   />
                   <TextField
                     name="email"
-                    label="Email"
+                    label={t('user/email')}
                     icon="email"
                   />
                   <SelectField
                     name="status"
-                    label="Status"
+                    label={t('user/status')}
                     options={userStatusOptions}
                   />
                   <SwitchField
                     name="changePassword"
-                    label="Change Password"
+                    label={t('user/change-password')}
                   />
                   {values.changePassword && (
                     <>
                       <PasswordField
                         name="currentPassword"
-                        label="Current Password"
+                        label={t('user/current-password')}
                       />
                       <PasswordField
                         name="newPassword"
-                        label="New Password"
+                        label={t('user/new-password')}
                         autoComplete="off"
                       />
                       <PasswordField
                         name="confirmPassword"
-                        label="Re-enter Password"
+                        label={t('user/confirm-password')}
                         autoComplete="off"
                       />
                     </>
@@ -103,12 +105,12 @@ export default function EditUser({
                         color="primary"
                         isLoading={isSubmitting}
                       >
-                        Submit
+                        {t('user-mng/submit')}
                       </EuiButton>
                     </EuiFlexItem>
                     <EuiFlexItem grow={false}>
                       <EuiButtonEmpty {...getLinkProps('/')}>
-                        Cancel
+                        {t('user-mng/cancel')}
                       </EuiButtonEmpty>
                     </EuiFlexItem>
                   </EuiFlexGroup>

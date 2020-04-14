@@ -37,6 +37,7 @@ function validateForm(data) {
 }
 
 export default function ResetPwdContainer() {
+  const { t } = useTranslation();
   const location = useLocation();
   const { alertSuccess, alertError } = useAlert();
   const { resetPassword } = useApi();
@@ -59,7 +60,7 @@ export default function ResetPwdContainer() {
       const { password } = values;
       const code = getResetPasswordToken();
       await resetPassword(code, password);
-      alertSuccess('reset-pwd/success');
+      alertSuccess(t('reset-pwd/success'));
       redirect('/login');
     } catch (error) {
       if (!error.code) {

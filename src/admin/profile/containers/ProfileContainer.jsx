@@ -1,5 +1,6 @@
 import React from 'react';
 import validate from 'validate.js';
+import { useTranslation } from 'react-i18next';
 import { toFormikErrors } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
@@ -69,6 +70,7 @@ function validateForm(data) {
 }
 
 export default function ProfileContainer() {
+  const { t } = useTranslation();
   const { alertSuccess, alertError } = useAlert();
   const { updateProfile } = useApi();
   const { identity, setIdentity } = useIdentity();
@@ -85,7 +87,7 @@ export default function ProfileContainer() {
   async function handleSubmit(values, { setSubmitting, setErrors, resetForm }) {
     try {
       const newUser = await updateProfile(values);
-      alertSuccess('update-profile/success');
+      alertSuccess(t('profile/success'));
       setIdentity({
         ...identity,
         user: newUser,
