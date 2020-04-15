@@ -2,8 +2,9 @@
 ```yml
 # integrate error reporting service (sentry)
 move i18n code to common
+config source map for production build
+test source map with sentry
 setup slack notification with sentry
-test sentry integration with source map on production
 i18n
   # add translation for all components
   # translate success message (alertSuccess)

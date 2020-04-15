@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RuntimeErrorPage from '../components/RuntimeErrorPage';
+import Sentry from '../../common/sentry';
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -14,8 +15,8 @@ export default class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log the error to an error reporting service
-    // logErrorToMyService(error, errorInfo);
+    // Send error to error reporting service
+    Sentry.captureException(error);
   }
 
   render() {
