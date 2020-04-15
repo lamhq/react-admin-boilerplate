@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import { useTranslation } from 'react-i18next';
 import ApiContext from '../contexts/api';
 import useIdentity from '../../identity/hooks/useIdentity';
 import { useAlert } from '../../alert';
@@ -11,8 +12,9 @@ import { useAlert } from '../../alert';
  */
 export default function ApiProvider({ children, endpoint }) {
   const { identity, clearIdentity } = useIdentity();
-  const http = axios.create({ baseURL: endpoint });
   const { alertError } = useAlert();
+  const { t } = useTranslation();
+  const http = axios.create({ baseURL: endpoint });
 
   // attach authentication header to request
   React.useEffect(() => {
@@ -31,38 +33,38 @@ export default function ApiProvider({ children, endpoint }) {
       const { status, data } = error.response;
       switch (status) {
         case 504:
-          message = 'common:request-timeout';
+          message = t('common:request-timeout');
           break;
 
         case 400:
           if (data.errors) {
-            message = 'common:invalid-user-input';
+            message = t('common:invalid-user-input');
             if (setInputErrors) {
               setInputErrors(data.errors);
             }
           } else {
-            message = data.code;
+            ({ message } = data);
           }
           break;
 
         case 401:
-          message = 'common:unauthenticated';
+          message = t('common:unauthenticated');
           break;
 
         case 403:
-          message = 'common:unauthorized';
+          message = t('common:unauthorized');
           break;
 
         default:
-          message = data;
+          ({ message } = data);
           break;
       }
     } else if (error.message === 'Network Error') {
       // device is offline
-      message = 'common:network-unavailable';
+      message = t('common:network-unavailable');
     } else {
       // js error
-      message = 'common:network-unavailable';
+      message = t('common:runtime-error');
       // send error to error reporting service
     }
     alertError(message);
