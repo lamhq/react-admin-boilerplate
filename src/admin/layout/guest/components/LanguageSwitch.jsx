@@ -7,7 +7,7 @@ import {
   EuiContextMenuItem,
 } from '@elastic/eui';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitchContainer from '../../../../common/language';
+import LanguageSwitchContainer from '../../../../common/i18n';
 import styles from '../styles.m.scss';
 
 function Render({

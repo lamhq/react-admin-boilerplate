@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 
 import './styles.scss';
 import './common/sentry';
-import './i18n';
+import './common/i18n/i18n';
 import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));

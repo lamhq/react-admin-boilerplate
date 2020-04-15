@@ -1,7 +1,7 @@
 # TODO 13/4 => 19/4
 ```yml
 # integrate error reporting service (sentry)
-move i18n code to common
+# move i18n code to common
 config source map for production build
 test source map with sentry
 setup slack notification with sentry

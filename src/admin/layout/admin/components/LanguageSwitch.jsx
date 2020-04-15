@@ -6,7 +6,7 @@ import {
   EuiHeaderSectionItemButton,
 } from '@elastic/eui';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitchContainer from '../../../../common/language';
+import LanguageSwitchContainer from '../../../../common/i18n';
 
 export default function LanguageSwitch() {
   const { t } = useTranslation();

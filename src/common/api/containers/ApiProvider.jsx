@@ -60,16 +60,23 @@ export default function ApiProvider({ children, endpoint }) {
           ({ message } = data);
           break;
       }
+      alertError(message);
     } else if (error.message === 'Network Error') {
       // device is offline
       message = t('common:network-unavailable');
+      alertError(message);
     } else {
       // js error
       message = t('common:runtime-error');
-      // send error to error reporting service
-      Sentry.captureException(error);
+      alertError(message);
+      if (process.env.NODE_ENV === 'development') {
+        // throw exception if in development mode
+        throw error;
+      } else {
+        // send error to error reporting service
+        Sentry.captureException(error);
+      }
     }
-    alertError(message);
   }
 
   function logout() {
