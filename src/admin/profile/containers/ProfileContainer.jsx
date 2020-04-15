@@ -71,8 +71,8 @@ function validateForm(data) {
 
 export default function ProfileContainer() {
   const { t } = useTranslation();
-  const { alertSuccess, alertError } = useAlert();
-  const { updateProfile } = useApi();
+  const { alertSuccess } = useAlert();
+  const { updateProfile, handleAsyncError } = useApi();
   const { identity, setIdentity } = useIdentity();
   const { user } = identity;
   const initialValues = {
@@ -94,16 +94,7 @@ export default function ProfileContainer() {
       });
       resetForm();
     } catch (error) {
-      if (!error.code) {
-        alertError('common:runtime-error');
-        throw error;
-      }
-
-      if (error.inputErrors) {
-        setErrors(error.inputErrors);
-      }
-
-      alertError(error.code);
+      handleAsyncError(error, { setInputErrors: setErrors });
     } finally {
       setSubmitting(false);
     }

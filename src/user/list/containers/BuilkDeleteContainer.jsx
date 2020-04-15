@@ -10,8 +10,8 @@ import BulkDeleteBtn from '../components/BulkDeleteBtn';
 export default function BuilkDeleteContainer({ users, onSuccess }) {
   const { t } = useTranslation();
   const confirm = useDialog();
-  const { alertSuccess, alertError } = useAlert();
-  const { deleteUsers } = useApi();
+  const { alertSuccess } = useAlert();
+  const { deleteUsers, handleAsyncError } = useApi();
   const {
     load: execDeleteUsers,
     loading: isDeleting,
@@ -32,11 +32,7 @@ export default function BuilkDeleteContainer({ users, onSuccess }) {
         alertSuccess(t('user-mng:delete-success'));
         onSuccess();
       } catch (error) {
-        if (!error.code) {
-          alertError('common:runtime-error');
-          throw error;
-        }
-        alertError(error.code);
+        handleAsyncError(error);
       }
     }
   }

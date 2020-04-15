@@ -4,7 +4,6 @@ import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
-import { useAlert } from '../../../common/alert';
 
 export default function UserListContainer() {
   const [search, setSearch] = React.useState('');
@@ -14,8 +13,7 @@ export default function UserListContainer() {
   const [sortDirection, setSortDirection] = React.useState('asc');
   const [selectedItems, updateSelectedItems] = React.useState([]);
   const { identity } = useIdentity();
-  const { alertError } = useAlert();
-  const { findUsers } = useApi();
+  const { findUsers, handleAsyncError } = useApi();
   const {
     data,
     load: loadUsers,
@@ -55,7 +53,7 @@ export default function UserListContainer() {
   // show error
   React.useEffect(() => {
     if (error) {
-      alertError(error.code);
+      handleAsyncError(error);
     }
   }, [error]);
 

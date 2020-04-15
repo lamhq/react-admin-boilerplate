@@ -3,66 +3,6 @@ import numeral from 'numeral';
 import validateObject from 'validate.js';
 
 /**
- * Convert http error to application error
- * @param {object} error
- */
-function toAppError(error) {
-  const result = {};
-  if (error.response) {
-    let code = 'common:runtime-error';
-    const { status, data } = error.response;
-    switch (status) {
-      case 504:
-        code = 'common:request-timeout';
-        break;
-
-      case 400:
-        if (data.errors) {
-          code = 'common:invalid-user-input';
-          result.inputErrors = data.errors;
-        } else {
-          ({ code } = data);
-        }
-        break;
-
-      case 401:
-        code = 'common:unauthenticated';
-        break;
-
-      case 403:
-        code = 'common:unauthorized';
-        break;
-
-      default:
-        ({ code } = data);
-        break;
-    }
-    result.code = code;
-  } else if (error.message === 'Network Error') {
-    // device is offline
-    result.code = 'common:network-unavailable';
-  }
-
-  return result;
-}
-
-/**
- * Enhance a function with http error handling logic
- * @param {function} fn
- */
-export function attachHttpErrorHandler(fn) {
-  const fnext = async (...args) => {
-    try {
-      const res = await fn(...args);
-      return res;
-    } catch (error) {
-      throw toAppError(error);
-    }
-  };
-  return fnext;
-}
-
-/**
  * Get component's display name
  *
  * @param {Component} Component

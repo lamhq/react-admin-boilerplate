@@ -112,6 +112,17 @@ const translation = {
       'update-user-success': 'User updated successfully.',
     },
   },
+  vi: {
+    login: {
+      title: 'Đăng nhập',
+      instruction: 'Hãy điền vào thông tin dưới đây để tiếp tục.',
+      submit: 'Đăng nhập',
+      'forgot-pwd': 'Quên mật khẩu?',
+      'user-not-found': 'Invalid user or password.',
+      'invalid-password': 'Invalid user or password.',
+      'user-is-disabled': 'This user is not active.',
+    },
+  },
 };
 
 export default translation;

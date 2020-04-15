@@ -54,8 +54,8 @@ function validateForm(data) {
 
 export default function RegisterContainer() {
   const { t } = useTranslation();
-  const { alertSuccess, alertError } = useAlert();
-  const { register } = useApi();
+  const { alertSuccess } = useAlert();
+  const { register, handleAsyncError } = useApi();
   const { setIdentity } = useIdentity();
   const { redirect } = useNavigator();
 
@@ -66,16 +66,7 @@ export default function RegisterContainer() {
       alertSuccess(t('register:success'));
       redirect('/');
     } catch (error) {
-      if (!error.code) {
-        alertError('common:runtime-error');
-        throw error;
-      }
-
-      if (error.inputErrors) {
-        setErrors(error.inputErrors);
-      }
-
-      alertError(error.code);
+      handleAsyncError(error, { setInputErrors: setErrors });
     } finally {
       setSubmitting(false);
     }

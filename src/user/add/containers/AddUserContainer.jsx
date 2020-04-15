@@ -52,8 +52,8 @@ function validateForm(data) {
 }
 
 export default function AddUserContainer() {
-  const { alertSuccess, alertError } = useAlert();
-  const { addUser } = useApi();
+  const { alertSuccess } = useAlert();
+  const { addUser, handleAsyncError } = useApi();
   const { redirect } = useNavigator();
   const { t } = useTranslation();
 
@@ -63,16 +63,7 @@ export default function AddUserContainer() {
       redirect('/users');
       alertSuccess(t('user-mng:add-user-success'));
     } catch (error) {
-      if (!error.code) {
-        alertError('common:runtime-error');
-        throw error;
-      }
-
-      if (error.inputErrors) {
-        setErrors(error.inputErrors);
-      }
-
-      alertError(error.code);
+      handleAsyncError(error, { setInputErrors: setErrors });
     } finally {
       setSubmitting(false);
     }

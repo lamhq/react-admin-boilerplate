@@ -40,8 +40,8 @@ function validateForm(data) {
 export default function ResetPwdContainer() {
   const { t } = useTranslation();
   const location = useLocation();
-  const { alertSuccess, alertError } = useAlert();
-  const { resetPassword } = useApi();
+  const { alertSuccess } = useAlert();
+  const { resetPassword, handleAsyncError } = useApi();
   const { redirect } = useNavigator();
 
   function getResetPasswordToken() {
@@ -64,16 +64,7 @@ export default function ResetPwdContainer() {
       alertSuccess(t('reset-pwd:success'));
       redirect('/login');
     } catch (error) {
-      if (!error.code) {
-        alertError('common:runtime-error');
-        throw error;
-      }
-
-      if (error.inputErrors) {
-        setErrors(error.inputErrors);
-      }
-
-      alertError(error.code);
+      handleAsyncError(error, { setInputErrors: setErrors });
     } finally {
       setSubmitting(false);
     }

@@ -23,8 +23,8 @@ function validateForm(data) {
 
 export default function ForgotPwdContainer() {
   const { t } = useTranslation();
-  const { requestPasswordReset } = useApi();
-  const { alertSuccess, alertError } = useAlert();
+  const { requestPasswordReset, handleAsyncError } = useApi();
+  const { alertSuccess } = useAlert();
 
   async function handleSubmit(values, { setSubmitting, setErrors, resetForm }) {
     try {
@@ -33,16 +33,7 @@ export default function ForgotPwdContainer() {
       alertSuccess(t('forgot-password/success'));
       resetForm();
     } catch (error) {
-      if (!error.code) {
-        alertError('common:runtime-error');
-        throw error;
-      }
-
-      if (error.inputErrors) {
-        setErrors(error.inputErrors);
-      }
-
-      alertError(error.code);
+      handleAsyncError(error, { setInputErrors: setErrors });
     } finally {
       setSubmitting(false);
     }

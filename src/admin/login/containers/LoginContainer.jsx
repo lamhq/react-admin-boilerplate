@@ -3,9 +3,8 @@ import React from 'react';
 import { validate } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
-import { useAlert } from '../../../common/alert';
-import Login from '../components/Login';
 import { useNavigator } from '../../../common/hooks';
+import Login from '../components/Login';
 
 function validateLoginForm(data) {
   const constraints = {
@@ -27,9 +26,8 @@ function validateLoginForm(data) {
 }
 
 export default function LoginContainer() {
-  const { login } = useApi();
+  const { login, handleAsyncError } = useApi();
   const { setIdentity } = useIdentity();
-  const { alertError } = useAlert();
   const { goBack } = useNavigator();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
@@ -39,16 +37,7 @@ export default function LoginContainer() {
       setIdentity(identity);
       goBack();
     } catch (error) {
-      if (!error.code) {
-        alertError('common:runtime-error');
-        throw error;
-      }
-
-      if (error.inputErrors) {
-        setErrors(error.inputErrors);
-      }
-
-      alertError(error.code);
+      handleAsyncError(error, { setInputErrors: setErrors });
     } finally {
       setSubmitting(false);
     }

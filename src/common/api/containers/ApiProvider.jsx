@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import ApiContext from '../contexts/api';
 import useIdentity from '../../identity/hooks/useIdentity';
-import { attachHttpErrorHandler } from '../../utils';
+import { useAlert } from '../../alert';
 
 /**
  * Provide helper functions to access backend api
@@ -12,12 +12,61 @@ import { attachHttpErrorHandler } from '../../utils';
 export default function ApiProvider({ children, endpoint }) {
   const { identity, clearIdentity } = useIdentity();
   const http = axios.create({ baseURL: endpoint });
+  const { alertError } = useAlert();
 
   // attach authentication header to request
   React.useEffect(() => {
     const authHeader = identity ? `Bearer ${identity.token.value}` : '';
     http.defaults.headers.common.Authorization = authHeader;
   }, [identity]);
+
+  /**
+   * Handle error caused by event handler in Components
+   */
+  function handleAsyncError(error, options = {}) {
+    const { setInputErrors } = options;
+    let message;
+    // handle http error
+    if (error.response) {
+      const { status, data } = error.response;
+      switch (status) {
+        case 504:
+          message = 'common:request-timeout';
+          break;
+
+        case 400:
+          if (data.errors) {
+            message = 'common:invalid-user-input';
+            if (setInputErrors) {
+              setInputErrors(data.errors);
+            }
+          } else {
+            message = data.code;
+          }
+          break;
+
+        case 401:
+          message = 'common:unauthenticated';
+          break;
+
+        case 403:
+          message = 'common:unauthorized';
+          break;
+
+        default:
+          message = data;
+          break;
+      }
+    } else if (error.message === 'Network Error') {
+      // device is offline
+      message = 'common:network-unavailable';
+    } else {
+      // js error
+      message = 'common:network-unavailable';
+      // send error to error reporting service
+    }
+    alertError(message);
+  }
 
   function logout() {
     clearIdentity();
@@ -119,6 +168,7 @@ export default function ApiProvider({ children, endpoint }) {
   }
 
   const contextValue = {
+    handleAsyncError,
     login,
     logout,
     requestPasswordReset,
@@ -132,11 +182,6 @@ export default function ApiProvider({ children, endpoint }) {
     getUserDetail,
     deleteUsers,
   };
-  // extend all exported functions with http error handling logic
-  Object.keys(contextValue).forEach((key) => {
-    contextValue[key] = attachHttpErrorHandler(contextValue[key]);
-  });
-
   return (
     <ApiContext.Provider value={contextValue}>
       {children}

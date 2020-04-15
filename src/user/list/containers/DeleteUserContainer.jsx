@@ -12,8 +12,8 @@ export default function DeleteUserContainer({ user, onSuccess }) {
   const { t } = useTranslation();
   const confirm = useDialog();
   const { identity } = useIdentity();
-  const { alertSuccess, alertError } = useAlert();
-  const { deleteUser } = useApi();
+  const { alertSuccess } = useAlert();
+  const { deleteUser, handleAsyncError } = useApi();
   const {
     load: execDeleteUser,
     loading: isDeleting,
@@ -33,11 +33,7 @@ export default function DeleteUserContainer({ user, onSuccess }) {
         alertSuccess(t('user-mng:delete-success'));
         onSuccess();
       } catch (error) {
-        if (!error.code) {
-          alertError('common:runtime-error');
-          throw error;
-        }
-        alertError(error.code);
+        handleAsyncError(error);
       }
     }
   }

@@ -73,8 +73,8 @@ function validateForm(data) {
 
 export default function EditUserContainer() {
   const { t } = useTranslation();
-  const { alertSuccess, alertError } = useAlert();
-  const { updateUser, getUserDetail } = useApi();
+  const { alertSuccess } = useAlert();
+  const { updateUser, getUserDetail, handleAsyncError } = useApi();
   const { redirect } = useNavigator();
   const { id: userId } = useParams();
   const { data: user, load: loadUser, loading } = useLoadingState(getUserDetail);
@@ -89,16 +89,7 @@ export default function EditUserContainer() {
       redirect('/users');
       alertSuccess(t('user-mng:update-user-success'));
     } catch (error) {
-      if (!error.code) {
-        alertError('common:runtime-error');
-        throw error;
-      }
-
-      if (error.inputErrors) {
-        setErrors(error.inputErrors);
-      }
-
-      alertError(error.code);
+      handleAsyncError(error, { setInputErrors: setErrors });
     } finally {
       setSubmitting(false);
     }

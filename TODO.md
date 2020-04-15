@@ -1,14 +1,13 @@
 # TODO 13/4 => 19/4
 ```yml
+# refactor code of async event handler
 i18n
   # add translation for all components
   # translate success message (alertSuccess)
   # refactor code of form validation
+  translate error message
   translate form input errors
-  refactor code of handling async events
-  server translation
-    error message (alertError)
-    form input errors
+  sending language when calling api with Accept-Language http header
 error reporting (sentry + slack notification)
 take a look on https://github.com/dai-shi/react-hooks-global-state
 upgrade packages to latest version
