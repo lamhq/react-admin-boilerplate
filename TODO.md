@@ -1,6 +1,9 @@
 # TODO 13/4 => 19/4
 ```yml
-# refactor code of async event handler
+# integrate error reporting service (sentry)
+move i18n code to common
+setup slack notification with sentry
+test sentry integration with source map on production
 i18n
   # add translation for all components
   # translate success message (alertSuccess)
@@ -8,9 +11,9 @@ i18n
   translate error message
   translate form input errors
   sending language when calling api with Accept-Language http header
-error reporting (sentry + slack notification)
 take a look on https://github.com/dai-shi/react-hooks-global-state
 upgrade packages to latest version
+# refactor code of async event handler
 ```
 
 

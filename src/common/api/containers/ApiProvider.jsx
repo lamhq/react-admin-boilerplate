@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { useTranslation } from 'react-i18next';
 import ApiContext from '../contexts/api';
+import Sentry from '../../sentry';
 import useIdentity from '../../identity/hooks/useIdentity';
 import { useAlert } from '../../alert';
 
@@ -66,6 +67,7 @@ export default function ApiProvider({ children, endpoint }) {
       // js error
       message = t('common:runtime-error');
       // send error to error reporting service
+      Sentry.captureException(error);
     }
     alertError(message);
   }

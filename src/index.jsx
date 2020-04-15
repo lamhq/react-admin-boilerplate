@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles.scss';
+import './common/sentry';
 import './i18n';
 import App from './App';
 
