@@ -1,9 +1,20 @@
+
+```shell
+docker run --rm \
+  --name nginx \
+  -v $(pwd)/dist:/usr/share/nginx/html:ro \
+  -v $(pwd)/scripts/deploy/nginx.conf:/etc/nginx/conf.d/default.conf \
+  -p 3001:80 \
+  nginx:1.17.9-alpine
+```
+
 # TODO 13/4 => 19/4
 ```yml
 # integrate error reporting service (sentry)
 # move i18n code to common
-config source map for production build
-test source map with sentry
+# enable js source map for production build
+# enable css source map for production build
+enable source map with sentry
 setup slack notification with sentry
 i18n
   # add translation for all components
@@ -15,33 +26,6 @@ i18n
 take a look on https://github.com/dai-shi/react-hooks-global-state
 upgrade packages to latest version
 # refactor code of async event handler
-```
-
-
-# TODO Mon 6/4 => 12/4
-```yml
-# authorization
-# implement hook useDocumentTitle
-i18n
-  # enable catching missing translations
-  # enable runtime language switching
-  # remove common/hooks/useTranslation
-  add translation for all components
-    # register
-    # reset pwd
-    # loading screen
-    # dialog
-    # error component
-    # not found page
-    # unauthorized page
-    # DialogProvider
-    # eui\Alert.jsx
-    # user list
-    user add
-    user edit
-# user management
-# handling error
-# deployment
 ```
 
 
@@ -61,3 +45,10 @@ logging
   https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
 ```
 
+
+## Source code features:
+
+- Javascript source map for production build
+- Css source map for production build
+- i18n
+- Automatically error reporting (using Sentry)

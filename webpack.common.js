@@ -49,27 +49,43 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         exclude: /\.m\.(sc|sa)ss$/,
-        loader: [
+        use: [
           // extract CSS into separate files
-          nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-          'css-loader',
-          'sass-loader',
+          nodeEnv === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: nodeEnv !== 'development',
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: nodeEnv !== 'development',
+            },
+          },
         ],
       },
       // load scss module file
       {
         test: /\.m\.(sc|sa)ss$/,
         use: [
-          nodeEnv === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          nodeEnv === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               modules: true,
               importLoaders: 1,
               localIdentName: '[local]-[hash:base64:5]',
+              sourceMap: nodeEnv !== 'development',
             },
           },
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: nodeEnv !== 'development',
+            },
+          },
         ],
       },
       // load javascript/react components

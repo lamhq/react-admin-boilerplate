@@ -11,13 +11,21 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
   output: {
-    filename: 'scripts.[chunkhash].js',
+    filename: '[chunkhash].js',
     publicPath: ASSET_PATH,
+    sourceMapFilename: '[file].map',
   },
   optimization: {
     minimizer: [
-      new TerserPlugin(),
-      new OptimizeCSSAssetsPlugin(),
+      new TerserPlugin({ sourceMap: true }),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+          map: {
+            inline: false,
+            annotation: true,
+          },
+        },
+      }),
     ],
   },
   plugins: [
@@ -25,8 +33,8 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: 'styles.[name].[hash].css',
-      chunkFilename: 'styles.[id].[hash].css',
+      filename: '[hash].css',
+      chunkFilename: '[id].[hash].css',
     }),
   ],
 });
