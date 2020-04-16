@@ -13,11 +13,9 @@
     "__DEVTOOLS__": true
   },
   "rules": {
-    "react/forbid-prop-types": [
-      "off"
-    ],
+    "react/forbid-prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/exhaustive-deps": "warn",
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
   }
 }

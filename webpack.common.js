@@ -1,10 +1,9 @@
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
-const outputDir = path.resolve(__dirname, 'dist');
 const nodeEnv = process.env.NODE_ENV;
 
 module.exports = {
@@ -12,13 +11,13 @@ module.exports = {
     app: ['./src/index.jsx'],
   },
   output: {
-    path: outputDir,
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/',
   },
   plugins: [
     // Remove your build folder(s) before building
-    new CleanWebpackPlugin([outputDir]),
+    new CleanWebpackPlugin(),
 
     // Automatically generate an HTML5 file for you that includes all your webpack bundles
     new HtmlWebpackPlugin({
@@ -76,9 +75,10 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                localIdentName: '[local]-[hash:base64:5]',
+              },
               importLoaders: 1,
-              localIdentName: '[local]-[hash:base64:5]',
               sourceMap: true,
             },
           },

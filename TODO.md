@@ -17,7 +17,6 @@ docker run --rm \
 # enable source map for development
 # enable source map with sentry
 upgrade packages to latest version
-setup slack notification with sentry
 i18n
   # add translation for all components
   # translate success message (alertSuccess)
@@ -25,7 +24,6 @@ i18n
   translate error message
   translate form input errors
   sending language when calling api with Accept-Language http header
-take a look on https://github.com/dai-shi/react-hooks-global-state
 # refactor code of async event handler
 ```
 
@@ -36,14 +34,18 @@ take a look on https://github.com/dai-shi/react-hooks-global-state
 # user management
 # handling error
 # deployment
-i18n
-error reporting (sentry + slack notification)
+# integrate error reporting service (sentry)
 upgrade packages to latest version
-integrate typescript
-unit test
+i18n
+take a look on https://github.com/dai-shi/react-hooks-global-state
 logging
   https://www.scalyr.com/blog/getting-started-react-logging/
   https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
+add changelog to project using standard version
+  https://github.com/conventional-changelog/standard-version
+integrate typescript
+unit test
+setup slack notification with sentry
 ```
 
 
