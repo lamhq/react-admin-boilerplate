@@ -1,4 +1,3 @@
-
 ```shell
 docker run --rm \
   --name nginx \
@@ -8,14 +7,17 @@ docker run --rm \
   nginx:1.17.9-alpine
 ```
 
+
 # TODO 13/4 => 19/4
 ```yml
 # integrate error reporting service (sentry)
 # move i18n code to common
 # enable js source map for production build
 # enable css source map for production build
-enable source map with sentry
+# enable source map for development
+enable source map with sentry (use hidden-source-map)
 setup slack notification with sentry
+upgrade packages to latest version
 i18n
   # add translation for all components
   # translate success message (alertSuccess)
@@ -24,7 +26,6 @@ i18n
   translate form input errors
   sending language when calling api with Accept-Language http header
 take a look on https://github.com/dai-shi/react-hooks-global-state
-upgrade packages to latest version
 # refactor code of async event handler
 ```
 

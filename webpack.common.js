@@ -55,13 +55,13 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: nodeEnv !== 'development',
+              sourceMap: true,
             },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: nodeEnv !== 'development',
+              sourceMap: true,
             },
           },
         ],
@@ -77,13 +77,13 @@ module.exports = {
               modules: true,
               importLoaders: 1,
               localIdentName: '[local]-[hash:base64:5]',
-              sourceMap: nodeEnv !== 'development',
+              sourceMap: true,
             },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: nodeEnv !== 'development',
+              sourceMap: true,
             },
           },
         ],
