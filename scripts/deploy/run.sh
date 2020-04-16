@@ -1,11 +1,10 @@
 #!/bin/bash
-export NODE_ENV=production
 
-# cd to script directory
-cd "$(dirname "$0")"
+# exit when any command fails
+set -e
 
-# build react app
-yarn build
+# install sentry cli (for error reporting integation)
+curl -sL https://sentry.io/get-cli/ | bash
 
 # install AWS CLI, https://docs.aws.amazon.com/cli/latest/userguide/install-bundle.html#install-bundle-user
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
@@ -13,13 +12,23 @@ unzip awscli-bundle.zip
 ./awscli-bundle/install -b ~/bin/aws
 export PATH=~/bin:$PATH
 
+# build react app
+yarn build
+
 # empty s3 bucket and upload new assets
-aws s3 rm s3://${AWS_BUCKET}/assets --recursive
-aws s3 cp dist s3://${AWS_BUCKET}/assets --recursive --exclude "*.html"
+aws s3 rm s3://${AWS_BUCKET}/${ENVIRONMENT}/assets --recursive
+aws s3 cp dist s3://${AWS_BUCKET}/${ENVIRONMENT}/assets --recursive --exclude="*.html" --exclude="*.map"
+
+# upload source map to sentry
+sentry-cli releases new ${RELEASE}
+sentry-cli releases files ${RELEASE} upload-sourcemaps dist
+sentry-cli releases finalize ${RELEASE}
 
 # build docker image
-sed "s@{API_BASE_URL}@${API_BASE_URL}@g;" nginx.conf.tpl > nginx.conf
-export IMAGE=${DOCKER_HUB_USER}/${DOCKER_HUB_REPO}:$(date +"%y%m%d.%H%M").${BITBUCKET_COMMIT:0:6}
+sed "s@{API_BASE_URL}@${API_BASE_URL}@g;" scripts/deploy/nginx.conf.tpl > scripts/deploy/nginx.conf
+export COMMIT=${BITBUCKET_COMMIT:-HEAD}
+export TAG=$(date +"%y%m%d.%H%M").${COMMIT:0:6}
+export IMAGE=${DOCKER_HUB_USER}/${DOCKER_HUB_REPO}:${TAG}
 docker build -t ${IMAGE} .
 
 # push image to docker hub

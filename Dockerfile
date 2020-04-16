@@ -4,6 +4,6 @@ FROM nginx:1.17.9-alpine
 COPY dist/index.html /usr/share/nginx/html/
 
 # update configuration for HTML5 push state
-COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
+COPY scripts/deploy/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

@@ -31,6 +31,8 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(nodeEnv),
       'process.env.SENTRY_DSN': JSON.stringify(process.env.SENTRY_DSN),
+      'process.env.RELEASE': JSON.stringify(process.env.RELEASE),
+      'process.env.ENVIRONMENT': JSON.stringify(process.env.ENVIRONMENT),
     }),
   ],
   resolve: {

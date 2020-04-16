@@ -15,9 +15,9 @@ docker run --rm \
 # enable js source map for production build
 # enable css source map for production build
 # enable source map for development
-enable source map with sentry (use hidden-source-map)
-setup slack notification with sentry
+# enable source map with sentry
 upgrade packages to latest version
+setup slack notification with sentry
 i18n
   # add translation for all components
   # translate success message (alertSuccess)

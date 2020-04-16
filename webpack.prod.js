@@ -9,7 +9,7 @@ const ASSET_PATH = process.env.CDN_BASE_URL || '/';
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: 'source-map',
+  devtool: 'hidden-source-map',
   output: {
     filename: '[chunkhash].js',
     publicPath: ASSET_PATH,
