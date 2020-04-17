@@ -13,6 +13,7 @@ unzip awscli-bundle.zip
 export PATH=~/bin:$PATH
 
 # build react app
+yarn install --production=false
 yarn build
 
 # empty s3 bucket and upload new assets

@@ -17,14 +17,12 @@ docker run --rm \
 # enable source map for development
 # enable source map with sentry
 # upgrade packages to latest version
-i18n
-  # add translation for all components
-  # translate success message (alertSuccess)
-  # refactor code of form validation
-  # translate error message
-  # translate form input errors
-  sending language when calling api with Accept-Language http header
+# i18n
 # refactor code of async event handler
+take a look on https://github.com/dai-shi/react-hooks-global-state
+logging
+  https://www.scalyr.com/blog/getting-started-react-logging/
+  https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
 ```
 
 
@@ -35,9 +33,9 @@ i18n
 # handling error
 # deployment
 # integrate error reporting service (sentry)
-upgrade packages to latest version
-i18n
-take a look on https://github.com/dai-shi/react-hooks-global-state
+# upgrade packages to latest version
+# i18n
+optimize deploy speed by using a dedicated docker image
 logging
   https://www.scalyr.com/blog/getting-started-react-logging/
   https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
