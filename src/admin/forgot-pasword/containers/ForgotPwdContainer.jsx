@@ -5,22 +5,6 @@ import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ForgotPwd from '../components/ForgotPwd';
 
-function validateForm(data) {
-  const constraints = {
-    email: {
-      email: {
-        message: '^common:invalid-email',
-      },
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-field',
-      },
-    },
-  };
-
-  return validate(data, constraints);
-}
-
 export default function ForgotPwdContainer() {
   const { t } = useTranslation();
   const { requestPasswordReset, handleAsyncError } = useApi();
@@ -37,6 +21,22 @@ export default function ForgotPwdContainer() {
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function validateForm(data) {
+    const constraints = {
+      email: {
+        email: {
+          message: `^${t('common:invalid-email')}`,
+        },
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+      },
+    };
+
+    return validate(data, constraints);
   }
 
   return (

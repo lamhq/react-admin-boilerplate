@@ -7,68 +7,6 @@ import { useAlert } from '../../../common/alert';
 import { useIdentity } from '../../../common/identity';
 import Profile from '../components/Profile';
 
-function validateForm(data) {
-  const constraints = {
-    displayName: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-    },
-    email: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-      email: {
-        message: '^common:invalid-email',
-      },
-    },
-    // eslint-disable-next-line arrow-body-style, no-unused-vars
-    currentPassword: (value, attributes, attributeName, options) => {
-      // only validate when new password is not empty
-      return attributes.changePassword ? {
-        presence: {
-          allowEmpty: false,
-          message: '^common:required-input',
-        },
-      } : false;
-    },
-    // eslint-disable-next-line arrow-body-style, no-unused-vars
-    newPassword: (value, attributes, attributeName, options) => {
-      // only validate when value is not empty
-      return attributes.changePassword ? {
-        presence: {
-          allowEmpty: false,
-          message: '^common:required-input',
-        },
-        length: {
-          minimum: 6,
-          maximum: 30,
-          tooLong: ['common:password-too-long', { max: 30 }],
-          tooShort: ['common:password-too-short', { min: 6 }],
-        },
-      } : false;
-    },
-    // eslint-disable-next-line arrow-body-style, no-unused-vars
-    confirmPassword: (value, attributes, attributeName, options) => {
-      // only validate when new password is not empty
-      return attributes.changePassword ? {
-        presence: {
-          allowEmpty: false,
-          message: '^common:required-input',
-        },
-        equality: {
-          attribute: 'newPassword',
-          message: '^common:password-not-match',
-        },
-      } : false;
-    },
-  };
-
-  return validate(data, constraints);
-}
-
 export default function ProfileContainer() {
   const { t } = useTranslation();
   const { alertSuccess } = useAlert();
@@ -98,6 +36,68 @@ export default function ProfileContainer() {
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function validateForm(data) {
+    const constraints = {
+      displayName: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+      },
+      email: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+        email: {
+          message: `^${t('common:invalid-email')}`,
+        },
+      },
+      // eslint-disable-next-line arrow-body-style, no-unused-vars
+      currentPassword: (value, attributes, attributeName, options) => {
+        // only validate when new password is not empty
+        return attributes.changePassword ? {
+          presence: {
+            allowEmpty: false,
+            message: `^${t('common:required-input')}`,
+          },
+        } : false;
+      },
+      // eslint-disable-next-line arrow-body-style, no-unused-vars
+      newPassword: (value, attributes, attributeName, options) => {
+        // only validate when value is not empty
+        return attributes.changePassword ? {
+          presence: {
+            allowEmpty: false,
+            message: `^${t('common:required-input')}`,
+          },
+          length: {
+            minimum: 6,
+            maximum: 30,
+            tooLong: `^${t('common:password-too-long', { max: 30 })}`,
+            tooShort: `^${t('common:password-too-short', { min: 6 })}`,
+          },
+        } : false;
+      },
+      // eslint-disable-next-line arrow-body-style, no-unused-vars
+      confirmPassword: (value, attributes, attributeName, options) => {
+        // only validate when new password is not empty
+        return attributes.changePassword ? {
+          presence: {
+            allowEmpty: false,
+            message: `^${t('common:required-input')}`,
+          },
+          equality: {
+            attribute: 'newPassword',
+            message: `^${t('common:password-not-match')}`,
+          },
+        } : false;
+      },
+    };
+
+    return validate(data, constraints);
   }
 
   return (

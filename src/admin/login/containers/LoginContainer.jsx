@@ -1,34 +1,17 @@
 import React from 'react';
 
+import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
 import { useNavigator } from '../../../common/hooks';
 import Login from '../components/Login';
 
-function validateLoginForm(data) {
-  const constraints = {
-    username: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-    },
-    password: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-    },
-  };
-
-  return validate(data, constraints);
-}
-
 export default function LoginContainer() {
   const { login, handleAsyncError } = useApi();
   const { setIdentity } = useIdentity();
   const { goBack } = useNavigator();
+  const { t } = useTranslation();
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
     try {
@@ -42,6 +25,26 @@ export default function LoginContainer() {
       setSubmitting(false);
     }
   }
+
+  function validateLoginForm(data) {
+    const constraints = {
+      username: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+      },
+      password: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+      },
+    };
+
+    return validate(data, constraints);
+  }
+
 
   return (
     <Login

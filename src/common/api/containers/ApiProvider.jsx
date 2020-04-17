@@ -148,7 +148,7 @@ export default function ApiProvider({ children, endpoint }) {
   async function deleteUsers(users) {
     const resp = await http.patch('admin/users', {
       action: 'delete',
-      records: users.map(u => u.id),
+      records: users.map((u) => u.id),
     });
     return resp.data;
   }

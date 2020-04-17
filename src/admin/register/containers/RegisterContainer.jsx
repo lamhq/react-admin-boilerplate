@@ -8,50 +8,6 @@ import { useIdentity } from '../../../common/identity';
 import Register from '../components/Register';
 import { useNavigator } from '../../../common/hooks';
 
-function validateForm(data) {
-  const constraints = {
-    displayName: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-    },
-    email: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-      email: {
-        message: '^common:invalid-email',
-      },
-    },
-    password: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-      length: {
-        minimum: 6,
-        maximum: 30,
-        tooLong: ['common:password-too-long', { max: 30 }],
-        tooShort: ['common:password-too-short', { min: 6 }],
-      },
-    },
-    confirmPassword: {
-      presence: {
-        allowEmpty: false,
-        message: '^common:required-input',
-      },
-      equality: {
-        attribute: 'password',
-        message: '^common:password-not-match',
-      },
-    },
-  };
-
-  return validate(data, constraints);
-}
-
 export default function RegisterContainer() {
   const { t } = useTranslation();
   const { alertSuccess } = useAlert();
@@ -70,6 +26,50 @@ export default function RegisterContainer() {
     } finally {
       setSubmitting(false);
     }
+  }
+
+  function validateForm(data) {
+    const constraints = {
+      displayName: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+      },
+      email: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+        email: {
+          message: `^${t('common:invalid-email')}`,
+        },
+      },
+      password: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+        length: {
+          minimum: 6,
+          maximum: 30,
+          tooLong: `^${t('common:password-too-long', { max: 30 })}`,
+          tooShort: `^${t('common:password-too-short', { min: 6 })}`,
+        },
+      },
+      confirmPassword: {
+        presence: {
+          allowEmpty: false,
+          message: `^${t('common:required-input')}`,
+        },
+        equality: {
+          attribute: 'password',
+          message: `^${t('common:password-not-match')}`,
+        },
+      },
+    };
+
+    return validate(data, constraints);
   }
 
   return (

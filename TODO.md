@@ -16,13 +16,13 @@ docker run --rm \
 # enable css source map for production build
 # enable source map for development
 # enable source map with sentry
-upgrade packages to latest version
+# upgrade packages to latest version
 i18n
   # add translation for all components
   # translate success message (alertSuccess)
   # refactor code of form validation
-  translate error message
-  translate form input errors
+  # translate error message
+  # translate form input errors
   sending language when calling api with Accept-Language http header
 # refactor code of async event handler
 ```
