@@ -32,6 +32,7 @@ module.exports = {
       'process.env.SENTRY_DSN': JSON.stringify(process.env.SENTRY_DSN),
       'process.env.RELEASE': JSON.stringify(process.env.RELEASE),
       'process.env.ENVIRONMENT': JSON.stringify(process.env.ENVIRONMENT),
+      'process.env.LOG_LEVEL': JSON.stringify(process.env.LOG_LEVEL),
     }),
   ],
   resolve: {

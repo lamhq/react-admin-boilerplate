@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import translation from './translation';
+import { logWarn } from '../log';
 
 i18n
   .use(LanguageDetector)
@@ -15,7 +16,7 @@ i18n
     },
     saveMissing: true,
     missingKeyHandler: (lng, ns, key) => {
-      console.warn(`Missing translation: ${ns}:${key} (${lng})`);
+      logWarn(`Missing translation: ${ns}:${key} (${lng})`);
     },
   });
 

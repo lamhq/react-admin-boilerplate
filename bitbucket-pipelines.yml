@@ -12,6 +12,8 @@ pipelines:
           script:
             - yarn install --production=false
             - scripts/deploy/run.sh
+          services:
+          - docker
 
 
 

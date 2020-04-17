@@ -4,16 +4,15 @@
 set -e
 
 # install sentry cli (for error reporting integation)
-curl -sL https://sentry.io/get-cli/ | bash
+# curl -sL https://sentry.io/get-cli/ | bash
 
 # install AWS CLI, https://docs.aws.amazon.com/cli/latest/userguide/install-bundle.html#install-bundle-user
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-unzip awscli-bundle.zip
-./awscli-bundle/install -b ~/bin/aws
-export PATH=~/bin:$PATH
+# curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+# unzip awscli-bundle.zip
+# ./awscli-bundle/install -b ~/bin/aws
+# export PATH=~/bin:$PATH
 
 # build react app
-yarn install --production=false
 yarn build
 
 # empty s3 bucket and upload new assets

@@ -5,6 +5,13 @@ docker run --rm \
   -v $(pwd)/scripts/deploy/nginx.conf:/etc/nginx/conf.d/default.conf \
   -p 3001:80 \
   nginx:1.17.9-alpine
+
+docker run --rm -it \
+  --name atlassian \
+  -v $(pwd):/app \
+  --entrypoint /bin/bash \
+  atlassian/default-image:2
+
 ```
 
 
@@ -19,10 +26,8 @@ docker run --rm \
 # upgrade packages to latest version
 # i18n
 # refactor code of async event handler
-take a look on https://github.com/dai-shi/react-hooks-global-state
-logging
-  https://www.scalyr.com/blog/getting-started-react-logging/
-  https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
+# take a look on https://github.com/dai-shi/react-hooks-global-state
+# add logging library
 ```
 
 
@@ -35,13 +40,11 @@ logging
 # integrate error reporting service (sentry)
 # upgrade packages to latest version
 # i18n
+# logging
+add vietnamese translation
 optimize deploy speed by using a dedicated docker image
-logging
-  https://www.scalyr.com/blog/getting-started-react-logging/
-  https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
 add changelog to project using standard version
   https://github.com/conventional-changelog/standard-version
-add vietnamese translation
 integrate typescript
 unit test
 setup slack notification with sentry
