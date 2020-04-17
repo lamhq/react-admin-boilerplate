@@ -41,6 +41,7 @@ logging
   https://www.loggly.com/blog/best-practices-for-client-side-logging-and-error-handling-in-react/
 add changelog to project using standard version
   https://github.com/conventional-changelog/standard-version
+add vietnamese translation
 integrate typescript
 unit test
 setup slack notification with sentry
