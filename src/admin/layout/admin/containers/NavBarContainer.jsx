@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { useNavigator } from '../../../../common/hooks';
 import { useTranslation } from 'react-i18next';
+import { useNavigator } from '../../../../common/hooks';
 import NavBar from '../components/NavBar';
 
 const navLinks = [
@@ -35,7 +35,7 @@ function NavBarContainer(props, ref) {
       isActive: item.href === location.pathname,
     });
   }
-  const links = navLinks.map(item => decorateLink(item));
+  const links = navLinks.map((item) => decorateLink(item));
   return <NavBar links={links} ref={ref} />;
 }
 

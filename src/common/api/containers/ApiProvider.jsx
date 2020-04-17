@@ -14,7 +14,7 @@ import { useAlert } from '../../alert';
 export default function ApiProvider({ children, endpoint }) {
   const { identity, clearIdentity } = useIdentity();
   const { alertError } = useAlert();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const http = axios.create({ baseURL: endpoint });
 
   // attach authentication header to request
@@ -22,6 +22,11 @@ export default function ApiProvider({ children, endpoint }) {
     const authHeader = identity ? `Bearer ${identity.token.value}` : '';
     http.defaults.headers.common.Authorization = authHeader;
   }, [identity]);
+
+  // attach language header to request
+  React.useEffect(() => {
+    http.defaults.headers.common['Accept-Language'] = i18n.language;
+  }, [i18n.language]);
 
   /**
    * Handle error caused by event handler in Components
