@@ -4,7 +4,6 @@ pipelines:
     deploy-to-test:
       - step:
           name: Build
-          deployment: Test
           image: node:12.16.1-alpine
           caches:
             - node
