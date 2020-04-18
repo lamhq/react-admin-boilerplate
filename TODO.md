@@ -28,6 +28,8 @@ docker run --rm -it \
 # refactor code of async event handler
 # take a look on https://github.com/dai-shi/react-hooks-global-state
 # add logging library
+# add vietnamese translation
+optimize deploy speed by using a dedicated docker image
 ```
 
 
@@ -41,7 +43,7 @@ docker run --rm -it \
 # upgrade packages to latest version
 # i18n
 # logging
-add vietnamese translation
+# add vietnamese translation
 optimize deploy speed by using a dedicated docker image
 add changelog to project using standard version
   https://github.com/conventional-changelog/standard-version

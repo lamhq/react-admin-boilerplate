@@ -1,17 +1,24 @@
-image: node:12.16.1-alpine
-
 pipelines:
   custom:
     # Deploy to test
     deploy-to-test:
       - step:
-          name: Deploy to test
+          name: Build
+          deployment: Test
+          image: node:12.16.1-alpine
+          caches:
+            - node
+          script:
+            - scripts/build.sh
+          artifacts:
+            - dist/**
+      - step:
+          name: Deploy
           deployment: Test
           caches:
             - node
           script:
-            - yarn install --production=false
-            - scripts/deploy/run.sh
+            - scripts/deploy.sh
           services:
           - docker
 
