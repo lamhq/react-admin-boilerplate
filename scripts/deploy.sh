@@ -3,9 +3,6 @@
 # exit when any command fails
 set -e
 
-# install sentry cli (for error reporting integation)
-curl -sL https://sentry.io/get-cli/ | bash
-
 # install AWS CLI, https://docs.aws.amazon.com/cli/latest/userguide/install-bundle.html#install-bundle-user
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
@@ -15,6 +12,9 @@ export PATH=~/bin:$PATH
 # empty s3 bucket and upload new assets
 aws s3 rm s3://${AWS_BUCKET}/${ENVIRONMENT}/assets --recursive
 aws s3 cp dist s3://${AWS_BUCKET}/${ENVIRONMENT}/assets --recursive --exclude="*.html" --exclude="*.map"
+
+# install sentry cli (for error reporting integation)
+curl -sL https://sentry.io/get-cli/ | bash
 
 # upload source map to sentry
 sentry-cli releases new ${RELEASE}

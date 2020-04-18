@@ -8,16 +8,15 @@ pipelines:
           caches:
             - node
           script:
-            - sh scripts/build.sh
+            - yarn install --production=false
+            - yarn run build
           artifacts:
             - dist/**
       - step:
           name: Deploy
           deployment: Test
-          caches:
-            - node
           script:
-            - scripts/deploy.sh
+            - npm run deploy
           services:
           - docker
 

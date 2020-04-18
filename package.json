@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Warning: no test specified\" && exit 0",
     "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "deploy": "scripts/deploy.sh"
   },
   "license": "ISC",
   "devDependencies": {
