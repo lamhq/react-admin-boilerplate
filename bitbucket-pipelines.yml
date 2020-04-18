@@ -3,23 +3,12 @@ pipelines:
     # Deploy to test
     deploy-to-test:
       - step:
-          name: Build
-          image: node:12.16.1-alpine
-          caches:
-            - node
+          name: Build and Deploy
+          deployment: Test
+          image: lamhq/restpip:latest
           script:
             - yarn install --production=false
             - yarn run build
-          artifacts:
-            - dist/**
-      - step:
-          name: Deploy
-          deployment: Test
-          script:
-            - npm run deploy
+            - yarn run deploy
           services:
           - docker
-
-
-
-

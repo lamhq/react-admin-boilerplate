@@ -22,6 +22,13 @@ const Layout = React.forwardRef(({ children, breadcrumbs, toggleDrawer }, navDra
           {children}
         </EuiPageBody>
       </EuiPage>
+      <div className={styles.footer}>
+        <small>
+          Version
+          {' '}
+          {process.env.VERSION}
+        </small>
+      </div>
     </div>
   </>
 ));

@@ -5,7 +5,7 @@ if (dsn) {
   Sentry.init({
     dsn,
     environment: process.env.ENVIRONMENT,
-    release: process.env.RELEASE,
+    release: process.env.VERSION,
   });
 }
 

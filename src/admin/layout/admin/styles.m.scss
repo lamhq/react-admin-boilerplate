@@ -13,6 +13,11 @@
   position: absolute;
 }
 
+.footer {
+  text-align: right;
+  padding: 16px;
+}
+
 @media only screen and (max-width: 574px) {
   .contentWrapper {
     left: 0;

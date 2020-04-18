@@ -44,6 +44,13 @@ export default function GuestLayout({ title, instruction, children }) {
           </EuiFlexItem>
         </EuiFlexGroup>
       </div>
+      <div className={styles.footer}>
+        <small>
+          Version
+          {' '}
+          {process.env.VERSION}
+        </small>
+      </div>
     </div>
   );
 }
