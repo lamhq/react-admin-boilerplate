@@ -9,8 +9,8 @@ docker run --rm \
 docker run --rm -it \
   --name atlassian \
   -v $(pwd):/app \
-  --entrypoint /bin/bash \
-  atlassian/default-image:2
+  --entrypoint /bin/sh \
+  node:12.16.1-alpine
 
 ```
 
@@ -29,7 +29,7 @@ docker run --rm -it \
 # take a look on https://github.com/dai-shi/react-hooks-global-state
 # add logging library
 # add vietnamese translation
-optimize deploy speed by using a dedicated docker image
+# setup bitbucket pipeline
 ```
 
 
@@ -44,9 +44,8 @@ optimize deploy speed by using a dedicated docker image
 # i18n
 # logging
 # add vietnamese translation
-optimize deploy speed by using a dedicated docker image
+# setup bitbucket pipeline
 add changelog to project using standard version
-  https://github.com/conventional-changelog/standard-version
 integrate typescript
 unit test
 setup slack notification with sentry

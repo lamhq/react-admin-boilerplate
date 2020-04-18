@@ -24,7 +24,7 @@ sentry-cli releases finalize ${RELEASE}
 # build docker image
 sed "s@{API_BASE_URL}@${API_BASE_URL}@g;" scripts/deploy/nginx.conf.tpl > scripts/deploy/nginx.conf
 export COMMIT=${BITBUCKET_COMMIT:-HEAD}
-export TAG=$(date +"%y%m%d.%H%M").${COMMIT:0:6}
+export TAG=$(date +"%y%m%d").${COMMIT:0:6}
 export IMAGE=${DOCKER_HUB_USER}/${DOCKER_HUB_REPO}:${TAG}
 docker build -t ${IMAGE} .
 
