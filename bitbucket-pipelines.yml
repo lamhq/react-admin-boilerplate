@@ -8,6 +8,8 @@ pipelines:
           caches:
             - node
           script:
+            - pwd
+            - ls -l
             - scripts/build.sh
           artifacts:
             - dist/**
