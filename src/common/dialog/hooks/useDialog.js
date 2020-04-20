@@ -1,9 +1,7 @@
 import { useContext } from 'react';
 import DialogContext from '../contexts/dialog';
 
-function useDialog() {
+export default function useDialog() {
   const context = useContext(DialogContext);
   return context;
 }
-
-export default useDialog;

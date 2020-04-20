@@ -4,6 +4,7 @@ import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
 import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function UserListContainer() {
   const [search, setSearch] = React.useState('');
@@ -13,7 +14,8 @@ export default function UserListContainer() {
   const [sortDirection, setSortDirection] = React.useState('asc');
   const [selectedItems, updateSelectedItems] = React.useState([]);
   const { identity } = useIdentity();
-  const { findUsers, handleAsyncError } = useApi();
+  const { findUsers } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const {
     data,
     load: loadUsers,
@@ -41,8 +43,8 @@ export default function UserListContainer() {
 
   const selection = {
     itemId: 'id',
-    selectable: user => user.id !== identity.user.id,
-    onSelectionChange: updatedSelection => updateSelectedItems(updatedSelection),
+    selectable: (user) => user.id !== identity.user.id,
+    onSelectionChange: (updatedSelection) => updateSelectedItems(updatedSelection),
   };
 
   // load user list

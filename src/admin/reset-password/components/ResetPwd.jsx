@@ -28,7 +28,7 @@ export default function ResetPwd({ validateForm, onSubmit }) {
             <Form>
               <PasswordField
                 name="password"
-                label={t('user:displayName')}
+                label={t('user:new-password')}
               />
               <PasswordField
                 name="confirmPassword"

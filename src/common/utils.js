@@ -41,7 +41,7 @@ export function asyncValidate(data, constraints) {
 
 export function compose(...fns) {
   return fns.reduceRight((prevFn, nextFn) => (...args) => nextFn(prevFn(...args)),
-    value => value);
+    (value) => value);
 }
 
 /**
@@ -65,7 +65,7 @@ export function formatDate(value) {
  * @param {Number} ms
  */
 export function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 /**
@@ -95,7 +95,7 @@ export function toNumber(val) {
 }
 
 export function formatEnum(value, options) {
-  const optionItem = options.find(item => item.value === value);
+  const optionItem = options.find((item) => item.value === value);
   return optionItem ? optionItem.text : '';
 }
 
@@ -105,5 +105,5 @@ export function formatEnum(value, options) {
  * @param {array} sub
  */
 export function hasSubArray(master, sub) {
-  return sub.every(item => master.includes(item));
+  return sub.every((item) => master.includes(item));
 }

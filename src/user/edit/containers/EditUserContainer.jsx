@@ -7,11 +7,13 @@ import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import { useNavigator, useLoadingState } from '../../../common/hooks';
 import EditUser from '../components/EditUser';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function EditUserContainer() {
   const { t } = useTranslation();
   const { alertSuccess } = useAlert();
-  const { updateUser, getUserDetail, handleAsyncError } = useApi();
+  const { updateUser, getUserDetail } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const { redirect } = useNavigator();
   const { id: userId } = useParams();
   const { data: user, load: loadUser, loading } = useLoadingState(getUserDetail);

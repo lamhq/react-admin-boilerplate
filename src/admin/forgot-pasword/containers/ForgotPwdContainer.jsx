@@ -4,17 +4,19 @@ import { validate } from '../../../common/utils';
 import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ForgotPwd from '../components/ForgotPwd';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function ForgotPwdContainer() {
   const { t } = useTranslation();
-  const { requestPasswordReset, handleAsyncError } = useApi();
+  const { requestPasswordReset } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const { alertSuccess } = useAlert();
 
   async function handleSubmit(values, { setSubmitting, setErrors, resetForm }) {
     try {
       const { email } = values;
       await requestPasswordReset(email);
-      alertSuccess(t('forgot-password/success'));
+      alertSuccess(t('forgot-pwd:success'));
       resetForm();
     } catch (error) {
       handleAsyncError(error, { setInputErrors: setErrors });

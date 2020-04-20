@@ -7,12 +7,14 @@ import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import ResetPwd from '../components/ResetPwd';
 import { useNavigator } from '../../../common/hooks';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function ResetPwdContainer() {
   const { t } = useTranslation();
   const location = useLocation();
   const { alertSuccess } = useAlert();
-  const { resetPassword, handleAsyncError } = useApi();
+  const { resetPassword } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const { redirect } = useNavigator();
 
   function getResetPasswordToken() {

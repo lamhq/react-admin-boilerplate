@@ -4,85 +4,26 @@ import axios from 'axios';
 
 import { useTranslation } from 'react-i18next';
 import ApiContext from '../contexts/api';
-import Sentry from '../../sentry';
 import useIdentity from '../../identity/hooks/useIdentity';
-import { useAlert } from '../../alert';
+import { useConfig } from '../../config';
 
 /**
  * Provide helper functions to access backend api
  */
-export default function ApiProvider({ children, endpoint }) {
+export default function ApiProvider({ children }) {
+  const { apiBaseUrl } = useConfig();
   const { identity, clearIdentity } = useIdentity();
-  const { alertError } = useAlert();
-  const { t, i18n } = useTranslation();
-  const http = axios.create({ baseURL: endpoint });
+  const { i18n } = useTranslation();
+  const http = axios.create({ baseURL: apiBaseUrl });
 
-  // attach authentication header to request
   React.useEffect(() => {
     const authHeader = identity ? `Bearer ${identity.token.value}` : '';
+    // attach authentication header to http request
     http.defaults.headers.common.Authorization = authHeader;
-  }, [identity]);
 
-  // attach language header to request
-  React.useEffect(() => {
+    // attach language header to http request
     http.defaults.headers.common['Accept-Language'] = i18n.language;
-  }, [i18n.language]);
-
-  /**
-   * Handle error caused by event handler in Components
-   */
-  function handleAsyncError(error, options = {}) {
-    const { setInputErrors } = options;
-    let message;
-    // handle http error
-    if (error.response) {
-      const { status, data } = error.response;
-      switch (status) {
-        case 504:
-          message = t('common:request-timeout');
-          break;
-
-        case 400:
-          if (data.errors) {
-            message = t('common:invalid-user-input');
-            if (setInputErrors) {
-              setInputErrors(data.errors);
-            }
-          } else {
-            ({ message } = data);
-          }
-          break;
-
-        case 401:
-          message = t('common:unauthenticated');
-          break;
-
-        case 403:
-          message = t('common:unauthorized');
-          break;
-
-        default:
-          ({ message } = data);
-          break;
-      }
-      alertError(message);
-    } else if (error.message === 'Network Error') {
-      // device is offline
-      message = t('common:network-unavailable');
-      alertError(message);
-    } else {
-      // js error
-      message = t('common:runtime-error');
-      alertError(message);
-      if (process.env.NODE_ENV === 'development') {
-        // throw exception if in development mode
-        throw error;
-      } else {
-        // send error to error reporting service
-        Sentry.captureException(error);
-      }
-    }
-  }
+  }, [identity, i18n.language]);
 
   function logout() {
     clearIdentity();
@@ -184,7 +125,6 @@ export default function ApiProvider({ children, endpoint }) {
   }
 
   const contextValue = {
-    handleAsyncError,
     login,
     logout,
     requestPasswordReset,
@@ -207,5 +147,4 @@ export default function ApiProvider({ children, endpoint }) {
 
 ApiProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  endpoint: PropTypes.string.isRequired,
 };

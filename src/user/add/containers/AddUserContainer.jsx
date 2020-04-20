@@ -6,10 +6,12 @@ import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import AddUser from '../components/AddUser';
 import { useNavigator } from '../../../common/hooks';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function AddUserContainer() {
   const { alertSuccess } = useAlert();
-  const { addUser, handleAsyncError } = useApi();
+  const { addUser } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const { redirect } = useNavigator();
   const { t } = useTranslation();
 

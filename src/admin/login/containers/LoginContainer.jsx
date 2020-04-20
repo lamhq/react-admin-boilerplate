@@ -6,9 +6,11 @@ import { useApi } from '../../../common/api';
 import { useIdentity } from '../../../common/identity';
 import { useNavigator } from '../../../common/hooks';
 import Login from '../components/Login';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function LoginContainer() {
-  const { login, handleAsyncError } = useApi();
+  const { login } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const { setIdentity } = useIdentity();
   const { goBack } = useNavigator();
   const { t } = useTranslation();

@@ -7,11 +7,13 @@ import { useAlert } from '../../../common/alert';
 import { useIdentity } from '../../../common/identity';
 import Register from '../components/Register';
 import { useNavigator } from '../../../common/hooks';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function RegisterContainer() {
   const { t } = useTranslation();
   const { alertSuccess } = useAlert();
-  const { register, handleAsyncError } = useApi();
+  const { register } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const { setIdentity } = useIdentity();
   const { redirect } = useNavigator();
 

@@ -6,20 +6,22 @@ import { useApi } from '../../../common/api';
 import { useAlert } from '../../../common/alert';
 import { useIdentity } from '../../../common/identity';
 import Profile from '../components/Profile';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function ProfileContainer() {
   const { t } = useTranslation();
   const { alertSuccess } = useAlert();
-  const { updateProfile, handleAsyncError } = useApi();
+  const { updateProfile } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const { identity, setIdentity } = useIdentity();
   const { user } = identity;
   const initialValues = {
     displayName: user.displayName,
     email: user.email,
     changePassword: false,
-    newPassword: '',
     currentPassword: '',
-    confirmPassword: '',
+    newPassword: '123123',
+    confirmPassword: '123123',
   };
 
   async function handleSubmit(values, { setSubmitting, setErrors, resetForm }) {

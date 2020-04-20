@@ -64,6 +64,18 @@ const translation = {
       submit: 'Reset Pasword',
       success: 'Please check your inbox and reset the password within 1 hour',
     },
+    'reset-pwd': {
+      title: 'Reset Your Password',
+      instruction: 'Enter your new password here.',
+      submit: 'Update',
+      success: 'Your password has been updated. You can login with the new password.',
+    },
+    register: {
+      title: 'Register A New Account',
+      instruction: 'Enter your info to create an account.',
+      submit: 'Register',
+      success: 'Your account has been created. You can login now.',
+    },
     login: {
       title: 'Login',
       instruction: 'Please fill in your account to continue.',
@@ -80,18 +92,6 @@ const translation = {
       submit: 'Update',
       'invalid-current-password': 'Invalid current password',
       success: 'Update profile successfully',
-    },
-    register: {
-      title: 'Register A New Account',
-      instruction: 'Enter your info to create an account.',
-      submit: 'Register',
-      success: 'Your account has been created. You can login now.',
-    },
-    'reset-pwd': {
-      title: 'Reset Your Password',
-      instruction: 'Enter your new password here.',
-      submit: 'Update',
-      success: 'Your password has been updated. You can login with the new password.',
     },
     'user-mng': {
       title: 'Users',
@@ -176,6 +176,18 @@ const translation = {
       submit: 'Đồng ý',
       success: 'Hãy kiểm tra hộp thư của bạn và tiến hành đổi mật khẩu trong vòng 1 giờ',
     },
+    'reset-pwd': {
+      title: 'Thay đổi mật khẩu',
+      instruction: 'Nhập mật khẩu mới của bạn vào đây.',
+      submit: 'Cập nhật',
+      success: 'Mật khẩu đã được thay đổi.',
+    },
+    register: {
+      title: 'Đăng ký tài khoản',
+      instruction: 'Nhập vào thông tin bên dưới để tạo tài khoản.',
+      submit: 'Đăng ký',
+      success: 'Đăng ký thành công.',
+    },
     login: {
       title: 'Đăng nhập',
       instruction: 'Hãy điền vào thông tin dưới đây để tiếp tục.',
@@ -192,18 +204,6 @@ const translation = {
       submit: 'Cập nhật',
       'invalid-current-password': 'Sai mật khẩu',
       success: 'Cập nhật thành công',
-    },
-    register: {
-      title: 'Đăng ký tài khoản',
-      instruction: 'Nhập vào thông tin bên dưới để tạo tài khoản.',
-      submit: 'Đăng ký',
-      success: 'Đăng ký thành công.',
-    },
-    'reset-pwd': {
-      title: 'Thay đổi mật khẩu',
-      instruction: 'Nhập mật khẩu mới của bạn vào đây.',
-      submit: 'Cập nhật',
-      success: 'Mật khẩu đã được thay đổi.',
     },
     'user-mng': {
       title: 'Quản lý người dùng',

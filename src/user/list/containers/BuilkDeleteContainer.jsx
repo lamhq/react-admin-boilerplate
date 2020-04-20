@@ -6,12 +6,14 @@ import { useApi } from '../../../common/api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
 import BulkDeleteBtn from '../components/BulkDeleteBtn';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function BuilkDeleteContainer({ users, onSuccess }) {
   const { t } = useTranslation();
   const confirm = useDialog();
   const { alertSuccess } = useAlert();
-  const { deleteUsers, handleAsyncError } = useApi();
+  const { deleteUsers } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const {
     load: execDeleteUsers,
     loading: isDeleting,

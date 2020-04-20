@@ -7,13 +7,15 @@ import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
 import DeleteUserBtn from '../components/DeleteUserBtn';
 import useIdentity from '../../../common/identity/hooks/useIdentity';
+import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function DeleteUserContainer({ user, onSuccess }) {
   const { t } = useTranslation();
   const confirm = useDialog();
   const { identity } = useIdentity();
   const { alertSuccess } = useAlert();
-  const { deleteUser, handleAsyncError } = useApi();
+  const { deleteUser } = useApi();
+  const { handleAsyncError } = useErrorHandler();
   const {
     load: execDeleteUser,
     loading: isDeleting,
