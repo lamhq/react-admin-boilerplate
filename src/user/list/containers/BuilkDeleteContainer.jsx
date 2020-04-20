@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useLoadingState } from '../../../common/hooks';
-import { useApi } from '../../../common/api';
+import { useApi } from '../../../api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
 import BulkDeleteBtn from '../components/BulkDeleteBtn';

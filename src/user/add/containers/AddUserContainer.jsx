@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
-import { useApi } from '../../../common/api';
+import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
 import AddUser from '../components/AddUser';
 import { useNavigator } from '../../../common/hooks';

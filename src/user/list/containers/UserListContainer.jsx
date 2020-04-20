@@ -2,7 +2,7 @@ import React from 'react';
 import debounce from 'lodash.debounce';
 import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
-import { useApi } from '../../../common/api';
+import { useApi } from '../../../api';
 import { useIdentity } from '../../../common/identity';
 import useErrorHandler from '../../../error/hooks/useErrorHandler';
 

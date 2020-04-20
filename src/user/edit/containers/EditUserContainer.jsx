@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
-import { useApi } from '../../../common/api';
+import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
 import { useNavigator, useLoadingState } from '../../../common/hooks';
 import EditUser from '../components/EditUser';

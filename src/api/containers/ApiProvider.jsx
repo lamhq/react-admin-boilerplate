@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import { useTranslation } from 'react-i18next';
 import ApiContext from '../contexts/api';
-import useIdentity from '../../identity/hooks/useIdentity';
-import { apiBaseUrl } from '../../../params';
+import { useIdentity } from '../../common/identity';
+import { apiBaseUrl } from '../../params';
 
 /**
  * Provide helper functions to access backend api

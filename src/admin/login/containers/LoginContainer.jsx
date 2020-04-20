@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
-import { useApi } from '../../../common/api';
+import { useApi } from '../../../api';
 import { useIdentity } from '../../../common/identity';
 import { useNavigator } from '../../../common/hooks';
 import Login from '../components/Login';

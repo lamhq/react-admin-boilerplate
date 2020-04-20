@@ -6,7 +6,7 @@ import {
 
 import routes from './routes';
 import { IdentityProvider, ProtectedRoute } from './common/identity';
-import { ApiProvider } from './common/api';
+import { ApiProvider } from './api';
 import { AlertProvider } from './common/alert';
 import { DialogProvider } from './common/dialog';
 import NotFoundPage from './error/components/NotFoundPage';
