@@ -1,8 +1,7 @@
 import React from 'react';
-import { useConfig } from '../config';
+import { appName } from '../../params';
 
 export default function useDocumentTitle(title) {
-  const { appName } = useConfig();
   React.useEffect(() => {
     if (title) {
       document.title = `${title} - ${appName}`;

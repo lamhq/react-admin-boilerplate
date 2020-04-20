@@ -1,7 +1,8 @@
-import * as logLevel from 'loglevel';
+import * as ll from 'loglevel';
+import { logLevel } from '../../params';
 
-const log = logLevel.getLogger('main');
-log.setLevel(process.env.LOG_LEVEL);
+const log = ll.getLogger('main');
+log.setLevel(logLevel);
 
 export const logWarn = log.warn;
 export const logErr = log.error;

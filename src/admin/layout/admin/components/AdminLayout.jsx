@@ -9,6 +9,7 @@ import NavBar from '../containers/NavBarContainer';
 import Header from './Header';
 import Alert from '../../../../common/alert/containers/Alert';
 import styles from '../styles.m.scss';
+import { appVersion } from '../../../../params';
 
 const Layout = React.forwardRef(({ children, breadcrumbs, toggleDrawer }, navDrawerRef) => (
   <>
@@ -26,7 +27,7 @@ const Layout = React.forwardRef(({ children, breadcrumbs, toggleDrawer }, navDra
         <small>
           Version
           {' '}
-          {process.env.VERSION}
+          {appVersion}
         </small>
       </div>
     </div>

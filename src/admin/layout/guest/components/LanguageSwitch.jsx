@@ -7,7 +7,7 @@ import {
   EuiContextMenuItem,
 } from '@elastic/eui';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitchContainer from '../../../../common/i18n';
+import LanguageSwitchContainer from '../../../../common/i18n/containers/LanguageSwitchContainer';
 import styles from '../styles.m.scss';
 
 function Render({
@@ -18,7 +18,7 @@ function Render({
   language,
 }) {
   const { t } = useTranslation();
-  const items = panels[0].items.map(item => (
+  const items = panels[0].items.map((item) => (
     <EuiContextMenuItem
       key={item.name}
       icon={item.icon}

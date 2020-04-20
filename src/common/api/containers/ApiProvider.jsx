@@ -5,13 +5,12 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import ApiContext from '../contexts/api';
 import useIdentity from '../../identity/hooks/useIdentity';
-import { useConfig } from '../../config';
+import { apiBaseUrl } from '../../../params';
 
 /**
  * Provide helper functions to access backend api
  */
 export default function ApiProvider({ children }) {
-  const { apiBaseUrl } = useConfig();
   const { identity, clearIdentity } = useIdentity();
   const { i18n } = useTranslation();
   const http = axios.create({ baseURL: apiBaseUrl });

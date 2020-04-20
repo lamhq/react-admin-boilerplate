@@ -199,7 +199,7 @@ const translation = {
     },
     profile: {
       title: 'Cập nhật hồ sơ',
-      header: 'Thông tin người dùng',
+      header: 'Thông tin tài khoản',
       cancel: 'Huỷ',
       submit: 'Cập nhật',
       'invalid-current-password': 'Sai mật khẩu',

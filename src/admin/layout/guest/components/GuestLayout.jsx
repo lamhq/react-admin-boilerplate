@@ -13,6 +13,7 @@ import styles from '../styles.m.scss';
 import Alert from '../../../../common/alert/containers/Alert';
 import LanguageSwitch from './LanguageSwitch';
 import { useDocumentTitle } from '../../../../common/hooks';
+import { appVersion } from '../../../../params';
 
 export default function GuestLayout({ title, instruction, children }) {
   useDocumentTitle(title);
@@ -48,7 +49,7 @@ export default function GuestLayout({ title, instruction, children }) {
         <small>
           Version
           {' '}
-          {process.env.VERSION}
+          {appVersion}
         </small>
       </div>
     </div>
