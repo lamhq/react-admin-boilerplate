@@ -5,12 +5,11 @@ import {
 } from 'react-router-dom';
 
 import routes from './routes';
-import { IdentityProvider, ProtectedRoute } from './common/identity';
+import { IdentityProvider, ProtectedRoute } from './common/auth';
 import { ApiProvider } from './api';
 import { AlertProvider } from './common/alert';
 import { DialogProvider } from './common/dialog';
-import NotFoundPage from './error/components/NotFoundPage';
-import ErrorBoundary from './error/containers/ErrorBoundary';
+import { NotFoundPage, ErrorBoundary } from './common/error';
 import LoadingScreen from './common/components/LoadingScreen';
 
 const history = createBrowserHistory();

@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
 import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
-import { useIdentity } from '../../../common/identity';
+import { useIdentity } from '../../../common/auth';
 import Register from '../components/Register';
 import { useNavigator } from '../../../common/hooks';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useErrorHandler } from '../../../common/error';
 
 export default function RegisterContainer() {
   const { t } = useTranslation();

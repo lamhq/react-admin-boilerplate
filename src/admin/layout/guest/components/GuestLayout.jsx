@@ -10,7 +10,7 @@ import {
 } from '@elastic/eui';
 
 import styles from '../styles.m.scss';
-import Alert from '../../../../common/alert/containers/Alert';
+import { Alert } from '../../../../common/alert';
 import LanguageSwitch from './LanguageSwitch';
 import { useDocumentTitle } from '../../../../common/hooks';
 import { appVersion } from '../../../../params';

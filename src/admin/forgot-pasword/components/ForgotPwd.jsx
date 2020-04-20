@@ -11,7 +11,7 @@ import {
 } from '@elastic/eui';
 import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/guest';
-import TextField from '../../../eui/components/TextField';
+import { TextField } from '../../../common/components';
 import { useNavigator } from '../../../common/hooks';
 
 const initialFormValues = {

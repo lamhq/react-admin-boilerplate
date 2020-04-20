@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import useIdentity from '../hooks/useIdentity';
 import { hasSubArray } from '../../utils';
-import UnauthorizedPage from '../../../error/components/UnauthorizedPage';
+import UnauthorizedPage from '../../error/components/UnauthorizedPage';
 
 export default function ProtectedRoute({
   permissions, path, component, loginUrl,

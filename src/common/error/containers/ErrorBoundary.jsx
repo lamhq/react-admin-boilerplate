@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import { withAlert } from '../../common/alert';
-import { compose } from '../../common/utils';
+import { withAlert } from '../../alert';
+import { compose } from '../../utils';
 import RuntimeErrorPage from '../components/RuntimeErrorPage';
-import Sentry from '../../common/sentry';
+import Sentry from '../../sentry';
 import ErrorContext from '../contexts/error';
 
 class ErrorBoundary extends React.Component {

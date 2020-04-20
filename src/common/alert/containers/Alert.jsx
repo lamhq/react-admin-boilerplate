@@ -1,6 +1,6 @@
 import React from 'react';
 import useAlert from '../hooks/useAlert';
-import EuiAlert from '../../../eui/components/Alert';
+import EuiAlert from '../components/Alert';
 
 export default function Alert() {
   const { alert, closeAlert } = useAlert();

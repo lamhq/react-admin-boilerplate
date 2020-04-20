@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
 import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
+import { useErrorHandler } from '../../../common/error';
 import ForgotPwd from '../components/ForgotPwd';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function ForgotPwdContainer() {
   const { t } = useTranslation();

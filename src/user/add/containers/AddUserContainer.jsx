@@ -6,7 +6,7 @@ import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
 import AddUser from '../components/AddUser';
 import { useNavigator } from '../../../common/hooks';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useErrorHandler } from '../../../common/error';
 
 export default function AddUserContainer() {
   const { alertSuccess } = useAlert();

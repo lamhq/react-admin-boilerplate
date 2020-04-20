@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { EuiConfirmModal, EuiOverlayMask } from '@elastic/eui';
-import DialogContext from '../contexts/dialog';
 import { useTranslation } from 'react-i18next';
+import DialogContext from '../contexts/dialog';
 
 function getButtonColor(type) {
   let color;

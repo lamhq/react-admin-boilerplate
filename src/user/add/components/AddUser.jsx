@@ -17,9 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigator } from '../../../common/hooks';
 import styles from '../../../admin/common.m.scss';
 import Layout from '../../../admin/layout/admin';
-import PasswordField from '../../../eui/components/PasswordField';
-import TextField from '../../../eui/components/TextField';
-import SelectField from '../../../eui/components/SelectField';
+import { TextField, PasswordField, SelectField } from '../../../common/components';
 import { userStatusOptions } from '../../constants';
 
 const initialFormValues = {

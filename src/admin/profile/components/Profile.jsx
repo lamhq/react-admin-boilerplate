@@ -16,9 +16,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import styles from '../../common.m.scss';
 import Layout from '../../layout/admin';
-import TextField from '../../../eui/components/TextField';
-import PasswordField from '../../../eui/components/PasswordField';
-import SwitchField from '../../../eui/components/SwitchField';
+import { TextField, PasswordField, SwitchField } from '../../../common/components';
 import { useNavigator } from '../../../common/hooks';
 
 export default function Profile({ initialFormValues, validateForm, onSubmit }) {

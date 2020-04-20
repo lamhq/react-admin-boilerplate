@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { useTranslation } from 'react-i18next';
 import ApiContext from '../contexts/api';
-import { useIdentity } from '../../common/identity';
+import { useIdentity } from '../../common/auth';
 import { apiBaseUrl } from '../../params';
 
 /**

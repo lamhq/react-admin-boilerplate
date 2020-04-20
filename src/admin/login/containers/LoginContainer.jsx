@@ -3,10 +3,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
 import { useApi } from '../../../api';
-import { useIdentity } from '../../../common/identity';
+import { useIdentity } from '../../../common/auth';
 import { useNavigator } from '../../../common/hooks';
 import Login from '../components/Login';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useErrorHandler } from '../../../common/error';
 
 export default function LoginContainer() {
   const { login } = useApi();

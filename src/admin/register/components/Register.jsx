@@ -8,8 +8,7 @@ import {
 } from '@elastic/eui';
 import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/guest';
-import PasswordField from '../../../eui/components/PasswordField';
-import TextField from '../../../eui/components/TextField';
+import { TextField, PasswordField } from '../../../common/components';
 
 const initialFormValues = {
   displayName: '',

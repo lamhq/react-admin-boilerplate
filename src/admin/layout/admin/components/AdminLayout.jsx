@@ -7,7 +7,7 @@ import {
 } from '@elastic/eui';
 import NavBar from '../containers/NavBarContainer';
 import Header from './Header';
-import Alert from '../../../../common/alert/containers/Alert';
+import { Alert } from '../../../../common/alert';
 import styles from '../styles.m.scss';
 import { appVersion } from '../../../../params';
 

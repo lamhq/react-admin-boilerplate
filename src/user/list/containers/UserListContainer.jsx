@@ -3,8 +3,8 @@ import debounce from 'lodash.debounce';
 import { useLoadingState } from '../../../common/hooks';
 import UserList from '../components/UserList';
 import { useApi } from '../../../api';
-import { useIdentity } from '../../../common/identity';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useIdentity } from '../../../common/auth';
+import { useErrorHandler } from '../../../common/error';
 
 export default function UserListContainer() {
   const [search, setSearch] = React.useState('');

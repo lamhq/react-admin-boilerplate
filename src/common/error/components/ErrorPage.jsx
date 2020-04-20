@@ -8,8 +8,8 @@ import {
   EuiButton,
 } from '@elastic/eui';
 import { useTranslation } from 'react-i18next';
+import { useDocumentTitle } from '../../hooks';
 import styles from '../styles.m.scss';
-import { useDocumentTitle } from '../../common/hooks';
 
 export default function ErrorPage({ title, message }) {
   useDocumentTitle(title);

@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { validate } from '../../../common/utils';
 import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
-import { useIdentity } from '../../../common/identity';
+import { useIdentity } from '../../../common/auth';
 import Profile from '../components/Profile';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useErrorHandler } from '../../../common/error';
 
 export default function ProfileContainer() {
   const { t } = useTranslation();
@@ -20,8 +20,8 @@ export default function ProfileContainer() {
     email: user.email,
     changePassword: false,
     currentPassword: '',
-    newPassword: '123123',
-    confirmPassword: '123123',
+    newPassword: '',
+    confirmPassword: '',
   };
 
   async function handleSubmit(values, { setSubmitting, setErrors, resetForm }) {

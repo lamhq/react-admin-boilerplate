@@ -7,7 +7,7 @@ import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
 import ResetPwd from '../components/ResetPwd';
 import { useNavigator } from '../../../common/hooks';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useErrorHandler } from '../../../common/error';
 
 export default function ResetPwdContainer() {
   const { t } = useTranslation();

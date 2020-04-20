@@ -5,9 +5,9 @@ import { useLoadingState } from '../../../common/hooks';
 import { useApi } from '../../../api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
+import { useIdentity } from '../../../common/auth';
+import { useErrorHandler } from '../../../common/error';
 import DeleteUserBtn from '../components/DeleteUserBtn';
-import useIdentity from '../../../common/identity/hooks/useIdentity';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
 
 export default function DeleteUserContainer({ user, onSuccess }) {
   const { t } = useTranslation();

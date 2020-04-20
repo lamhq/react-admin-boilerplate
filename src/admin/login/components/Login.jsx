@@ -11,8 +11,7 @@ import {
 } from '@elastic/eui';
 import { useTranslation } from 'react-i18next';
 import Layout from '../../layout/guest';
-import TextField from '../../../eui/components/TextField';
-import PasswordField from '../../../eui/components/PasswordField';
+import { TextField, PasswordField } from '../../../common/components';
 import { useNavigator } from '../../../common/hooks';
 
 export default function Login({ initialFormValues, validateForm, onSubmit }) {

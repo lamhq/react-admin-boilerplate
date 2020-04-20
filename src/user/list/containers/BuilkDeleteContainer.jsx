@@ -6,7 +6,7 @@ import { useApi } from '../../../api';
 import { useDialog } from '../../../common/dialog';
 import { useAlert } from '../../../common/alert';
 import BulkDeleteBtn from '../components/BulkDeleteBtn';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useErrorHandler } from '../../../common/error';
 
 export default function BuilkDeleteContainer({ users, onSuccess }) {
   const { t } = useTranslation();

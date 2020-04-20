@@ -7,7 +7,7 @@ import { useApi } from '../../../api';
 import { useAlert } from '../../../common/alert';
 import { useNavigator, useLoadingState } from '../../../common/hooks';
 import EditUser from '../components/EditUser';
-import useErrorHandler from '../../../error/hooks/useErrorHandler';
+import { useErrorHandler } from '../../../common/error';
 
 export default function EditUserContainer() {
   const { t } = useTranslation();
@@ -20,6 +20,9 @@ export default function EditUserContainer() {
   const initialFormValues = {
     ...user,
     changePassword: false,
+    currentPassword: '',
+    newPassword: '',
+    confirmPassword: '',
   };
 
   async function handleSubmit(values, { setSubmitting, setErrors }) {
