@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://bitbucket.org/mrsecon/rest-boilerplate-react/compare/v1.1.0...v1.1.1) (2020-04-21)
+
+
+### Bug Fixes
+
+* version is not displayed ([6c85700](https://bitbucket.org/mrsecon/rest-boilerplate-react/commit/6c85700a22b4efee289f85af2a0bea073dea5f0e))
+
 ## 1.1.0 (2020-04-21)
 
 

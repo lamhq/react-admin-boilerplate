@@ -1,6 +1,6 @@
 {
   "name": "rest-boilerplate-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "SPA web with React",
   "main": "index.js",
   "scripts": {
