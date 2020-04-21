@@ -83,10 +83,6 @@ export default function EditUser({
                   {values.changePassword && (
                     <>
                       <PasswordField
-                        name="currentPassword"
-                        label={t('user:current-password')}
-                      />
-                      <PasswordField
                         name="newPassword"
                         label={t('user:new-password')}
                         autoComplete="off"
@@ -111,7 +107,7 @@ export default function EditUser({
                       </EuiButton>
                     </EuiFlexItem>
                     <EuiFlexItem grow={false}>
-                      <EuiButtonEmpty {...getLinkProps('/')}>
+                      <EuiButtonEmpty {...getLinkProps('/users')}>
                         {t('user-mng:cancel')}
                       </EuiButtonEmpty>
                     </EuiFlexItem>

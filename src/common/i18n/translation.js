@@ -110,6 +110,7 @@ const translation = {
       cancel: 'Cancel',
       'add-user-success': 'User created successfully.',
       'update-user-success': 'User updated successfully.',
+      'delete-success': 'User was removed',
     },
   },
   vi: {
@@ -222,6 +223,7 @@ const translation = {
       cancel: 'Huỷ',
       'add-user-success': 'Tạo người dùng thành công.',
       'update-user-success': 'Cập nhật người dùng thành công.',
+      'delete-success': 'Thông tin đã được xoá',
     },
   },
 };

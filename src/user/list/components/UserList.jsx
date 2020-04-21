@@ -66,21 +66,21 @@ export default function UserList({
       name: t('user:createdAt'),
       sortable: true,
       truncateText: true,
-      render: createdAt => formatDate(createdAt),
+      render: (createdAt) => formatDate(createdAt),
     },
     {
       field: 'status',
       name: t('user:status'),
       sortable: true,
       truncateText: true,
-      render: status => formatEnum(status, userStatusOptions),
+      render: (status) => formatEnum(status, userStatusOptions),
     },
     {
       name: t('common:actions'),
       width: '200px',
       actions: [
         {
-          render: user => <DeleteUserBtn user={user} onSuccess={loadList} />,
+          render: (user) => <DeleteUserBtn user={user} onSuccess={loadList} />,
         },
         {
           name: 'Edit',
@@ -88,7 +88,7 @@ export default function UserList({
           description: t('user-mng:edit-action'),
           icon: 'pencil',
           type: 'icon',
-          onClick: user => redirect(`/users/edit/${user.id}`),
+          onClick: (user) => redirect(`/users/edit/${user.id}`),
         },
       ],
     },

@@ -25,7 +25,7 @@ const initialFormValues = {
   email: '',
   password: '',
   confirmPassword: '',
-  status: '',
+  status: 'ACTIVE',
 };
 
 export default function AddUser({ validateForm, onSubmit }) {

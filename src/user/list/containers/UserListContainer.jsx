@@ -7,9 +7,10 @@ import { useIdentity } from '../../../common/auth';
 import { useErrorHandler } from '../../../common/error';
 
 export default function UserListContainer() {
+  const pageSizeOptions = [10, 20, 50, 100];
   const [search, setSearch] = React.useState('');
   const [pageIndex, setPageIndex] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(10);
+  const [pageSize, setPageSize] = React.useState(pageSizeOptions[0]);
   const [sortField, setSortField] = React.useState('displayName');
   const [sortDirection, setSortDirection] = React.useState('asc');
   const [selectedItems, updateSelectedItems] = React.useState([]);
@@ -31,7 +32,7 @@ export default function UserListContainer() {
     pageIndex,
     pageSize,
     totalItemCount,
-    pageSizeOptions: [10, 20, 50, 100],
+    pageSizeOptions,
   };
 
   const sorting = {
@@ -49,7 +50,7 @@ export default function UserListContainer() {
 
   // load user list
   React.useEffect(() => {
-    loadUsers(search, sortField, sortDirection, pageSize, pageSize * pageIndex);
+    loadUsers(search, sortField, sortDirection, pageIndex, pageSize);
   }, [search, pageIndex, pageSize, sortField, sortDirection]);
 
   // show error

@@ -20,7 +20,6 @@ export default function EditUserContainer() {
   const initialFormValues = {
     ...user,
     changePassword: false,
-    currentPassword: '',
     newPassword: '',
     confirmPassword: '',
   };
@@ -53,16 +52,6 @@ export default function EditUserContainer() {
         email: {
           message: `^${t('common:invalid-email')}`,
         },
-      },
-      // eslint-disable-next-line arrow-body-style, no-unused-vars
-      currentPassword: (value, attributes, attributeName, options) => {
-        // only validate when new password is not empty
-        return attributes.changePassword ? {
-          presence: {
-            allowEmpty: false,
-            message: `^${t('common:required-input')}`,
-          },
-        } : false;
       },
       // eslint-disable-next-line arrow-body-style, no-unused-vars
       newPassword: (value, attributes, attributeName, options) => {
